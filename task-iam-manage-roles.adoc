@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-roles.html 
+keywords: fleets, access, resources, user roles, iam, identity and access management, folder, organization, permissions, roles, members, access roles, directory users, AD, Active Directory, directory services 
+summary: Gestiona el acceso de los miembros en tu organización de Console. Asigna roles para configurar los permisos. Elimina a los miembros cuando se vayan. 
+---
+= Gestiona el acceso de los miembros en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, revisa o modifica los roles de un usuario en varias carpetas o flotas, como comprobar todo a lo que puede acceder un ingeniero de almacenamiento, añadir un nuevo rol en otra región o retirar el acceso de ese usuario cuando cambien sus responsabilidades.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas (para las carpetas y flotas que gestione). link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Puedes consultar y gestionar el acceso de dos formas según tus necesidades. Si quieres ver los roles que tiene un usuario en particular en toda la flota de tu organización, usa la página *Members*.
+
+Si quieres comprobar quién puede acceder a una flota concreta, consulta los miembros asignados a dicha flota. link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"].
+
+Para añadir un nuevo miembro, una cuenta de servicio o un usuario de directorio y asignarle su primer rol, utiliza la tarea de incorporación. link:task-iam-manage-members-permissions.html["Agregar miembros y asignar roles"].
+
+
+
+[[understand-how-access-is-granted-in-netapp-console]]
+== Entiende cómo se concede el acceso en NetApp Console
+
+La NetApp Console utiliza el control de acceso basado en roles (RBAC) para gestionar los permisos de los miembros. Puedes asignar roles predefinidos a nivel de organización, carpeta o flota, en función del ámbito de acceso que necesite cada miembro.
+
+
+
+[[using-role-inheritance]]
+[[role-inheritance]]
+=== Uso de la herencia de roles
+
+Un rol que asignas a nivel de organización o de carpeta se hereda en los ámbitos subordinados, así que cambia una asignación heredada en el ámbito superior donde la concediste originalmente.
+
+link:concept-iam-rbac.html#role-inheritance["Conoce la herencia de roles en la implementación local de NetApp Console"].
+
+
+
+[[view-roles-assigned-to-a-member]]
+[[manage-permissions]]
+== Ver los roles asignados a un miembro
+
+Confirma exactamente qué roles tiene un miembro y en qué ámbito antes de hacer un cambio. Por ejemplo, comprueba si un compañero de equipo ya tiene el rol de Storage admin en la  `Production-EU-West` fleet.
+
+Si tienes el rol de _Folder or fleet admin_, la página muestra a todos los miembros de la organización. Sin embargo, solo puedes ver y gestionar los permisos de las carpetas y flotas que administras. link:reference-iam-predefined-roles.html["Infórmate sobre las acciones de los administradores de carpetas o de flotas en la implementación local de NetApp Console"].
+
+. Desde la página *Miembros*, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. En la tabla, despliega la fila correspondiente a la organización, carpeta o flota en la que quieras ver el rol asignado al miembro y selecciona *Ver* en la columna *Role*.
+
+
+
+
+[[assign-or-modify-member-access]]
+== Asignar o modificar el acceso de los miembros
+
+Puedes ajustar el acceso de un miembro siempre que cambien sus responsabilidades. Por ejemplo, cuando un compañero de equipo asume tareas de backup para una segunda región, añade el rol de Backup and Recovery admin en la flota de esa región sin modificar sus roles de almacenamiento actuales.
+
+Si necesitas añadir un nuevo miembro y asignarle su primer rol, consulta link:task-iam-manage-members-permissions.html#add-members["Agregar miembros y asignar roles"].
+
+
+
+[[add-an-access-role-to-an-existing-member]]
+=== Agrega un rol de acceso a un miembro existente
+
+Asigna a un miembro un rol adicional a nivel de organización, carpeta o flota cuando sus responsabilidades se amplíen. Por ejemplo, asigna a un Storage admin el rol de Backup and recovery admin a nivel de organización para que pueda gestionar las tareas de backup and recovery en todas las flotas sin perder sus permisos de almacenamiento actuales.
+
+Puedes asignar a un miembro un rol de acceso para tu organización, carpeta o flota.
+
+Los miembros pueden desempeñar múltiples roles dentro de una misma flota y en diferentes flotas. Por ejemplo, las organizaciones más pequeñas pueden asignar todos los roles de acceso disponibles al mismo usuario, mientras que las organizaciones más grandes pueden encargar a los usuarios tareas más especializadas. Como alternativa, también podrías asignar a un usuario el rol de administrador de resiliencia frente al ransomware a nivel de organización. En ese ejemplo, el usuario podría realizar tareas de resiliencia frente al ransomware en todas las flotas de tu organización.
+
+Tu estrategia de roles de acceso debe ajustarse a la forma en que has organizado tus recursos de NetApp.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona una de las pestañas de miembros: *Usuarios*, *Usuarios del directorio* o *Cuentas de servicio*.
+. Selecciona el menú de acciones image:icon-action.png["un icono con tres puntos verticales"] junto al miembro al que quieres asignar un rol y selecciona *Add a role*.
+. Para añadir un rol, sigue los pasos que se indican en el cuadro de diálogo:
++
+** *Selecciona una organización, carpeta o flota*: Elige el nivel de la jerarquía de recursos para el que el miembro debe tener permisos.
++
+Si seleccionas la organización o una carpeta, el miembro tendrá permisos para todo lo que se encuentre dentro de la organización o carpeta.
+
+** *Selecciona una categoría*: elige una categoría de función. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"^].
+** Selecciona un *rol*: elige un rol que otorgue al miembro permisos para los recursos que están asociados con la organización, la carpeta o la flota que seleccionaste.
+** *Añadir función*: Si quieres conceder acceso a carpetas o flotas adicionales dentro de tu organización, selecciona *Añadir función*, especifica otra carpeta o flota o categoría de función y luego selecciona una categoría de función y la función correspondiente.
+
+
+. Selecciona *Add new roles*.
+
+
+
+
+[[change-a-members-assigned-role]]
+=== Cambiar el rol asignado a un miembro
+
+Sustituye el rol actual de un miembro por otro diferente cuando cambien sus responsabilidades. Por ejemplo, cuando un Storage viewer en la `Production-US-East` fleet necesite el rol de Storage admin en su lugar.
+
+
+NOTE: Cada usuario debe tener al menos un rol. No puedes eliminar todos los roles de un usuario. Si necesitas eliminar todos los roles, elimina al usuario de tu organización.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona una de las pestañas de miembros: *Usuarios*, *Usuarios del directorio* o *Cuentas de servicio*.
+. Desde la página *Miembros*, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. En la tabla, despliega la fila correspondiente a la organización, carpeta o flota en la que desees modificar el rol asignado al miembro y selecciona *Ver* en la columna *Rol* para ver los roles asignados a este miembro.
+. Puedes cambiar un rol existente de un miembro o eliminar un rol.
++
+.. Para cambiar el rol de un miembro, selecciona *Cambiar* junto al rol que quieres cambiar. Solo puedes cambiar un rol por otro dentro de la misma categoría de roles. Por ejemplo, puedes cambiar de un rol de servicio de datos a otro. Confirma el cambio.
+.. Para desasignar un rol a un miembro, selecciona image:icon-delete.png["Un icono que se parece a un cubo de basura"] junto al rol para desasignar al miembro el rol correspondiente. Se te pedirá que confirmes la eliminación.
+
+
+
+
+
+
+[[remove-a-member-from-your-organization]]
+=== Eliminar a un miembro de tu organización
+
+Elimina a un miembro cuando abandone la organización o cambie de función de tal forma que ya no necesite acceso a la Console. Por ejemplo, cuando finaliza el contrato de un colaborador externo o cuando un empleado se traslada a un equipo ajeno a tu organización de la Console.
+
+[NOTE]
+====
+.Usuarios del directorio
+Al eliminar a un usuario de tu directorio, se impide que dicho usuario pueda autenticarse. También debes eliminar al usuario de tu organización en Console para mantener la lista de miembros actualizada y eliminar cualquier rol que se le haya asignado en la implementación local de Console.
+
+====
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona una de las pestañas de miembros: *Usuarios*, *Usuarios del directorio* o *Cuentas de servicio*.
+. Desde la página *Miembros*, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Eliminar usuario*.
+. Confirma que deseas eliminar al miembro de tu organización.
+

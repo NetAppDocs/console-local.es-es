@@ -1,0 +1,228 @@
+---
+sidebar: sidebar 
+permalink: reference-workload-analyzer-metrics.html 
+keywords: workload analyzer, latency, delay center, throughput, IOPS, resource utilization, capacity, capacity forecast, QoS, storage efficiency, snapshot, performance troubleshooting, metrics reference, netapp console local 
+summary: Referencia de todas las métricas disponibles en el Workload Analyzer, organizadas por sección de análisis. 
+---
+= Métricas de Workload Analyzer en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, el Workload Analyzer muestra métricas en seis secciones. La descripción de cada métrica explica cómo el analizador muestra la métrica en el gráfico y qué indica sobre el comportamiento del volumen.
+
+
+
+[[qos-reference-lines-in-latency-charts]]
+=== Líneas de referencia de QoS en los gráficos de latencia
+
+Si el volumen seleccionado utiliza una política de calidad de servicio (QoS), puedes utilizar dos líneas de referencia adicionales en el selector de métricas:
+
+[cols="20,80"]
+|===
+| Línea de referencia | Descripción 
+
+
+| Límite máximo de QoS | El límite máximo de latencia definido por la política de calidad de servicio (QoS). Cuando la línea de latencia se aproxima o toca esta línea, ONTAP está limitando la carga de trabajo, y el límite de QoS, en lugar de un recurso físico, es la principal fuente de latencia. 
+
+
+| Límite mínimo de QoS | El límite mínimo garantizado de latencia definido por la política de QoS. Esta línea indica el piso de tiempo de respuesta que se aplica a la carga de trabajo. Cuando otras cargas de trabajo utilizan los valores mínimos de QoS para garantizar su rendimiento, ONTAP puede limitar esta carga de trabajo, lo que provoca que presente una mayor latencia. 
+|===
+Estas líneas horizontales no aparecen en el desglose del centro de retardo al pasar el cursor por encima. Sirven como umbrales de referencia, no como factores que contribuyen a la latencia.
+
+
+
+[[latency-breakdown-by-io-type]]
+=== Desglose de la latencia por tipo de I/O
+
+Utiliza el desglose por tipo de I/O en la sección *Análisis de latencia* después de seleccionar *Desglose por centro de retardo* en el menú desplegable Ver. El gráfico desglosa la latencia total en tres categorías según la dirección de la operación de I/O. Utiliza estas métricas para determinar si un problema de rendimiento está afectando las operaciones de lectura, escritura o metadatos.
+
+[cols="20,40,40"]
+|===
+| Tipo de latencia | Descripción | Causas habituales de los valores elevados 
+
+
+| Latencia de lectura | Tiempo medio que tarda en completarse una solicitud de lectura de un cliente en el volumen, desde el momento en que se recibe la solicitud hasta que se devuelven los datos. Las solicitudes de lectura deben recorrer la ruta completa de I/O, desde la capa de protocolo de red, pasando por la pila de procesamiento de datos, hasta el agregado donde residen los datos. | Contendencia de agregados o de discos; fallos de caché que provocan lecturas en el disco físico; datos inactivos recuperados de un nivel de capacidad en la nube a través de FabricPool; lecturas entre nodos cuando los datos residen en un nodo distinto al que gestiona la solicitud. 
+
+
+| Latencia de escritura | Tiempo medio de confirmación de una solicitud de escritura de un cliente en el volumen. ONTAP confirma una escritura una vez que se ha registrado en el registro de escritura de la NVRAM; los datos se transfieren al agregado más tarde. | Saturación de la NIC o alta latencia de ida y vuelta entre el cliente y el nodo de almacenamiento; SnapMirror sincrónico esperando a que el clúster de destino confirme la recepción antes de que se pueda confirmar la escritura; presión sobre la NVRAM bajo cargas intensas de escritura; sobrecarga de CPU por deduplicación, compresión o compactación en línea que se ejecutan en la ruta de I/O de escritura. 
+
+
+| Otra latencia | Tiempo medio necesario para completar operaciones que no sean de lectura ni de escritura en el volumen, incluyendo aperturas de archivos, consultas de atributos, recorridos de directorios, creaciones de archivos y bloqueos. Una latencia elevada en otros aspectos puede afectar la capacidad de respuesta de la aplicación incluso cuando la latencia de lectura y escritura parece normal. | Presión sobre la CPU debido a operaciones de eficiencia en línea que compiten con el procesamiento de metadatos; alta actividad en el espacio de nombres por cargas de trabajo que generan grandes cantidades de creaciones y eliminaciones de archivos o análisis de directorios; limitación de QoS que restringe el total de IOPS, dejando menos IOPS disponibles para operaciones de metadatos; sobrecarga de activación de volúmenes cuando muchos volúmenes están activos al mismo tiempo. 
+|===
+
+
+[[throughput-components]]
+== Componentes del rendimiento
+
+Utiliza los componentes de rendimiento de la sección *Análisis de rendimiento* después de seleccionar *Desglose (RWO)* en el menú desplegable *Ver*. El analizador muestra simultáneamente tanto las IOPS como los MB/s.
+
+[cols="20,40,40"]
+|===
+| Componente | Descripción | Se traduce como 
+
+
+| IOPS de lectura | Operaciones de lectura por segundo. | Área apilada en el gráfico de IOPS. 
+
+
+| IOPS de escritura | Operaciones de escritura por segundo. | Área apilada en el gráfico de IOPS. 
+
+
+| Otros IOPS | Metadatos y otras operaciones no relacionadas con datos por segundo. | Área apilada en el gráfico de IOPS. 
+
+
+| Lectura MB/s | Rendimiento de lectura en megabytes por segundo. | Área apilada en el gráfico de MB/s. 
+
+
+| Escritura MB/s | Velocidad de escritura en megabytes por segundo. | Área apilada en el gráfico de MB/s. 
+
+
+| Rendimiento de la nube | Ancho de banda en megabytes por segundo entre el volumen y el nivel de capacidad en la nube. Esta métrica solo aparece para las cargas de trabajo que asignan capacidad a la nube a través de FabricPool. | Área apilada en el gráfico de MB/s. 
+|===
+Los componentes de lectura, escritura y otros suman el valor total de IOPS o MB/s. Pasa el cursor por encima del gráfico para ver el valor de cada componente, su porcentaje respecto al total y el tamaño medio de I/O (MB/s ÷ IOPS) por categoría.
+
+
+
+[[resource-utilization-metrics]]
+== Métricas de utilización de recursos
+
+Utiliza la sección *Utilización de recursos* para consultar las métricas de utilización de recursos. El analizador muestra cada recurso que da servicio al volumen en una línea independiente. Los recursos no se superponen.
+
+
+
+[[node-metrics]]
+=== Métricas de los nodos
+
+[cols="25,75"]
+|===
+| Métrica | Descripción 
+
+
+| Utilización de nodos | Porcentaje de utilización combinada del nodo. Pasa el cursor por encima para ver la utilización de CPU, la utilización de red y el margen disponible para cada nodo. 
+
+
+| Utilización de CPU | Porcentaje de la capacidad de CPU del nodo en uso. La información al pasar el cursor muestra este valor. 
+
+
+| Utilización de red | Porcentaje de la capacidad de red del nodo en uso. La información al pasar el cursor muestra este valor. 
+
+
+| Espacio libre | Capacidad restante del nodo disponible para cargas de trabajo adicionales. La información que aparece al pasar el cursor por encima muestra este valor. 
+|===
+
+
+[[aggregate-metrics]]
+=== Métricas agregadas
+
+[cols="25,75"]
+|===
+| Métrica | Descripción 
+
+
+| Utilización global | Porcentaje de ocupación del disco para el agregado. Pasa el cursor por encima para ver el valor de ocupación del disco, el número de volúmenes del agregado y el margen disponible. 
+
+
+| Disco ocupado | Porcentaje de tiempo durante el cual los discos del agregado prestan servicio de I/O de forma activa. La información que aparece al pasar el cursor por encima muestra este valor. 
+
+
+| Recuento de volúmenes | Número de volúmenes alojados actualmente en el agregado. La información que aparece al pasar el cursor por encima muestra este valor. 
+
+
+| Espacio libre | Capacidad restante del agregado disponible para una carga de trabajo adicional. La información que aparece al pasar el cursor por encima muestra este valor. 
+|===
+Cuando la línea de utilización de un nodo o un agregado supera el umbral de advertencia de alta utilización, que en el gráfico se indica con una línea de referencia discontinua, es posible que otras cargas de trabajo de ese recurso estén compitiendo con el volumen seleccionado por la capacidad de I/O.
+
+
+
+[[capacity-metrics]]
+== Métricas de capacidad
+
+
+
+[[capacity-view]]
+=== Vista de capacidad
+
+Utiliza la sección *Análisis de capacidad* para consultar las métricas de *Vista de capacidad* después de seleccionar *Vista de capacidad* en el menú desplegable Vista.
+
+[cols="25,75"]
+|===
+| Métrica | Descripción 
+
+
+| Capacidad física | Espacio ocupado en el disco tras las operaciones de eficiencia del almacenamiento. Esta es la zona inferior apilada en el gráfico. El espacio físico más el disponible siempre equivalen al tamaño total del volumen. 
+
+
+| Capacidad disponible | Espacio libre restante en el volumen. Esta es la zona superior apilada en el gráfico. Disminuye a medida que crece la capacidad física. 
+
+
+| Índice de eficiencia de almacenamiento | Índice de eficiencia global (datos lógicos ÷ datos físicos). La información que aparece al pasar el cursor por encima muestra este valor. Refleja el ahorro combinado de la deduplicación, la compresión y la compactación. 
+
+
+| Ahorro gracias a la deduplicación | Espacio ahorrado al eliminar bloques de datos duplicados. La información que aparece al pasar el cursor por encima muestra este valor. 
+
+
+| Ahorro por compresión | Espacio ahorrado gracias a la compresión de datos en línea. La información que aparece al pasar el cursor por encima muestra este valor. 
+
+
+| Ahorro en la compactación | Espacio ahorrado al agrupar varios bloques pequeños en un único bloque físico. La información que aparece al pasar el cursor por encima muestra este valor. 
+|===
+
+
+[[snapshot-view]]
+=== Vista de snapshot
+
+Utiliza la vista Snapshot cuando quieras consultar métricas específicas de las instantáneas.
+
+[cols="25,40,35"]
+|===
+| Métrica | Descripción | Se traduce como 
+
+
+| Instantánea disponible | Espacio preasignado reservado para instantáneas, configurado como un porcentaje del tamaño del volumen. | Línea de referencia horizontal. 
+
+
+| Instantánea utilizada | Espacio real ocupado por las copias de instantáneas. | Gráfico de área por debajo de la línea de reserva. 
+|===
+Pasa el cursor por encima del gráfico para ver el tamaño de la reserva de snapshot, el espacio utilizado por las instantáneas y su porcentaje respecto a la reserva, el número total de instantáneas y la antigüedad de la instantánea más antigua. Cuando el consumo de instantáneas supera la reserva, las instantáneas comienzan a ocupar espacio en el área de datos del volumen.
+
+
+
+[[forecast-behavior]]
+== Comportamiento previsto
+
+Utiliza el botón de activación/desactivación *Mostrar previsión* en cualquier sección de análisis cuando quieras proyectar valores futuros más allá del momento actual basándote en la tendencia observada. Los siguientes comportamientos se aplican a todas las secciones:
+
+[cols="25,75"]
+|===
+| Aspecto | Comportamiento 
+
+
+| Ventana de proyección | Realiza proyecciones hacia el futuro en función del intervalo de tiempo seleccionado. Para una vista de 2 horas, la ventana de proyección es de aproximadamente 1 hora. Para una vista de 7 días, la ventana de proyección se extiende varios días. 
+
+
+| Estilo visual | El analizador muestra los valores previstos mediante una línea discontinua. Un separador vertical marca el límite entre los datos reales y los valores previstos. 
+
+
+| Alertas de umbral | El analizador muestra un mensaje de aviso cuando la previsión indica que el volumen superará un umbral de advertencia o crítico, junto con el tiempo estimado para que ocurra el rebasamiento. 
+
+
+| Base de la tendencia | La proyección utiliza la tasa de cambio del tramo más reciente del intervalo de tiempo seleccionado. La elevada volatilidad de los datos recientes reduce la fiabilidad de la previsión. 
+
+
+| Datos mínimos necesarios | La previsión de capacidad requiere al menos 10 días de datos históricos. Cuando quedan menos de 30 días de capacidad antes de que se llene el volumen, el analizador identifica el almacenamiento como casi lleno. 
+|===
+
+
+[[related-information]]
+== Información relacionada
+
+* link:concept-workload-analyzer.html["Obtén información sobre Workload Analyzer para el despliegue local de NetApp Console"]
+* link:task-analyzer-volume-latency-investigate.html["Investiga la alta latencia en un volumen"]
+* link:task-analyzer-volume-throughput-investigate.html["Investiga la demanda de alto rendimiento en un volumen"]
+* link:task-analyzer-volume-capacity-investigate.html["Investiga el crecimiento de la capacidad en un volumen"]
+

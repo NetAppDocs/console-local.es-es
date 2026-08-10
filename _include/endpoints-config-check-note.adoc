@@ -1,0 +1,11 @@
+= 
+:allow-uri-read: 
+
+
+[IMPORTANT]
+====
+* En las nuevas implementaciones de agentes, NetApp comprueba los siguientes puntos de conexión: link:reference-networking-saas-console.html["que figuran aquí"^]. Esta comprobación de configuración falla con un error si usas los puntos de conexión anteriores que se utilizaban para las actualizaciones, link:reference-networking-saas-console-previous.html["que figuran aquí"]. NetApp recomienda actualizar tus reglas de firewall para permitir el acceso a los puntos de conexión actuales y bloquear el acceso a los puntos de conexión anteriores lo antes posible link:reference-networking-saas-console-previous.html#update-endpoint-list["Descubre cómo actualizar tu red"].
+* Si actualizas los puntos finales en tu cortafuegos, los agentes que ya tienes seguirán funcionando.
+
+
+====

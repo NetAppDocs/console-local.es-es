@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: task-install-agent-on-prem-ova.html 
+keywords: install agent, on-premises agent installation, vCenter, ESXi, VMware, OVA, deploy Console local deployment, agent deployment, netapp console local 
+summary: Si eres usuario de VMware, puedes usar un OVA para instalar un agente de Console en tu vCenter. La descarga del OVA o la URL están disponibles a través del despliegue local de NetApp Console. 
+---
+= Instala el despliegue local de NetApp Console mediante una OVA en vCenter
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Usas un archivo OVA para instalar una implementación local de NetApp Console en tu vCenter. La descarga del OVA o la URL están disponibles en el sitio de soporte de NetApp.
+
+
+
+[[prepare-to-install-netapp-console-local-deployment]]
+== Prepárate para instalar la implementación local de NetApp Console
+
+Antes de la instalación, asegúrate de que tu host de máquinas virtuales cumpla los requisitos y de que la implementación local de la NetApp Console pueda acceder a internet y a las redes de destino. Para usar los servicios de datos de NetApp como NetApp Backup and Recovery, crea credenciales de proveedor de nube para que la implementación local de la NetApp Console pueda realizar acciones en tu nombre.
+
+
+
+[[review-netapp-console-local-deployment-host-requirements]]
+=== Revisa los requisitos del host para la implementación local de NetApp Console
+
+Asegúrate de que tu equipo host cumpla los requisitos de instalación antes de instalar NetApp Console en una implementación local.
+
+* CPU: 16 núcleos o 16 vCPUs
+* RAM: 64 GB
+* Espacio en disco: 596 GB (se recomienda el aprovisionamiento completo)
+* vSphere 7.0u3 o superior, con hardware virtual versión 19 o superior
+
+
+
+NOTE: Instala NetApp Console local deployment en un entorno vCenter en lugar de directamente en un host ESXi.
+
+
+
+[[set-up-network-access-for-the-netapp-console-local-deployment]]
+[[network-access-agent]]
+=== Configura el acceso a la red para la implementación local de la NetApp Console
+
+NetApp Console local deployment utiliza un espacio de direcciones fijo para la comunicación entre servicios. El rango de direcciones IP 10.42.0.0/16 y 10.43.0.0/16 se usa para la red interna. Antes de implementar Console local deployment, asegúrate de que estos rangos de IP no estén asignados a otras instancias de VM, ámbitos DHCP, registros DNS o grupos VIP del balanceador de carga en las VLAN disponibles para Console local deployment.
+
+Consulta el artículo de base de conocimientos Agent IP conflict with existing network para obtener instrucciones sobre cómo cambiar la dirección IP de las interfaces del agente.
+
+
+
+[[install-netapp-console-local-deployment-in-your-vcenter-environment]]
+== Instala la implementación local de NetApp Console en tu entorno de vCenter
+
+NetApp permite instalar NetApp Console local deployment en tu entorno vCenter. El archivo OVA incluye una imagen de máquina virtual preconfigurada que puedes implementar en tu entorno VMware.
+
+
+
+[[download-the-ova-or-copy-the-url]]
+=== Descarga el OVA o copia la URL
+
+Descarga el OVA.
+
+. Descarga el software de implementación local de Console desde el sitio de soporte de NetApp.
+
+
+
+
+[[deploy-netapp-console-local-deployment-in-your-vcenter]]
+=== Implementa NetApp Console de forma local en tu vCenter
+
+Inicia sesión en tu entorno de vCenter para implementar la instalación local de Console.
+
+.Pasos
+. Sube el certificado autofirmado a tu lista de certificados de confianza si tu entorno lo requiere. Puedes sustituir este certificado tras la instalación.
+. Implementa el archivo OVA desde la biblioteca de contenidos o desde el sistema local.
++
+|===
+
+
+| Desde el sistema local | De la biblioteca de contenidos 
+
+
+| a. Haz clic con el botón derecho y selecciona *Implementar plantilla OVF...*. b. Elige el archivo OVA desde la URL o busca su ubicación, luego selecciona *Siguiente*. | a. Ve a tu biblioteca de contenidos y selecciona el OVA de la consola. b. Selecciona *Acciones* > *Nueva máquina virtual a partir de esta plantilla* 
+|===
+. Completa el asistente «Implementar plantilla OVF» para implementar la Console.
+. Selecciona un nombre y una carpeta para la máquina virtual, luego selecciona *Siguiente*.
+. Selecciona un recurso de computación y luego selecciona *Siguiente*.
+. Revisa los detalles de la plantilla y, a continuación, selecciona *Siguiente*.
+. Acepta el contrato de licencia y luego selecciona *Siguiente*.
+. Elige el tipo de configuración de proxy que deseas utilizar: proxy explícito, proxy transparente o sin proxy.
+. Selecciona el almacén de datos donde quieres implementar la máquina virtual y luego selecciona *Siguiente*. Asegúrate de que cumple los requisitos del host.
+. Selecciona la red a la que quieres conectar la VM y luego selecciona *Siguiente*. Asegúrate de que la red sea IPv4 y tenga acceso a internet de salida a los endpoints requeridos.
+. En la ventana *Personalizar plantilla*, rellena los siguientes campos:
++
+** *Información del proxy*
++
+*** Si seleccionaste proxy explícito, introduce el nombre de host o la dirección IP del servidor proxy y el número de puerto, así como el nombre de usuario y la contraseña.
+*** Si seleccionaste el proxy transparente, sube el certificado correspondiente.
+
+
+** *Configuración de la máquina virtual*
++
+*** *Omitir comprobación de configuración*: Esta casilla de comprobación viene desmarcada por defecto, lo que significa que la implementación local de la NetApp Console ejecuta una comprobación de configuración para validar el acceso a la red.
++
+**** NetApp recomienda dejar esta casilla de comprobación sin marcar para que la instalación incluya una comprobación de la configuración de la implementación local de la NetApp Console. La comprobación de configuración verifica que la implementación local de la NetApp Console tenga acceso de red a los endpoints requeridos. Si la implementación falla debido a problemas de conectividad, puedes acceder al informe de validación y a los registros desde el host de la implementación local de la NetApp Console. En algunos casos, si estás seguro de que la implementación local de la NetApp Console tiene acceso a la red, puedes optar por omitir la comprobación.
+
+
+*** *Contraseña de mantenimiento*: Establece la contraseña para el usuario  `maint` que permite acceder a la consola de mantenimiento de la implementación local de NetApp Console.
+*** *Servidores NTP*: Indica uno o varios servidores NTP para la sincronización horaria.
+*** *Nombre de host*: Establece el nombre de host de esta VM. No debe incluir el dominio de búsqueda. Por ejemplo, un FQDN como console10.searchdomain.company.com debe introducirse como console10.
+*** *DNS principal*: Indica el servidor DNS principal que se utilizará para la resolución de nombres.
+*** *DNS secundario*: Indica el servidor DNS secundario que se utilizará para la resolución de nombres.
+*** Dominios de búsqueda: Especifica el nombre de dominio de búsqueda que se debe usar al resolver el nombre de host. Por ejemplo, si el FQDN es console10.searchdomain.company.com, introduce searchdomain.company.com.
+*** *Dirección IPv4*: la dirección IP asociada al nombre de host.
+*** *Máscara de subred IPv4*: la máscara de subred de la dirección IPv4.
+*** *Dirección de la puerta de enlace IPv4*: La dirección de la puerta de enlace para la dirección IPv4.
+
+
+
+
+. Selecciona *Siguiente*.
+. Revisa los detalles en la ventana *Listo para finalizar* y selecciona *Finalizar*.
++
+La barra de tareas de vSphere muestra el progreso a medida que se implementa la implementación local de NetApp Console.
+
+. Enciende la máquina virtual.
+

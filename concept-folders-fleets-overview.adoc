@@ -1,0 +1,183 @@
+---
+sidebar: sidebar 
+permalink: concept-folders-fleets-overview.html 
+keywords: folders, fleets, organization, resource hierarchy, access control, IAM, roles, members, netapp console local 
+summary: Descubre cómo utilizar carpetas y flotas de almacenamiento para organizar recursos y controlar el acceso en NetApp Console implementación local. 
+---
+= Conoce las carpetas y las flotas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, utiliza carpetas y flotas de almacenamiento para organizar tus recursos de NetApp y controlar el acceso según tu estructura empresarial: por ubicación, departamento o tipo de carga de trabajo.
+
+Utiliza esta página para consultar la estrategia de jerarquía y los patrones de diseño de flotas. Para ver un modelo completo de IAM con miembros, roles y ámbito de recursos, consulta link:concept-identity-and-access-management.html["Infórmate sobre la gestión de identidades y accesos en la implementación local de NetApp Console"].
+
+Organizas los recursos en una jerarquía: la organización está en la parte superior, luego las carpetas (que pueden contener otras carpetas o flotas) y después las flotas, que contienen los sistemas de almacenamiento. Asigna roles de acceso en el nivel de organización, carpeta o flota para que los usuarios tengan el acceso adecuado a los recursos.
+
+
+NOTE: Debes tener el rol de administrador de la organización o el de administrador de carpetas o flotas para gestionar carpetas y flotas en la implementación local de la NetApp Console.
+
+
+
+[[organizational-components]]
+== Componentes organizativos
+
+Los componentes organizativos —la organización, las carpetas y las flotas— forman una jerarquía que determina cómo se agrupan los recursos y cómo se delega el acceso.
+
+Organización:: Una organización es el nivel superior de la jerarquía de implementación local de la NetApp Console y normalmente representa tu empresa. Tu organización está formada por carpetas, flotas, miembros, roles y recursos. Los recursos están asociados a flotas y los miembros reciben roles en el nivel de organización, carpeta o flota.
+Carpetas:: Las carpetas agrupan flotas relacionadas para organizarlas por ubicación, centro o unidad de negocio. No puedes asociar sistemas de almacenamiento directamente con carpetas, pero asignar a un miembro un rol a nivel de carpeta le da acceso a todas las flotas en esa carpeta.
++
+--
+
+NOTE: Los administradores de la organización pueden añadir un recurso a una carpeta para delegar la tarea de asociar dicho recurso a las flotas a un administrador de la carpeta o de la flota. link:task-iam-manage-resources.html["Asocia recursos con carpetas y flotas"].
+
+--
+Flotas:: Sistemas de almacenamiento agrupados por flotas. Asigna recursos a las flotas y concede acceso a los miembros a nivel de flota. Los recursos pueden pertenecer a varias flotas. Los miembros con acceso a una flota pueden gestionar los recursos de esa flota.
++
+--
+Por ejemplo, puedes asociar un sistema ONTAP local a una sola flota o a todas las flotas de tu organización, según tus necesidades.
+
+link:task-iam-manage-folders-fleets.html["Aprende a crear carpetas y flotas de almacenamiento"].
+
+--
+
+
+
+
+[[resources]]
+== Recursos
+
+Un recurso es un sistema de almacenamiento que la implementación local de Console reconoce y que puede asignarse a una flota. Asocia un recurso a una flota para que los usuarios con acceso a la flota puedan gestionar dicho recurso.
+
+Por ejemplo, puedes asociar un clúster ONTAP a una flota o a todas las flotas de tu organización. La forma de asociar un recurso depende de las necesidades de tu organización.
+
+link:task-iam-manage-resources.html["Aprende a asociar recursos a flotas"].
+
+
+
+[[members-and-roles]]
+== Miembros y funciones
+
+Los miembros son los usuarios y las cuentas de servicio de tu organización. Los roles definen qué acciones pueden realizar y en qué nivel de la jerarquía: organización, carpeta o flota.
+
+Miembros:: Los miembros de tu organización son cuentas de usuario o cuentas de servicio. Una cuenta de servicio normalmente la usa una aplicación para completar tareas específicas sin intervención humana.
++
+--
+Los usuarios con el rol de administrador de la organización pueden añadir nuevos miembros a tu organización. Todos los usuarios (incluidas las cuentas de servicio y los usuarios de Active Directory) deben añadirse explícitamente y se les debe asignar al menos un rol para que puedan acceder a la implementación local de Console.
+
+--
+
+
+link:task-iam-manage-members-permissions.html["Descubre cómo añadir miembros a tu organización"].
+
+Roles de acceso:: La implementación local de Console ofrece roles de acceso que puedes asignar a los miembros de tu organización.
++
+--
+Al asignar un miembro a un rol, puedes conceder dicho rol a toda la organización, a una carpeta concreta o a una flota específica. El rol que selecciones otorga al miembro permiso para los recursos en la parte seleccionada de la jerarquía.
+
+La implementación local de la NetApp Console ofrece roles detallados que se ajustan al principio del mínimo privilegio, lo que significa que los roles de acceso están diseñados para que los usuarios solo tengan acceso a lo que necesitan.
+
+Los usuarios pueden desempeñar varias funciones a medida que se amplían sus responsabilidades.
+
+--
+
+
+
+
+[[role-inheritance]]
+=== Herencia de roles
+
+Cuando asignas un rol a nivel de organización o de carpeta, las subcarpetas, flotas y recursos que se encuentran por debajo de ella heredan ese rol, por lo que el diseño de tus carpetas y flotas determina el alcance de cada asignación.
+
+link:concept-iam-rbac.html#role-inheritance["Conoce la herencia de roles en la implementación local de NetApp Console"].
+
+
+
+[[organization-design-examples]]
+== Ejemplos de diseño organizativo
+
+La estructura organizativa adecuada depende del tamaño de tu organización y de cómo estén organizados tus equipos. Los siguientes ejemplos muestran cómo diferentes organizaciones pueden utilizar la jerarquía de carpetas y flotas para gestionar el acceso de forma eficaz.
+
+
+
+[[small-organization-strategy]]
+=== Estrategia para pequeñas organizaciones
+
+Para organizaciones con menos de 50 usuarios y gestión centralizada del almacenamiento, considera un enfoque simplificado usando los roles de Super admin y Super viewer.
+
+*Ejemplo: ABC Corporation (equipo de 5 personas)*
+
+* *Estructura*: Una única organización con 3 flotas (Producción, Desarrollo, Backup)
+* *Roles*:
++
+** 2 miembros sénior: rol de super admin para acceso administrativo completo
+** 3 miembros del equipo: rol de super viewer para la supervisión sin derechos de modificación
+
+
+* *Ventajas*: gestión simplificada, menor complejidad de los roles, adecuado para equipos que necesitan un amplio acceso
+
+
+
+
+[[multi-regional-enterprise-strategy]]
+=== Estrategia empresarial multirregional
+
+Para las grandes organizaciones con operaciones regionales y equipos especializados, implementa un enfoque jerárquico con carpetas que representen los límites geográficos o de las unidades de negocio.
+
+*Ejemplo: XYZ Corporation (empresa multinacional)*
+
+* *Estructura*: Organización > Carpetas regionales (América del Norte, Europa, Asia-Pacífico) > Flotas por región
+* *Funciones de la plataforma*:
++
+** 1 Administrador de la organización: supervisión global y gestión de políticas
+** 3 administradores de carpetas o de flotas: control regional (uno por región)
+** 1 Federación admin: integración del servicio de directorio corporativo
+
+
+* *Funciones de almacenamiento por región*:
++
+** Administrador de almacenamiento: descubre y gestiona los sistemas de almacenamiento en las regiones asignadas
+** Visor de almacenamiento: supervisa los recursos de almacenamiento en todas las regiones
+** Especialista en estado del sistema: gestiona el estado del almacenamiento sin necesidad de realizar modificaciones en el sistema
+
+
+* *Ventajas*: mayor seguridad gracias a la separación de funciones, la autonomía regional y el cumplimiento de la normativa local
+
+
+
+
+[[departmental-specialization-strategy]]
+=== Estrategia de especialización departamental
+
+Para las organizaciones con equipos especializados que requieren un acceso específico, usa asignaciones de roles específicas basadas en responsabilidades funcionales.
+
+*Ejemplo: TechCorp (empresa tecnológica de tamaño medio)*
+
+* *Estructura*: Organización > Carpetas de departamento (TI, Seguridad, Desarrollo) > Recursos específicos de la flota
+* *Funciones especializadas*:
++
+** Equipo de seguridad: roles de administrador de resiliencia ante el ransomware y visor de clasificaciones
+** Equipo de copias de seguridad: superadministrador de copias de seguridad y recuperación para operaciones integrales de copias de seguridad
+** Equipo de desarrollo: administrador de almacenamiento para la gestión del entorno de prueba
+** Equipo de cumplimiento normativo: analista de apoyo operativo para la supervisión y la gestión de casos de asistencia
+
+
+* *Ventajas*: control de acceso personalizado, mayor eficiencia operativa y una clara asignación de responsabilidades en tareas especializadas
+
+
+
+
+[[next-steps]]
+== Próximos pasos
+
+* link:task-iam-manage-folders-fleets.html["Crear carpetas y flotas de almacenamiento"]
+* link:task-iam-manage-resources.html["Asocia recursos con carpetas y flotas"]
+* link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"]
+* link:task-audit-console-activity.html["Supervisar o auditar las acciones de implementación local de Console"]
+

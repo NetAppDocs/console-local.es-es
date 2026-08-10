@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: concept-llm-integration.html 
+keywords: LLM, AI, artificial intelligence, AI-assisted management, large language model, proxy, openai-compatible, netapp console 
+summary: Descubre cómo el despliegue local de NetApp Console se integra con OpenAI y los modelos compatibles con OpenAI, incluidas las decisiones de proveedor, proxy y seguridad. 
+---
+= Infórmate sobre la integración de LLM en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La implementación local de NetApp Console se conecta a un modelo de lenguaje a gran escala (LLM) para la gestión del almacenamiento asistida por IA. Después de la configuración, los usuarios pueden usar lenguaje natural para aprovisionar almacenamiento, investigar alertas y obtener orientación sobre almacenamiento.
+
+
+NOTE: Esta documentación sobre cómo conectar un modelo de lenguaje grande (LLM) al asistente de la Consola para habilitar funciones de IA se ofrece como una versión preliminar tecnológica. Con esta versión preliminar, NetApp se reserva el derecho a modificar los detalles de la oferta, los contenidos y el calendario antes de su disponibilidad general.
+
+La gestión asistida por IA permite a los usuarios describir las solicitudes en lenguaje sencillo mientras que la implementación local de NetApp Console aplica tus políticas de almacenamiento.
+
+La implementación local en la consola envía las solicitudes de LLM únicamente al endpoint que configures.
+
+
+
+[[what-you-can-do-with-ai-assisted-storage-management]]
+== Qué puedes hacer con la gestión del almacenamiento asistida por IA
+
+Al habilitar la integración con LLM, la implementación local de Console ofrece tres funciones a través del asistente de Console:
+
+* *Aprovisionamiento de almacenamiento* Describe los requisitos de las cargas de trabajo en un lenguaje sencillo. La implementación local de NetApp Console recomienda y ejecuta un plan de aprovisionamiento basado en tus clases de almacenamiento.
+* *Respuesta a alertas* Pídele a la implementación local de Ask Console que investigue una alerta activa. Analiza el problema y sugiere o ejecuta una acción según los permisos asignados.
+* *Búsqueda y orientación* Plantea tus dudas sobre tu entorno de almacenamiento o la administración de ONTAP. La implementación local de NetApp Console ofrece respuestas contextualizadas basadas en la documentación y el estado actual del parque de equipos.
+
+
+
+
+[[choose-read-only-or-readwrite-access-for-the-console-assistant]]
+== Selecciona el acceso de solo lectura o de lectura/escritura para el asistente de NetApp Console
+
+Los usuarios eligen un modo de acceso asistente en función del resultado que quieren:
+
+* Modo *solo lectura* para orientación e investigación sin realizar cambios en la infraestructura.
+* Modo *lectura/escritura* para la ejecución guiada. La implementación local de NetApp Console muestra la acción propuesta, solicita confirmación y luego aplica el cambio.
+
+
+
+
+[[understand-what-controls-console-assistant-actions]]
+== Entiende qué controla las acciones del asistente de NetApp Console
+
+La implementación local de NetApp Console controla las acciones del asistente de NetApp Console mediante el mismo modelo de gobernanza que se usa en toda la plataforma:
+
+* Los controles de acceso basados en roles limitan lo que cada usuario puede ver y hacer.
+* Las políticas de almacenamiento limitan el aprovisionamiento y las acciones relacionadas.
+* El asistente de la consola solicita confirmación antes de ejecutar acciones que modifican el almacenamiento.
+
+
+
+
+[[choose-an-llm-provider-path]]
+== Elige una ruta de proveedor de LLM
+
+La implementación local de NetApp Console es compatible con estos tipos de proveedores de LLM:
+
+* *OpenAI* para acceder directamente a los modelos de OpenAI.
+* *Compatible con OpenAI* para un endpoint compatible, como un gateway empresarial o un servicio de proxy.
+* Anthropic para los modelos Claude de Anthropic.
+
+
+La disponibilidad de los modelos depende del punto final que configures. Selecciona un modelo de la lista en el despliegue local de NetApp Console.
+
+Para obtener más información sobre los modelos compatibles, consulta link:reference-llm-supported-models.html["Infórmate sobre los proveedores y modelos de LLM compatibles en la implementación local de NetApp Console"].
+
+
+
+[[understand-where-llm-requests-go]]
+== Entiende adónde van las solicitudes de los modelos de lenguaje grande (LLM)
+
+El flujo de datos depende de la ruta de punto final que elijas:
+
+* Si configuras un endpoint de OpenAI, la implementación local de Console envía los prompts y el contexto al endpoint de OpenAI.
+* Si configuras un endpoint compatible con OpenAI, la implementación local de Console envía los prompts y el contexto al endpoint compatible que configure tu organización.
+
+
+
+
+[[protect-llm-credentials-and-control-admin-access]]
+== Protege las credenciales de LLM y controla el acceso de los administradores
+
+Protege la integración con estos controles:
+
+* Trata la clave de la API como una credencial privilegiada y rótala según la política de tu organización.
+* Revisa el uso y las alertas del lado del proveedor para detectar actividad inesperada.
+
+
+
+
+[[connect-your-llm]]
+== Conecta tu LLM
+
+Una vez que hayas tomado estas decisiones, continúa con link:task-llm-connect.html["Conecta tu LLM y activa el asistente de NetApp Console"].
+
+Si fallan las comprobaciones de conexión o en tiempo de ejecución, consulta link:task-llm-troubleshoot-integration.html["Soluciona problemas de la integración de LLM"].

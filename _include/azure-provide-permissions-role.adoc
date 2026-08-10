@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+Accede al portal de Azure y asigna el rol personalizado de Azure a la máquina virtual del agente de Console para una o varias suscripciones.
+
+.Pasos
+. En el Portal de Azure, abre el servicio *Subscriptions* y selecciona tu suscripción.
++
+Es importante asignar el rol desde el servicio *Suscripciones* porque esto especifica el ámbito de la asignación del rol a nivel de suscripción. El _ámbito_ define el conjunto de recursos a los que se aplica el acceso. Si especificas un ámbito en un nivel diferente (por ejemplo, a nivel de máquina virtual), tu capacidad para completar acciones desde la NetApp Console se verá afectada.
+
++
+https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview["Documentación de Microsoft Azure: entender el ámbito de Azure RBAC"^]
+
+. Selecciona *Control de acceso (IAM)* > *Add* > *Add role assignment*.
+. En la pestaña *Función*, selecciona la función *Console Operator* y haz clic en *Next*.
++
+
+NOTE: «Console Operator» es el nombre predeterminado que figura en la política. Si elegiste un nombre diferente para el rol, selecciona ese nombre en su lugar.
+
+. En la pestaña *Miembros*, completa los siguientes pasos:
++
+.. Asigna acceso a una *identidad gestionada*.
+.. Selecciona *Select members*, selecciona la suscripción en la que se creó la máquina virtual del agente de la consola, en *Managed identity*, elige *Virtual machine* y, a continuación, selecciona la máquina virtual del agente de la consola.
+.. Selecciona *Seleccionar*.
+.. Selecciona *Siguiente*.
+.. Selecciona *Revisar + asignar*.
+.. Si quieres gestionar recursos en otras suscripciones de Azure, cambia a esa suscripción y luego repite estos pasos.
+
+
+

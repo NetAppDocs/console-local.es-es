@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: reference-svm-compliance-categories.html 
+keywords: svm compliance, storage vm compliance, security compliance, svm security, compliance categories, netapp console local 
+summary: Referencia sobre las categorías de cumplimiento de seguridad de las máquinas virtuales de almacenamiento y la configuración recomendada en la implementación local de NetApp Console. 
+---
+= Categorías de cumplimiento de seguridad de Storage VM en el despliegue local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza esta referencia para revisar las categorías de cumplimiento de seguridad de la máquina virtual de almacenamiento (SVM) que se muestran en la implementación local de NetApp Console, incluyendo el valor recomendado y si cada categoría afecta el estado general de cumplimiento.
+
+Estas categorías se basan en las comprobaciones de la postura de seguridad de ONTAP.
+
+[cols="20,50,15,15"]
+|===
+| Categoría | Qué comprueba la categoría | Valor recomendado | Afecta al cumplimiento normativo en general 
+
+
+| Registro de auditoría | Si el registro de auditoría de SVM está activado. | Habilitado | Sí 
+
+
+| Configuración insegura de SSH | Si SSH está configurado con algoritmos de cifrado no seguros, como los que comienzan con `cbc`. | No | Sí 
+
+
+| Banner de inicio de sesión | Si se ha configurado un banner de inicio de sesión para los usuarios que acceden a los SVM. | Habilitado | Sí 
+
+
+| Cifrado LDAP | Si el cifrado LDAP está habilitado. | Habilitado | No 
+
+
+| Autenticación NTLM | Si la autenticación NTLM está activada. | Habilitado | No 
+
+
+| Firma de la carga útil LDAP | Si la firma de la carga útil LDAP está activada. | Habilitado | No 
+
+
+| Configuración de CHAP | Si CHAP está activado. | Habilitado | No 
+
+
+| Kerberos V5 | Si la autenticación Kerberos V5 está habilitada. | Habilitado | No 
+
+
+| Autenticación NIS | Si la autenticación NIS está configurada. | Deshabilitado | No 
+
+
+| Estado FPolicy activo | Si FPolicy está creada y activa. | Sí | No 
+
+
+| Cifrado SMB activado | Si están activadas las funciones de firma y sellado SMB. | Sí | No 
+
+
+| Firma SMB activada | Si la firma SMB está activada. | Sí | No 
+|===

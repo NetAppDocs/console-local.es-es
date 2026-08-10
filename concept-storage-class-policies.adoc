@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-class-policies.html 
+keywords: storage class policies, policies, storage class, IOPS, latency, throughput, capacity, security, data protection, performance policy, tiering, encryption, ransomware protection, storage standardization, policy enforcement, compliance monitoring, netapp console local 
+summary: Infórmate sobre las políticas que sirven de base para las clases de almacenamiento en la implementación local de NetApp Console. 
+---
+= Comprender las políticas de clase de almacenamiento en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Las políticas de clase de almacenamiento son los componentes básicos que usas para crear una clase de almacenamiento. Cada política controla un aspecto específico del comportamiento del almacenamiento. Cuando combinas políticas en una clase de almacenamiento, creas una plantilla reutilizable que la implementación local de la NetApp Console aplica automáticamente al momento de aprovisionar y supervisa de forma continua durante todo el ciclo de vida de una carga de trabajo.
+
+
+
+[[policies-as-building-blocks]]
+== Las políticas como bloques de construcción
+
+Una clase de almacenamiento se compone de una o más políticas, cada una de las cuales regula una dimensión diferente del comportamiento del almacenamiento. Los administradores de almacenamiento definen políticas para plasmar los estándares de la empresa—expectativas de rendimiento, umbrales de capacidad, reglas de ubicación de los datos—y luego agrupan esas políticas en plantillas de clases de almacenamiento. Cuando se aprovisiona una carga de trabajo utilizando una clase de almacenamiento, hereda todas las políticas de esa clase. Este diseño separa la responsabilidad de definir los estándares del acto de aprovisionamiento, así el almacenamiento puede aprovisionarse de forma coherente mediante flujos de trabajo automatizados sin necesidad de tomar decisiones de configuración individuales.
+
+
+
+[[types-of-storage-class-policies]]
+== Tipos de políticas de clase de almacenamiento
+
+NetApp Console la implementación local incluye cuatro tipos de políticas que puedes utilizar para crear clases de almacenamiento:
+
+Política de rendimiento:: Una política de rendimiento establece los IOPS/TB esperados, los IOPS/TB máximos, los IOPS mínimos absolutos y los objetivos de latencia esperados para una carga de trabajo. La implementación local de NetApp Console utiliza estos valores para recomendar clústeres con suficiente margen al momento del aprovisionamiento y para detectar desviaciones en los IOPS o la latencia después del aprovisionamiento.
+Política de capacidad:: Una política de capacidad controla cómo un volumen consume y gestiona el espacio. Establece la reserva de espacio (thick, thin o la predeterminada del sistema), el comportamiento de crecimiento automático, la organización en niveles de FabricPool y si las cargas de trabajo NAS deben aprovisionarse como volúmenes FlexVol o FlexGroup.
+Política de seguridad:: Una política de seguridad establece los requisitos de cifrado, protección contra ransomware y FIPS para una carga de trabajo. Cada atributo puede configurarse con un valor obligatorio o dejarse como "cualquiera" para aceptar el valor predeterminado del sistema.
+Política de protección de datos:: Una política de protección de datos establece el número de instantáneas que se conservan en cada intervalo para garantizar que las cargas de trabajo que utilizan dicha política cuenten con un programa de copias de seguridad coherente.
+
+
+
+
+[[default-policies]]
+== Políticas predeterminadas
+
+La implementación local de Console incluye políticas definidas por el sistema para los cuatro tipos de políticas. Puedes utilizar estas políticas tal cual al crear una clase de almacenamiento o copiarlas como punto de partida para crear políticas personalizadas que se adapten a los requisitos de tu organización.
+
+
+
+[[performance-policies]]
+=== Políticas de rendimiento
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Nombre | Tipo | IOPS previstas por TB | IOPS máximas por TB | Mínimo absoluto de IOPS | Latencia prevista (ms) | Resumen 
+
+
+| Extreme para datos de bases de datos | Definido por el sistema | 12.288 | 24.576 | 2.000 | 1 | Úsalo para volúmenes de datos de bases de datos transaccionales que requieren IOPS altos y sostenidos y una latencia inferior al milisegundo. 
+
+
+| Extreme para registros de bases de datos | Definido por el sistema | 22.528 | 45.056 | 4.000 | 1 | Úsalo para los volúmenes de registro de transacción de base de datos que requieren el nivel mínimo más alto de IOPS para evitar cuellos de botella en la escritura. 
+
+
+| Extreme para datos compartidos de base de datos | Definido por el sistema | 16.384 | 32.768 | 2.000 | 1 | Úsalo para volúmenes de bases de datos compartidos a los que acceden varios hosts y que requieren un alto rendimiento y una latencia constante. 
+
+
+| Rendimiento extremo | Definido por el sistema | 6.144 | 12.288 | 1.000 | 1 | Úsalo para cargas de trabajo de HPC, IA/ML y análisis que requieren altos picos de IOPS y una latencia baja y predecible. 
+
+
+| Rendimiento | Definido por el sistema | 2.048 | 4.096 | 500 | 2 | Úsalo para aplicaciones virtualizadas y empresariales que requieren un rendimiento fiable sin demandas extremas de IOPS. 
+
+
+| Valor | Definido por el sistema | 128 | 512 | 75 | 17 | Úsalo para cargas de trabajo sensibles al coste, como directorios personales, recursos compartidos de archivos y archivos. 
+|===
+
+
+[[capacity-policies]]
+=== Políticas de capacidad
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Nombre | Tipo | Reserva de espacio | Modo Autogrow | Política de tiering | Tipo de volumen (NAS) | Resumen 
+
+
+| por defecto | Definido por el sistema | Valor predeterminado del sistema | Valor predeterminado del sistema | ninguna | Valor predeterminado del sistema | Úsalo para cargas de trabajo generales en las que el comportamiento predeterminado de la plataforma en cuanto a capacidad resulte aceptable. 
+
+
+| producción | Definido por el sistema | Valor predeterminado del sistema | crecer | ninguna | Valor predeterminado del sistema | Úsalo para cargas de trabajo de producción que deban ampliarse automáticamente para evitar fallos por falta de espacio. 
+|===
+
+
+[[security-policies]]
+=== Políticas de seguridad
+
+[cols="2,1,1,1,1,3"]
+|===
+| Nombre | Tipo | Cifrado | Protección contra ransomware | FIPS | Resumen 
+
+
+| por defecto | Definido por el sistema | cualquier | cualquier | cualquier | Utilízalo para cargas de trabajo donde el comportamiento de seguridad predeterminado de la plataforma sea aceptable. 
+
+
+| anti-ransomware | Definido por el sistema | cualquier | en | cualquier | Úsalo para cargas de trabajo que contengan datos confidenciales o datos críticos para el negocio y que requieran protección activa contra el ransomware. 
+
+
+| producción | Definido por el sistema | habilitado | cualquier | cualquier | Úsalo para cargas de trabajo de producción donde se requiera el cifrado para el cumplimiento. 
+|===
+
+
+[[data-protection-policies]]
+=== Políticas de protección de datos
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Nombre | Tipo | Instantáneas por hora | Instantáneas diarias | Instantáneas semanales | Instantáneas mensuales | Resumen 
+
+
+| por defecto | Definido por el sistema | 6 | 2 | 2 | 0 | Úsalo para cargas de trabajo estándar que requieren puntos de recuperación a corto plazo sin la sobrecarga de retención a largo plazo. 
+
+
+| 3 meses - por horas | Definido por el sistema | 23 | 6 | 4 | 3 | Úsalo para cargas de trabajo reguladas o críticas para el negocio que requieren puntos de recuperación intradía granulares y una retención histórica de tres meses. 
+|===

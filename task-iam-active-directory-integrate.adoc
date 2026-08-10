@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task-iam-active-directory-integrate.html 
+keywords: AD, Active Directory, LDAP, directory services, directory users, authentication, user management, netapp console 
+summary: Integra la implementación local de NetApp Console con Active Directory para el inicio de sesión respaldado por directorio y la búsqueda de usuarios. 
+---
+= Integra la implementación local de NetApp Console con Active Directory
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Integra la implementación local de NetApp Console con Active Directory para el inicio de sesión respaldado por directorio y la búsqueda de usuarios. Usa tu servicio de directorio para autenticar a los usuarios y luego asígnales acceso en la implementación local de NetApp Console.
+
+.Roles de acceso necesarios
+Superadministrador o administrador de la organización. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Cuando integras con Active Directory, la implementación local de Console autentica a los usuarios a través de tu directorio existente. Después de agregar un usuario del directorio, asígnale roles de acceso a Console para controlar a qué puede acceder ese usuario.
+
+La integración con Active Directory también te ayuda a cumplir los requisitos de cumplimiento al aplicar tus controles, registros de auditoría y políticas existentes al acceso local de Console.
+
+[NOTE]
+====
+* La integración con Active Directory no crea grupos federados, no sincroniza las asignaciones de grupos del directorio y no concede acceso automáticamente. Los administradores siguen añadiendo usuarios del directorio a la organización y asignando roles en la implementación local de Console.
+* Solo se admite una integración con Active Directory a la vez. Una vez configurada una integración, el botón *Add integration* queda desactivado. Para cambiar a otro directorio, primero debes desactivar o eliminar la integración existente.
+* Los usuarios del directorio no configuran ni usan la autenticación multifactor (MFA). La implementación local de NetApp Console solo admite MFA para usuarios locales. link:task-manage-member-security.html["Aprende a gestionar la configuración de seguridad de los miembros"].
+
+
+====
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+Antes de integrar con Active Directory, comprueba que tienes:
+
+* Un dominio de Active Directory y credenciales que permitan consultar el directorio
+* La dirección del servidor LDAP y el nombre distintivo (DN) base del árbol de directorios
+* Acceso de red desde la implementación local de Console a tu servidor LDAP en el puerto 389 (LDAP) o 636 (LDAPS)
+* Certificados SSL/TLS, si tienes pensado utilizar LDAPS
+
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Directory services* para abrir la página Federations.
+. Selecciona *Add integration*.
+. Introduce los datos de conexión de tu servidor de Active Directory:
++
+** Un nombre descriptivo para la integración.
+** El *host LDAP*: nombre de host o dirección IP de tu servidor LDAP. Si hay varios servidores, introduce el principal.
+** El puerto: 389 para LDAP o 636 para LDAPS.
+** El *tiempo de espera de conexión* en milisegundos. El valor predeterminado es 1000 ms.
+
+
+. Selecciona *Usar SSL/TLS* para utilizar LDAPS. Asegúrate de que tu servidor LDAP sea compatible con LDAPS y que NetApp Console pueda acceder a los certificados necesarios.
+. Comprueba la conexión. Si falla, comprueba el host LDAP, el puerto, la conectividad de red y los certificados SSL/TLS.
+. Después de que la prueba finalice con éxito, introduce los datos del directorio y del usuario:
++
+** *Enlace al DN base*: Introduce el DN de enlace de la cuenta LDAP/AD que esta aplicación utilizará para conectarse al directorio, e introduce la credencial de enlace (contraseña) de dicha cuenta. NetApp Console utiliza estos datos para establecer el enlace con LDAP y validar la conexión.
+** *DN de usuario*: una cuenta de usuario con permiso para consultar el directorio. Por ejemplo, `CN=ldap-reader,OU=Service Accounts,DC=example,DC=com`.
+
+
+. Selecciona *Add* para guardar la integración.
+
+
+.Después de que termines
+Después de guardar la integración, añade usuarios de directorio a tu organización y asígnales roles. Debes configurar y habilitar al menos una integración con Active Directory antes de poder añadir usuarios de directorio. link:task-iam-manage-members-permissions.html["Aprende a añadir usuarios del directorio y a asignarles roles"].
+
+
+
+[[disable-or-enable-an-active-directory-integration]]
+== Desactivar o activar una integración con Active Directory
+
+Desactiva una integración para suspender temporalmente la autenticación basada en un directorio sin eliminar la configuración. Cuando desactivas un servicio de directorio, los usuarios de ese directorio no pueden iniciar sesión a través del directorio.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Directory services* para abrir la página Federations.
+. En la lista de integraciones, busca la integración y selecciona el menú de acciones de esa fila.
+. Selecciona *Desactivar* para suspender la integración o *Activar* para restablecerla.
+
+
+
+
+[[delete-an-active-directory-integration]]
+== Eliminar una integración con Active Directory
+
+Elimina una integración para borrar de forma permanente la configuración del servicio de directorio. Antes de eliminar, revisa cualquier advertencia sobre los usuarios del directorio que están vinculados a la integración, ya que su acceso se verá afectado.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Directory services* para abrir la página Federations.
+. En la lista de integraciones, busca la integración y selecciona el menú de acciones de esa fila.
+. Selecciona *Eliminar* y confirma la eliminación.
+

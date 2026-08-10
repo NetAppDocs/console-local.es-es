@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: concept-workload-analyzer.html 
+keywords: workload analyzer, volume analysis, latency, throughput, capacity, performance, netapp console 
+summary: Descubre cómo el Workload Analyzer te ayuda a investigar los problemas de rendimiento, capacidad y protección de datos a nivel de volumen. 
+---
+= Obtén información sobre Workload Analyzer para el despliegue local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Usa el Workload Analyzer de despliegue local de NetApp Console para ver el comportamiento de un solo volumen a lo largo del tiempo. Puedes investigar la degradación del rendimiento, las tendencias de capacidad y los problemas de contención de recursos desde el propio volumen, desde una alerta o desde el inventario.
+
+
+
+[[how-workload-analyzer-identifies-root-causes]]
+== Cómo identifica Workload Analyzer las causas fundamentales
+
+Utiliza el Analizador de carga de trabajo para correlacionar métricas de un único volumen en seis secciones, así puedes identificar rápidamente las causas raíz. Selecciona un volumen y un intervalo de tiempo para ver eventos, rendimiento y capacidad juntos en la misma ventana. Esta vista puede ayudarte a determinar si el almacenamiento es la fuente probable de un problema de la aplicación o si otra capa, como la red, está causando el problema.
+
+El analizador resulta especialmente útil cuando ya sabes qué volumen está afectado. Si lo abres desde una alerta o desde el inventario de volúmenes, Console local deployment abre el analizador con el volumen seleccionado para que puedas centrarte en la ventana de análisis y en los gráficos.
+
+El analizador examina un volumen cada vez, así que utilízalo para investigar un problema concreto en lugar de comparar varios volúmenes.
+
+Revisa la sección sobre capacidad como parte de esta evaluación. Cuando un sistema ONTAP está lleno en más de un 85 %, la elevada utilización puede provocar por sí misma problemas de rendimiento, por lo que una capacidad disponible baja puede explicar la latencia que los gráficos de rendimiento por sí solos no tienen en cuenta.
+
+Una vez identificada la causa raíz, puedes actuar directamente desde el analizador. Cuando hay opciones automatizadas disponibles, la implementación local de Console ofrece recomendaciones de Fix-It con pasos guiados o corrección con un solo clic.
+
+
+NOTE: Los gráficos de carga de trabajo de los LUN no ofrecen el mismo nivel de detalle que los de los volúmenes, por lo que verás menos estadísticas al analizar un LUN.
+
+
+
+[[access-workload-analyzer]]
+== Accede a Workload Analyzer
+
+Puedes abrir el Analizador de carga de trabajo de varias formas:
+
+* En el menú *Salud*, selecciona *Analizador de carga de trabajo*, luego busca y selecciona el volumen que quieres investigar en el campo *Volumen*.
+* Desde la página *Almacenamiento > Flotas > Inventario*, ve a un volumen que quieras analizar y selecciona *Analizar* en el menú de acciones.
+* En la página *Alertas > Resumen*, selecciona una alerta para el volumen que quieres investigar y luego selecciona *Analizar* en los detalles de la alerta.
+
+
+También puedes analizar los LUN, pero muestran menos estadísticas que los volúmenes.
+
+
+
+[[analyze-latency-throughput-and-storage-capacity]]
+== Analiza la latencia, el rendimiento y la capacidad de almacenamiento
+
+Utiliza estas seis secciones para investigar un volumen:
+
+Selección de volumen:: Selecciona el volumen y el intervalo de tiempo que deseas analizar para que todos los gráficos y eventos se alineen con la misma carga de trabajo y ventana de análisis.
+Cronología del evento:: Consulta los cambios de configuración actuales e históricos, las alertas de advertencia y las alertas críticas para el volumen seleccionado durante la ventana de análisis. Usa esta sección para correlacionar "qué cambió" con los cambios en el rendimiento o el comportamiento de la capacidad.
+Análisis de latencia:: Visualiza la latencia del volumen a lo largo del tiempo, ya sea como valor total o desglosada por centro de retardo: red, procesamiento de datos, operaciones de agregado, interconexión de clúster y otros. Si el volumen utiliza una política de QoS, el analizador muestra los límites máximo y mínimo de latencia de la política como líneas de referencia para que puedas ver qué tan cerca está la carga de trabajo de un umbral de limitación. Activa o desactiva la previsión para proyectar si la latencia tiende hacia un umbral de advertencia o crítico.
+Análisis del rendimiento:: Visualiza las IOPS y los MB/s a lo largo del tiempo, con un desglose opcional por lectura/escritura/otros. Si el volumen utiliza una política de QoS, el analizador muestra líneas de límite de IOPS y de rendimiento. Activa o desactiva la previsión para proyectar si la demanda está tendiendo hacia los límites de QoS.
+Utilización de recursos:: Consulta qué tan ocupados están los nodos y agregados que dan servicio al volumen durante el periodo de análisis. El analizador representa cada recurso como una línea independiente en lugar de agrupar los valores, así puedes identificar si un nodo o agregado específico es una fuente de contención. Activa o desactiva la previsión para ver si algún recurso está tendiendo hacia un umbral de alta utilización.
+Análisis de capacidad:: Consulta cómo han variado el espacio físico y el espacio disponible en el volumen a lo largo del tiempo. Pasa el cursor por encima para ver un desglose de la eficiencia de almacenamiento, incluyendo deduplicación, compresión y ahorros por compactación. Activa o desactiva la previsión para proyectar cuándo el volumen alcanzará los umbrales de capacidad de advertencia o críticos. Cambia a la vista de snapshot para ver cómo el espacio de snapshot se compara con la reserva de snapshot configurada.
+
+
+
+
+[[forecast-capacity-and-performance-trends]]
+== Previsión de las tendencias de capacidad y rendimiento
+
+Utiliza el botón de activación de la previsión en cada sección de análisis para ampliar el periodo temporal del gráfico más allá del momento actual y proyectar valores futuros basándose en la tendencia observada. Una línea discontinua distingue los valores de previsión de los datos reales. El analizador también muestra un mensaje de alerta cuando la previsión indica que es probable que se supere un umbral, junto con un tiempo estimado hasta que se produzca dicho rebasamiento.
+
+.Información relacionada
+link:task-analyzer-volume-latency-investigate.html["Investiga la alta latencia en un volumen"]. link:task-analyzer-volume-throughput-investigate.html["Investiga la demanda de alto rendimiento en un volumen"]. link:task-analyzer-volume-capacity-investigate.html["Investiga el crecimiento de la capacidad en un volumen"]. link:reference-workload-analyzer-metrics.html["Aprende sobre las métricas de Workload Analyzer en el despliegue local de NetApp Console"].

@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-create.html 
+keywords: create dashboard, custom dashboard, add dashboard, metrics, cards, card templates, fleet monitoring, storage visibility, performance monitoring, capacity monitoring, netapp console local 
+summary: Crea un panel personalizado en la implementación local de NetApp Console, añade tarjetas y guarda una vista de supervisión que puedas usar. 
+---
+= Crea paneles para supervisar los objetivos en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Crea un panel personalizado en la implementación local de NetApp Console, añade tarjetas y guarda una vista de supervisión para las operaciones diarias.
+
+Si solo necesitas una supervisión a nivel de organización que esté lista para usar, empieza con los paneles predefinidos de la página de inicio. Crea un panel personalizado cuando necesites una vista específica para un rol, una selección a nivel de recursos o un diseño de tarjetas a medida.
+
+.Directrices para el panel de control de implementación local de NetApp Console
+* Solo el usuario que crea el panel de control puede verlo. No puedes compartir los paneles de control con otros usuarios, ni siquiera cuando los añades a la página de inicio de NetApp Console.
+* Solo puedes ver los recursos para los que tienes permiso. Si no ves un recurso en la lista de recursos disponibles, no tienes permiso para verlo.
+* Antes de empezar, identifica los tipos de métricas y los recursos que quieres que el panel de control supervise. link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"]
+
+
+
+
+[[build-a-dashboard-for-your-monitoring-goals]]
+== Crea un panel de control para tus objetivos de supervisión
+
+Crea un panel de control cuando necesites un único lugar para supervisar las métricas que importan para tu rol, como el estado de la flota, los puntos críticos de rendimiento y las tendencias de alertas.
+
+.Pasos
+. Selecciona *Storage > Dashboards*.
+. Selecciona *Add Dashboard*.
++
+La implementación local de la consola crea un nuevo panel de control con un nombre predeterminado y sin descripción.
+
+. Selecciona *Add Card*.
+. Selecciona el *tipo de recurso* de la tarjeta, como flota, sistema o volumen y luego elige los recursos de la lista de recursos disponibles.
+. Selecciona *Siguiente* para continuar y elegir una métrica y un tipo de tarjeta.
+. Elige una métrica para mostrar. Puedes filtrar las métricas disponibles por tipo: el *Tipo de métrica*: *Rendimiento*, *Capacidad*, *Estado* o *Alertas* o buscar una métrica concreta por nombre. Las métricas disponibles dependen del tipo de recurso que seleccionaste.
++
+link:reference-dashboard-card-templates.html#metrics-list["Infórmate sobre las métricas disponibles."]
+
+. Selecciona una tarjeta para incluirla en el panel de control y selecciona *Siguiente*.
++
+Solo puedes seleccionar una tarjeta a la vez. La vista previa de la tarjeta muestra datos en tiempo real para la métrica y el tipo de recurso seleccionados.
+
+. Asigna un nombre a tu tarjeta. El nombre debe ser único dentro del panel de control.
+. Revisa la vista previa de la ficha, introduce un nombre y una descripción para la ficha y, a continuación, selecciona *Add*.
+. Repite estos pasos para las tarjetas adicionales.
+. Selecciona el icono del lápiz para editar el nombre y la descripción del panel de control y describir su propósito.
+. Selecciona el menú de acciones situado a la derecha del botón Add card y selecciona *Save dashboard*.
++
+El panel guardado está disponible en *Almacenamiento > Paneles*.
+
+. Si lo deseas, puedes añadir este dashboard a tu página de inicio seleccionando *Add to Home page* en el menú de acciones. El dashboard se añade a la página de inicio. Solo tú puedes ver los dashboards personalizados que crees. No se comparte con otras personas.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:task-customize-dashboard-cards.html["Personaliza las tarjetas del panel de control en la implementación local de NetApp Console"]
+* link:task-dashboard-manage.html["Gestiona los paneles de control en la implementación local de NetApp Console"]
+

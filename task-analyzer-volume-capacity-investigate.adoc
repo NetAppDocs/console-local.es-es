@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task-analyzer-volume-capacity-investigate.html 
+keywords: capacity, snapshot, storage efficiency, forecast, almost full, workload analyzer, netapp console local deployment 
+summary: Investiga la capacidad y el crecimiento de las instantáneas en un volumen usando el Workload Analyzer para entender el espacio físico, la eficiencia del almacenamiento y las tendencias de la reserva de snapshot. 
+---
+= Investiga el crecimiento de la capacidad en un volumen en una implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza Workload Analyzer en la implementación local de NetApp Console para averiguar por qué un volumen se está quedando sin espacio.
+
+Cuando un volumen se esté llenando o las copias de instantáneas estén ocupando más espacio del previsto, comprueba las tendencias de capacidad y de instantáneas a lo largo del tiempo. La sección de análisis de capacidad muestra cómo varían el espacio físico y el espacio disponible, desglosa el ahorro de eficiencia de almacenamiento y prevé cuándo alcanzará el volumen un umbral de capacidad.
+
+Si abres el analizador desde una alerta o desde el inventario de volúmenes, el volumen ya está seleccionado y puedes centrarte en las tendencias de capacidad y la ventana de previsión.
+
+.Pasos
+. Abre Workload Analyzer mediante uno de los siguientes métodos:
++
+** En el menú *Salud*, selecciona *Analizador de carga de trabajo*, luego busca y selecciona el volumen que quieres investigar en el campo *Volumen*.
+** Desde la página *Almacenamiento > Flotas > Inventario*, ve a un volumen que quieras analizar y selecciona *Analizar* en el menú de acciones.
+** En la página *Alertas > Resumen*, selecciona una alerta para el volumen que quieres investigar y luego selecciona *Analizar* en los detalles de la alerta.
+
+
+. Establece el *Intervalo de tiempo* para que abarque el periodo de crecimiento de la capacidad y luego selecciona *Analizar*.
+. Desplázate hasta la sección *Análisis de capacidad*.
+. Selecciona *Vista de capacidad* en el menú desplegable *Vista*.
++
+El gráfico muestra la capacidad física como el área apilada inferior y la capacidad disponible como el área apilada superior. Juntas equivalen al tamaño total del volumen, así que puedes ver qué tan rápido está disminuyendo el espacio disponible.
+
+. Pasa el cursor por encima de un punto del gráfico para ver el desglose de la eficiencia de almacenamiento, incluyendo el ahorro derivado de la deduplicación, la compresión y la compactación, así como el índice global de eficiencia de almacenamiento.
++
+Una disminución del índice de eficiencia mientras aumenta la capacidad física puede indicar que los datos recién escritos no se están deduplicando ni comprimiendo tan bien como los datos existentes.
+
+. Para analizar el consumo de instantáneas, selecciona *Snapshot View* en el menú desplegable *View*.
++
+El gráfico muestra la reserva de snapshot como una línea de referencia horizontal y la capacidad utilizada por las instantáneas como un área situada debajo de ella. Pasa el cursor por encima para ver el espacio utilizado por las instantáneas y su porcentaje respecto a la reserva, el número total de instantáneas y la antigüedad de la instantánea más antigua.
+
++
+Cuando el consumo de instantáneas supera la reserva, las instantáneas comienzan a ocupar espacio en el área de datos del volumen, lo que reduce el espacio disponible para nuevas escrituras.
+
+. Si el volumen almacena datos en la nube, selecciona *Vista de niveles de la nube* en el menú desplegable *Ver* para comparar la capacidad disponible en el nivel de rendimiento local con la del nivel de capacidad en la nube.
+. Activa *Mostrar previsión* para predecir cuándo el volumen alcanzará un umbral de capacidad de advertencia o crítico.
++
+La previsión de capacidad requiere al menos 10 días de datos históricos. Cuando quedan menos de 30 días de capacidad antes de que se llene el volumen, el analizador identifica el almacenamiento como casi lleno. La previsión muestra un mensaje informativo con el tiempo estimado hasta que se alcance el límite.
+
+
+
+.Después de que termines
+Utiliza las tendencias de capacidad que observes para decidir qué hacer a continuación:
+
+* Si la capacidad disponible tiende a agotarse, plantéate aumentar el tamaño del volumen, activar el crecimiento automático o trasladar datos fuera del volumen.
+* Si la capacidad utilizada por las instantáneas supera la reserva, revisa tu política de snapshot y la retención para recuperar espacio.
+* Si el índice de eficiencia del almacenamiento está disminuyendo, revisa si el tipo de datos de la carga de trabajo o la configuración de eficiencia en línea están reduciendo el ahorro. Usa link:reference-workload-analyzer-metrics.html["Aprende sobre las métricas de Workload Analyzer en el despliegue local de NetApp Console"] para descripciones detalladas de las métricas de capacidad, instantáneas y eficiencia.
+

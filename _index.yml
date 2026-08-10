@@ -1,0 +1,103 @@
+---
+indexpage:
+  title: NetApp Documentación de implementación local de NetApp Console
+  summary: Usa la implementación local de NetApp Console
+  keywords: storage management, data protection, operational efficiency, cost optimization,
+    business continuity, unified management, self-hosted, high availability, LLM integration,
+    role-based access control, storage provisioning
+  lead: Gestiona, supervisa y protege tu infraestructura de almacenamiento con el
+    despliegue local de NetApp Console.
+  tiles:
+  - title: Conoce la implementación local de NetApp Console
+    links:
+    - title: Conoce la implementación local de NetApp Console
+      url: "/concept-netapp-console-local.html"
+    - title: Conoce la gestión de identidades y control de acceso
+      url: "/concept-identity-and-access-management.html"
+    - title: Descubre cómo gestionar el almacenamiento con la implementación local
+        de NetApp Console
+      url: "/concept-manage-storage.html"
+    - title: Infórmate sobre la integración de LLM (gestión asistida por IA)
+      url: "/concept-llm-integration.html"
+    - title: Obtén información sobre NetApp Backup and Recovery
+      url: "/concept-data-services.html"
+    - title: Compara la implementación local de NetApp Console y NetApp Console
+      url: "/console-differences.html"
+  - title: Implementa el despliegue local de NetApp Console y añade sistemas de almacenamiento
+    links:
+    - title: Conoce cómo implementar Console localmente
+      url: "/concept-deploy-netapp-console-local.html"
+    - title: Instala la implementación local de Console en tu entorno de vCenter
+      url: "/task-install-agent-on-prem-ova.html"
+    - title: Agrega sistemas de almacenamiento a la implementación local de NetApp
+        Console
+      url: "/task-add-systems.html"
+    - title: Inicio rápido para configurar NetApp Console
+      url: "/task-quick-start-console-setup.html"
+    - title: Conecta tu LLM y activa el asistente de la consola
+      url: "/task-llm-connect.html"
+    - title: Conecta un servidor de correo electrónico para notificaciones
+      url: "/task-console-configure-notifications-delivery.html"
+  - title: Configura el acceso y la organización
+    links:
+    - title: Comienza con la identidad y el acceso
+      url: "/task-iam-fleet-mgmt-get-started.html"
+    - title: Crear carpetas y flotas
+      url: "/task-iam-manage-folders-fleets.html"
+    - title: Agregar miembros y asignar roles
+      url: "/task-iam-manage-members-permissions.html"
+    - title: Integra con Active Directory
+      url: "/task-iam-active-directory-integrate.html"
+  - title: Provisiona y estandariza el almacenamiento
+    links:
+    - title: Conoce las clases y políticas de almacenamiento
+      url: "/concept-storage-classes.html"
+    - title: Crear una clase de almacenamiento
+      url: "/task-storage-class-manage.html"
+    - title: Provisiona almacenamiento manualmente
+      url: "/task-provisioning-manual.html"
+    - title: Provisiona almacenamiento automáticamente
+      url: "/task-provisioning-automated.html"
+  - title: Supervisa, investiga y soluciona problemas de almacenamiento
+    links:
+    - title: Conoce cómo supervisar la salud del almacenamiento en NetApp Console
+      url: "/concept-monitor-storage.html"
+    - title: Ver métricas de la página de inicio
+      url: "/task-storage-dashboard.html"
+    - title: Empieza con los paneles de control en la implementación local de NetApp
+        Console
+      url: "/task-dashboard-get-started.html"
+    - title: Investiga un volumen con el Analizador de carga de trabajo
+      url: "/concept-workload-analyzer.html"
+    - title: Ver y gestionar alertas
+      url: "/task-alerts-monitor.html"
+  - title: Utiliza una gestión asistida por IA
+    links:
+    - title: Usa el asistente de NetApp Console
+      url: "/task-console-asst-use.html"
+    - title: Proveedores y modelos de LLM compatibles
+      url: "/reference-llm-supported-models.html"
+  - title: Mantén la implementación local de Console
+    links:
+    - title: Mantén una implementación local de NetApp Console instalada en vCenter
+      url: "/task-console-local-vm-config.html"
+    - title: Audita las operaciones de implementación local de NetApp Console
+      url: "/task-audit-console-activity.html"
+  - title: Documentación de API
+    links:
+    - title: Plataforma Agentic
+      url: "/agentic/get-configs.html"
+    - title: Activos
+      url: "/asset/get-organizations-aggregates.html"
+    - title: Gestión de identidades y control de acceso
+      url: "/tenancyv4/get-fleets.html"
+    - title: Gestión del almacenamiento
+      url: "/storage-management/get-v1-organizations-capacitypolicies.html"
+  - title: Blogs y comunidad
+    links:
+    - title: NetApp Console implementación local
+      url: https://www.netapp.com/console
+    - title: NetApp Data Services
+      url: https://www.netapp.com/data-services/
+    - title: Comunidad de NetApp
+      url: https://community.netapp.com/

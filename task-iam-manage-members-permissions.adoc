@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-members-permissions.html 
+keywords: user, directory user, directory users, service account, member, role, permissions, organization, fleet, folder, iam, identity and access management, access roles, add members, grant permissions, AD, Active Directory, directory services 
+summary: Agrega miembros y asigna funciones para conceder permisos en los distintos niveles de la jerarquía de recursos de tu organización. 
+---
+= Agrega miembros a tu organización de implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Añade miembros a tu organización de implementación local de NetApp Console y asigna roles para conceder acceso a nivel de organización, carpeta o flota a usuarios, cuentas de servicio y usuarios del directorio.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas (para las carpetas y flotas que gestione). link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Crea la jerarquía de carpetas y flotas que se adapte a tu organización. link:task-iam-manage-folders-fleets.html["Descubre cómo organizar tus recursos con carpetas y flotas"].
+* Asocia los recursos con las flotas correctas antes de asignar acceso a los miembros. link:task-iam-manage-resources.html["Aprende a gestionar los recursos en carpetas y flotas"].
+* Si vas a añadir un usuario del directorio, integra primero tu servicio de directorio. link:task-iam-active-directory-integrate.html["Descubre cómo integrar con tu servicio de directorio"].
+
+
+
+
+[[understand-how-access-is-granted-in-netapp-console-local-deployment]]
+== Entiende cómo se concede el acceso en una implementación local de NetApp Console
+
+La NetApp Console utiliza el control de acceso basado en roles (RBAC) para gestionar permisos. Asigna roles a los miembros para proporcionar el acceso necesario. Cada rol define las acciones permitidas para recursos específicos.
+
+Ten en cuenta lo siguiente sobre la concesión de acceso en la implementación local de NetApp Console:
+
+* Debes añadir explícitamente a cada usuario a tu organización y asignarle al menos un rol antes de que pueda acceder a recursos.
+* Un rol que asignes a nivel de organización o de carpeta se hereda en los ámbitos subordinados, así que elige cuidadosamente el ámbito de asignación para darle acceso al miembro solo donde sea necesario. link:concept-iam-rbac.html#role-inheritance["Conoce la herencia de roles en la implementación local de NetApp Console"].
+
+
+
+
+[[add-members-to-your-organization]]
+[[add-members]]
+== Agrega miembros a tu organización
+
+NetApp Console admite tres tipos de miembros: cuentas de usuario, usuarios de directorio y cuentas de servicio.
+
+
+NOTE: Debes configurar primero un servidor de correo electrónico para usar con la implementación local de Console antes de poder añadir usuarios. link:task-console-configure-notifications-delivery.html["Aprende a configurar un servidor de correo electrónico."]
+
+Los usuarios del directorio se autentican a través de tu servicio de directorio integrado, pero aún así debes añadir a cada usuario del directorio de forma individual y asignar roles en la implementación local de Console. Crea cuentas de servicio directamente en Console.
+
+Todos los miembros deben tener al menos un rol asignado explícitamente para poder acceder a la implementación local de Console.
+
+Al añadir a un miembro, selecciona la organización, la carpeta o la flota a la que deba tener acceso y asígnale el rol o los roles iniciales que necesite.
+
+
+
+[[add-a-user-account]]
+=== Agrega una cuenta de usuario
+
+Debes tener el rol de Organization admin, Folder o fleet admin para añadir a un usuario a una organización, carpeta o flota, de modo que pueda acceder a los recursos.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona *Add a member*.
+. Para *Tipo de miembro*, deja seleccionada la opción *Usuario*.
+. Para *Correo electrónico del usuario*, introduce la dirección de correo electrónico del usuario que está asociada con el inicio de sesión que creó.
+. Utiliza la sección *Seleccionar una organización, carpeta o flota* para elegir dónde necesita acceso el miembro.
++
+Ten en cuenta lo siguiente:
+
++
+** Solo puedes seleccionar las carpetas y flotas para las que tienes permisos.
+** Cuando seleccionas una organización o una carpeta, le das permisos al miembro sobre todo su contenido.
+** Solo puedes asignar el rol de *Organization admin* a nivel de organización.
+
+
+. *Selecciona una categoría* y luego selecciona un *rol* que le dé al miembro los permisos iniciales que necesita para la organización, la carpeta o la flota que seleccionaste.
++
+link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+. Para dar acceso a más carpetas, flotas o roles, selecciona *Add role*, elige la carpeta, la flota o la categoría de rol y selecciona un rol.
+. Selecciona *Add*.
++
+La consola envía las instrucciones por correo electrónico al usuario.
+
+
+
+
+
+[[add-a-service-account]]
+[[service-account]]
+=== Agrega una cuenta de servicio
+
+Añade una cuenta de servicio cuando necesites automatizar tareas o conectarte de forma segura a las API de Console. Después de crear la cuenta, copia su client ID y client secret para la integración que la vaya a usar.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona *Add a member*.
+. En *Tipo de miembro*, selecciona *Service account*.
+. Introduce un nombre para la cuenta de servicio.
+. Utiliza la sección *Seleccionar una organización, carpeta o flota* para elegir dónde necesita acceso la cuenta de servicio.
++
+Ten en cuenta lo siguiente:
+
++
+** Solo puedes seleccionar las carpetas y flotas para las que tienes permisos.
+** Al seleccionar una organización o una carpeta, el miembro obtiene permisos sobre todo su contenido.
+** Solo puedes asignar el rol de *Organization admin* a nivel de organización.
+
+
+. Selecciona una *Categoría* y luego selecciona un *Rol* que le dé a la cuenta de servicio los permisos iniciales que necesita para la organización, la carpeta o la flota que seleccionaste.
++
+link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+. Para dar acceso a más carpetas, flotas o roles, selecciona *Add role*, elige la carpeta, la flota o la categoría de rol y selecciona un rol.
+. Descarga o copia el client ID y el client secret.
++
+La consola muestra el secreto de cliente solo una vez. Cópialo de forma segura; puedes volver a crearlo más adelante si lo pierdes.
+
+. Selecciona *Cerrar*.
+
+
+
+
+[[add-a-directory-user-to-your-organization]]
+== Agrega un usuario de directorio a tu organización
+
+Añade un usuario desde tu servicio de directorio integrado y asígnale sus primeros roles. Por ejemplo, añade un nuevo ingeniero de almacenamiento desde Active Directory y asígnale el rol de Storage admin en la flota `Production-US-East` para que pueda trabajar en esa flota.
+
+Primero debes configurar tu servicio de directorio antes de poder añadir usuarios al directorio. link:task-iam-active-directory-integrate.html["Descubre cómo integrar con tu servicio de directorio"].
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Miembros*.
+. Selecciona *Add a member*.
+. En *Tipo de miembro*, selecciona *Directory user*.
+. En el campo *Correo electrónico del usuario*, introduce la dirección de correo electrónico del usuario del directorio que quieres añadir. Esta dirección de correo electrónico debe coincidir con la dirección de correo electrónico asociada al inicio de sesión del usuario en tu directorio.
+. Utiliza la sección *Seleccionar una organización, carpeta o flota* para elegir dónde necesita acceso el usuario del directorio.
++
+Ten en cuenta lo siguiente:
+
++
+** Solo puedes seleccionar las carpetas y flotas para las que tienes permisos.
+** Al seleccionar una organización o una carpeta, el miembro obtiene permisos sobre todo su contenido.
+** Solo puedes asignar el rol de *Organization admin* a nivel de organización.
+
+
+. Selecciona una *Categoría* y luego selecciona un *Rol* que le dé al usuario del directorio los permisos iniciales que necesita para la organización, la carpeta o la flota que seleccionaste.
++
+link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+. Para conceder al usuario acceso adicional a otras carpetas, flotas o roles, selecciona *Add role*, elige la carpeta o flota, la categoría de rol y selecciona un rol.
+

@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: task-provisioning-manual.html 
+keywords: provisioning, provision storage, create volume, create LUN, ONTAP, storage class, fleet, NAS, SAN, manual provisioning, netapp console 
+summary: Asigna recursos de almacenamiento usando la implementación local de NetApp Console. 
+---
+= Aprovisiona almacenamiento en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Aprovisiona volúmenes y LUN en la implementación local de NetApp Console para que los recursos de almacenamiento estén disponibles para tus cargas de trabajo. Durante el aprovisionamiento, puedes seleccionar opcionalmente una clase de almacenamiento para aplicar políticas de almacenamiento predefinidas y normas de la organización.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización, administrador de carpetas o de flotas, o administrador de almacenamiento. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+
+
+[[provision-a-volume]]
+== Aprovisiona un volumen
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Fleets*.
+. Selecciona la flota en la que quieres aprovisionar.
+. Selecciona *Add*.
+. En el menú, selecciona *Volume*.
+. En la sección *Detalles del volumen*:
++
+.. Introduce un nombre para el volumen.
+.. Introduce la capacidad (y selecciona las unidades si es necesario).
+.. (Opcional) Selecciona una clase de almacenamiento para aplicar las políticas de clase de almacenamiento. Si no seleccionas una, el volumen se aprovisiona sin políticas de clase de almacenamiento.
+
+
+. En *Detalles del sistema*:
++
+.. Selecciona un sistema de entre los sistemas elegibles para la flota seleccionada.
+.. Selecciona una máquina virtual de almacenamiento.
+
+
+. En *Detalles del host (NAS)*, elige cómo los hosts acceden al volumen:
++
+.. Exportación mediante NFS (las políticas de exportación controlan qué hosts NFS pueden acceder al volumen)
+.. Compartir mediante SMB/CIFS
+
+
+. Selecciona *Add*.
+
+
+
+
+[[provision-a-lun]]
+== Aprovisionar un LUN
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Fleets*.
+. Selecciona la flota en la que quieres aprovisionar.
+. Selecciona *Add*.
+. En el menú, selecciona *LUNs*.
+. En la sección *Detalles de almacenamiento LUN*:
++
+.. Introduce un nombre de prefijo.
+.. Introduce el número de LUNs que deseas crear con ese prefijo.
+.. Introduce la capacidad por LUN (y selecciona las unidades si es necesario).
+.. (Opcional) Selecciona una clase de almacenamiento para aplicar las políticas de clase de almacenamiento. Si no seleccionas una, los LUN se aprovisionan sin políticas de clase de almacenamiento.
+
+
+. En *Detalles del sistema*:
++
+.. Selecciona un sistema (si se te solicita).
+.. Selecciona una máquina virtual de almacenamiento.
+
+
+. En *Detalles del host (SAN)*, elige cómo los hosts acceden al volumen:
++
+.. Selecciona el sistema operativo del host (por ejemplo, Windows o Linux) para establecer los valores predeterminados recomendados para la alineación de LUN y el tamaño de bloque.
+.. Selecciona el grupo de asignación de hosts para controlar qué iniciadores pueden acceder a los LUNs.
+
+
+. Selecciona *Add*.
+

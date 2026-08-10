@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: task-analyzer-volume-throughput-investigate.html 
+keywords: throughput, IOPS, MB per second, read write, workload demand, QoS, resource utilization, workload analyzer, performance troubleshooting, netapp console local 
+summary: Investiga la demanda de alto rendimiento en un volumen usando el Workload Analyzer para entender los patrones de IOPS y MB por segundo e identificar desequilibrios entre lectura y escritura. 
+---
+= Investiga el alto rendimiento en un volumen en una implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza Workload Analyzer en la implementación local de NetApp Console para analizar la demanda de IOPS y el rendimiento de un volumen a lo largo del tiempo.
+
+Cuando la carga de trabajo de un volumen consume más IOPS o rendimiento de lo esperado, identifica qué está generando esa demanda. La sección de análisis de rendimiento muestra IOPS y MB/s, con un desglose opcional por lectura, escritura y otros, para que puedas identificar qué tipo de I/O está generando una demanda elevada y si esa demanda tiende hacia un límite de QoS.
+
+Si abres el analizador desde una alerta o desde el inventario de volúmenes, el volumen ya está seleccionado y puedes centrarte en el intervalo de tiempo y los gráficos de rendimiento.
+
+.Pasos
+. Abre Workload Analyzer mediante uno de los siguientes métodos:
++
+** En el menú *Salud*, selecciona *Analizador de carga de trabajo*, luego busca y selecciona el volumen que quieres investigar en el campo *Volumen*.
+** Desde la página *Almacenamiento > Flotas > Inventario*, ve a un volumen que quieras analizar y selecciona *Analizar* en el menú de acciones.
+** En la página *Alertas > Resumen*, selecciona una alerta para el volumen que quieres investigar y luego selecciona *Analizar* en los detalles de la alerta.
+
+
+. Establece el *Intervalo de tiempo* para que abarque el periodo de demanda elevada y luego selecciona *Analizar*.
+. Desplázate hasta la sección *Throughput Analysis*.
+. Abre el menú desplegable *Ver* y selecciona *Desglose (RWO)*.
++
+Los gráficos se desglosan en componentes de lectura, escritura y otros, tanto para IOPS como para MB/s. Esto te permite determinar si la demanda viene determinada por patrones de acceso con un uso intensivo de lectura, de escritura o una combinación de ambos.
+
+. Utiliza el selector de componentes para activar o desactivar las métricas que desees examinar:
++
+** *IOPS de lectura* y *IOPS de escritura* — operaciones por segundo según la dirección de I/O
+** *MB/s de lectura* y *MB/s de escritura* — rendimiento en megabytes por segundo según la dirección de I/O
+** *Otras IOPS* y *Otros MB/s* — metadatos y otras operaciones no relacionadas con los datos
+** *Límite de IOPS de QoS* y *Límite de MB/s de QoS* — límites máximos de la política que solo aparecen cuando el volumen utiliza una política de QoS
+** *Rendimiento en la nube* — MB/s escritos en y leídos desde la nube, se muestra solo para las cargas de trabajo que distribuyen capacidad a la nube a través de FabricPool
+
+
+. Pasa el cursor por encima de un pico del gráfico para ver el valor exacto y el desglose porcentual de cada componente en ese momento.
++
+La información que aparece al pasar el cursor también muestra el tamaño de I/O medio (rendimiento dividido por IOPS) para cada categoría, lo que puede indicar si la carga de trabajo está realizando I/O secuencial de gran tamaño o I/O aleatorio de pequeño tamaño.
+
+. Activa la opción *Mostrar previsión* para predecir si las tendencias actuales de rendimiento alcanzarán el límite de IOPS o MB/s de QoS.
++
+Si la línea de previsión se está acercando a una línea límite de QoS, es posible que ONTAP limite la carga de trabajo en breve.
+
+. Si quieres ver la demanda agregada sin el desglose, abre el menú desplegable *Ver* y selecciona *Totales*.
++
+La vista de totales muestra una única línea de IOPS y una única línea de MB/s, lo que resulta útil para obtener un resumen rápido de la demanda general.
+
+
+
+.Después de que termines
+Utiliza los patrones de rendimiento que observes para decidir qué hacer a continuación:
+
+* Si las IOPS de lectura son muy elevadas en comparación con las de escritura, plantéate si la configuración de lectura anticipada o el almacenamiento en caché pueden reducir la carga sobre el volumen.
+* Si la carga de trabajo se está acercando o ha alcanzado el límite de IOPS o MB/s de QoS, usa las líneas de límite de QoS y las definiciones de métricas relacionadas para confirmar la limitación y decidir si necesitas ajustar el límite.
+* Si el rendimiento es alto y la latencia también es elevada, consulta la sección *Utilización de recursos* para determinar si el nodo o el agregado subyacente está en contención. Compara los picos de rendimiento, los picos de latencia y la utilización de recursos durante el mismo periodo.
+* Si el analizador muestra un rápido crecimiento de la capacidad o de las instantáneas mientras la demanda va en aumento, revisa las métricas de capacidad y de instantáneas para comprender cómo podría afectar ese crecimiento al volumen.
+
+
+link:task-analyzer-volume-latency-investigate.html["Investiga la alta latencia en un volumen"]. link:reference-workload-analyzer-metrics.html["Aprende sobre las métricas de Workload Analyzer en el despliegue local de NetApp Console"].

@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: task-iam-users-fleets-assign.html 
+keywords: assign members, fleet, folder, access control, roles, storage management, netapp console 
+summary: Audita o cambia las asignaciones de acceso de los miembros a las carpetas y los storage fleets en la implementación local de NetApp Console. 
+---
+= Ver o cambiar las asignaciones de acceso a la flota en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Audita o cambia las asignaciones de acceso de los miembros para carpetas y parques de almacenamiento en la implementación local de NetApp Console. Los administradores de carpetas y parques suelen trabajar desde esta vista porque solo muestra los ámbitos que administran.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Como alternativa, puedes gestionar todos los roles de un miembro concreto en varias carpetas o flotas. link:task-iam-manage-roles.html["Gestiona el acceso de los miembros"].
+
+
+
+[[how-folder-and-fleet-access-works]]
+== Cómo funciona el acceso a las carpetas y a la flota
+
+La implementación local de Console utiliza el control de acceso basado en roles (RBAC). Un rol que asignes a nivel de carpeta se aplica a todas las flotas y subcarpetas dentro de esa carpeta; un rol que asignes a nivel de flota se aplica solo a los recursos de esa flota. link:concept-iam-rbac.html#role-inheritance["Conoce la herencia de roles en la implementación local de NetApp Console"].
+
+
+NOTE: No puedes cambiar un rol a nivel de flota si un miembro lo hereda de una carpeta o de la organización. Para cambiar el acceso heredado, cambia el rol en el ámbito superior.
+
+
+
+[[view-members-assigned-to-a-folder-or-fleet]]
+== Ver los miembros asignados a una carpeta o flota
+
+Comprueba exactamente quién puede gestionar una carpeta o una flota concreta. Por ejemplo, antes de asociar un nuevo clúster ONTAP de producción con la  `Production-US-East` flota, abre la pestaña de Acceso de la flota para confirmar quién tiene acceso.
+
+.Pasos
+. Selecciona *Administración* > *Identidad y acceso*.
+. Selecciona *Organization*.
+. Desde la página de Organization, navega hasta una carpeta o flota en la tabla, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Editar carpeta* o *Editar flota*.
+. Selecciona *Acceso* para ver los miembros que tienen acceso a la carpeta o flota.
+
+
+
+
+[[modify-member-access-from-a-folder-or-fleet]]
+== Modificar el acceso de los miembros desde una carpeta o una flota
+
+Modifica los roles de los miembros que ya forman parte de tu organización, limitándolos a una sola carpeta o flota. Por ejemplo, cuando un compañero de equipo pasa de una flota de desarrollo a una flota de producción, asciéndelo de Storage viewer a Storage admin en la flota de producción sin afectar su acceso en otros lugares.
+
+Para añadir a un nuevo miembro y asignarle su primer rol, utiliza la tarea de incorporación. link:task-iam-manage-members-permissions.html["Agregar miembros y asignar roles"].
+
+.Pasos
+. Desde la página de Organization, navega hasta una carpeta o flota en la tabla, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Editar carpeta* o *Editar flota*.
+. Selecciona *Acceso* para ver la lista de miembros que tienen acceso.
+. Modificar el acceso de los miembros:
++
+** *Cambiar el rol de un miembro*: Para cualquier miembro cuyo rol no sea Organization admin, selecciona su rol actual y elige uno nuevo. El cambio solo se aplica en este ámbito; los roles heredados de un ámbito superior no aparecen aquí.
+** *Eliminar el acceso de un miembro en este ámbito*: para un miembro que tenga un rol definido directamente en esta carpeta o flota, elimina el rol para revocar su acceso en este ámbito. Esto no elimina al miembro de tu organización ni afecta los roles que tenga en otros ámbitos.
++
+link:task-iam-manage-roles.html#remove-a-member-from-your-organization["Eliminar a un miembro de tu organización"].
+
+
+
+. Selecciona *Aplicar*.
+

@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+. Selecciona *Add Card*.
+. Selecciona el *tipo de recurso* de la tarjeta, como flota, sistema o volumen y luego elige los recursos de la lista de recursos disponibles.
+. Selecciona *Siguiente* para continuar y elegir una métrica y un tipo de tarjeta.
+. Elige una métrica para mostrar. Puedes filtrar las métricas disponibles por tipo: el *Tipo de métrica*: *Rendimiento*, *Capacidad*, *Estado* o *Alertas* o buscar una métrica concreta por nombre. Las métricas disponibles dependen del tipo de recurso que seleccionaste.
++
+link:reference-dashboard-card-templates.html#metrics-list["Infórmate sobre las métricas disponibles."]
+
+. Selecciona una tarjeta para incluirla en el panel de control y selecciona *Siguiente*.
++
+Solo puedes seleccionar una tarjeta a la vez. La vista previa de la tarjeta muestra datos en tiempo real para la métrica y el tipo de recurso seleccionados.
+
+. Asigna un nombre a tu tarjeta. El nombre debe ser único dentro del panel de control.
+. Revisa la vista previa de la ficha, introduce un nombre y una descripción para la ficha y, a continuación, selecciona *Add*.
+. Repite estos pasos para las tarjetas adicionales.
+
+
+. Selecciona *Almacenamiento > Paneles > Plantillas de tarjetas*.
+. Explora, ordena o filtra las plantillas por tipo de métrica, métrica o tipo de recurso de destino.
+. Selecciona una plantilla y, a continuación, selecciona *Crear tarjeta a partir de la plantilla*.
++
+El intervalo de tiempo y la agregación se configuran a nivel del panel de control. Los valores que establezcas se aplican a todas las fichas del panel de control.
+
+. Personaliza el alcance, la agregación, el tipo de recurso de destino, los recursos de destino y la ventana temporal.
+. Revisa la vista previa de la tarjeta e introduce un nombre y una descripción.
+. Agrega la tarjeta a un panel de control existente o crea uno nuevo.
+. Guarda el panel de control.
+

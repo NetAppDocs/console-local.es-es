@@ -1,0 +1,124 @@
+= 
+:allow-uri-read: 
+
+
+Puntos finales contactados durante la instalación manual:: Cuando instalas manualmente el agente de la consola en tu propio host Linux, el instalador del agente de la consola necesita acceder a las siguientes URL durante el proceso de instalación:
+
+
+[cols="2*"]
+|===
+| Puntos finales | Propósito 
+
+
+| \https://mysupport.netapp.com |  
+
+
+| \https://signin.b2c.netapp.com | (este endpoint es la URL CNAME para https://mysupport.netapp.com) 
+
+
+| \https://cloudmanager.cloud.netapp.com/tenancy |  
+
+
+| \https://stream.cloudmanager.cloud.netapp.com |  
+
+
+| \https://production-artifacts.cloudmanager.cloud.netapp.com |  
+
+
+ a| 
+* Opción 1 (recomendada):
++
+** \https://bluexpinfraprod.eastus2.data.azurecr.io
+** \https://bluexpinfraprod.azurecr.io
+
+
+* Opción 2:
++
+** \https://*.blob.core.windows.net
+** \https://cloudmanagerinfraprod.azurecr.io
+
+
+
+ a| 
+Para obtener las imágenes, el instalador necesita acceso a uno de estos dos conjuntos de endpoints. ^1^ Los endpoints enumerados en la opción 1 se recomiendan porque son más seguros. Te recomendamos que configures tu firewall para permitir los endpoints enumerados en la opción 1 y bloquear los enumerados en la opción 2. Ten en cuenta lo siguiente sobre estos endpoints:
+
+* Los puntos finales enumerados en la opción 1 son compatibles a partir de la versión 3.9.47 del agente Console. No hay compatibilidad con versiones anteriores del agente Console.
+* El agente de la Console se pone en contacto primero con los endpoints indicados en la opción 2. Si esos endpoints no están accesibles, el agente de la Console se pone en contacto automáticamente con los endpoints indicados en la opción 1.
+* Los endpoints de la opción 1 no son compatibles si usas el agente de Console con NetApp Backup and Recovery o NetApp Ransomware Resilience. En este caso, puedes deshabilitar los endpoints que aparecen en la opción 1, mientras permites los endpoints que aparecen en la opción 2.
+
+
+|===
+Puntos finales contactados durante la instalación manual:: Cuando instalas manualmente el agente de la Console en tu propio host Linux, el instalador del agente de la Console necesita acceder a varias URL durante el proceso de instalación.
+
+
+[cols="2*"]
+|===
+| Puntos finales | Propósito 
+
+
+| \https://mysupport.netapp.com |  
+
+
+| \https://signin.b2c.netapp.com | Este punto final es la URL CNAME para https://mysupport.netapp.com 
+
+
+| \https://cloudmanager.cloud.netapp.com/tenancy |  
+
+
+| \https://stream.cloudmanager.cloud.netapp.com |  
+
+
+| \https://production-artifacts.cloudmanager.cloud.netapp.com |  
+
+
+2+| *Región gubernamental de AWS* Si instalas el agente de la Console en una región gubernamental de AWS, el instalador también necesitará acceso a estos endpoints: 
+
+
+ a| 
+\https://*.blob.core.windows.net
+ a| 
+
+
+
+ a| 
+\https://cloudmanagerinfraprod.azurecr.io
+ a| 
+
+
+
+2+| *Región de Azure Government* Si instalas el agente de la Console en una región de Azure Government, el instalador también necesita acceso a estos endpoints: 
+
+
+ a| 
+\https://*.blob.core.windows.net
+ a| 
+
+
+
+ a| 
+\https://occmclientinfragov.azurecr.us
+ a| 
+
+
+
+2+| *Regiones comerciales o soberanas* Si instalas el agente de Console en una región comercial o soberana, puedes elegir entre dos conjuntos de puntos de conexión: 
+
+
+ a| 
+**Opción 1 (recomendada):** * https://bluexpinfraprod.eastus2.data.azurecr.io * https://bluexpinfraprod.azurecr.io
+
+**Opción 2:** * \https://*.blob.core.windows.net * https://cloudmanagerinfraprod.azurecr.io
+ a| 
+Se recomiendan los puntos de conexión que figuran en la opción 1, ya que son más seguros. Te recomendamos que configures tu cortafuegos para permitir los puntos de conexión que figuran en la opción 1, mientras bloqueas los que figuran en la opción 2. Ten en cuenta lo siguiente sobre estos puntos de conexión:
+
+* Los puntos finales enumerados en la opción 1 son compatibles a partir de la versión 3.9.47 del agente Console. No hay compatibilidad con versiones anteriores del agente Console.
+* El agente de la Console se pone en contacto primero con los endpoints indicados en la opción 2. Si esos endpoints no están accesibles, el agente de la Console se pone en contacto automáticamente con los endpoints indicados en la opción 1.
+* Los endpoints de la opción 1 no son compatibles si usas el agente de Console con NetApp Backup and Recovery o NetApp Ransomware Resilience. En este caso, puedes deshabilitar los endpoints que aparecen en la opción 1, mientras permites los endpoints que aparecen en la opción 2.
+
+
+|===
++
+
+Se recomiendan los puntos finales que figuran en la opción 1, ya que son más seguros. Te recomendamos que configures tu firewall para permitir los puntos finales enumerados en la opción 1 y bloquear los puntos finales enumerados en la opción 2. Ten en cuenta lo siguiente sobre estos puntos finales: ** Los puntos finales enumerados en la opción 1 son compatibles a partir de la versión 3.9.47 del agente de la Console. No hay compatibilidad con versiones anteriores del agente de la Console. ** El agente de la Console contacta primero los puntos finales enumerados en la opción 2. Si esos puntos finales no están accesibles, el agente de la Console contacta automáticamente los puntos finales enumerados en la opción 1. ** Los puntos finales de la opción 1 no son compatibles si usas el agente de la Console con NetApp Backup and Recovery o NetpApp Ransomware Resilience. En este caso, puedes bloquear los puntos finales indicados en la opción 1 y permitir los indicados en la opción 2.
+
+Es posible que el host intente actualizar los paquetes del sistema operativo durante la instalación. El host puede conectarse a diferentes servidores espejo para obtener estos paquetes del sistema operativo.

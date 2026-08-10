@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-folders-fleets.html 
+keywords: folders, fleets, resource hierarchy, create folders, create fleets, iam, identity and access management, fleet id, initial iam setup, fleet hierarchy design, folder hierarchy configuration, rbac setup, tenancy setup, organizational onboarding, team structure alignment, delegated administration model, access governance planning, operational readiness 
+summary: Agrega carpetas y flotas que se adapten a la estructura de tu empresa. Después de crear carpetas y flotas, puedes asociar recursos con ellas y gestionar el acceso de los miembros a esas flotas. 
+---
+= Agrega carpetas y flotas a tu organización de implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Crea carpetas y flotas que se adapten a la estructura de tu empresa, controla el acceso y organiza los recursos en NetApp Console implementación local.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+La implementación local de NetApp Console crea una flota predeterminada cuando creas una organización. Puedes añadir más flotas y agruparlas en carpetas. link:concept-identity-and-access-management.html["Conoce la jerarquía de recursos en NetApp Console"].
+
+
+
+[[using-folders-and-fleets-to-organize-resources]]
+== Uso de carpetas y flotas para organizar los recursos
+
+Las carpetas y las flotas son los dos pilares fundamentales que te permiten adaptar tu organización para que se ajuste a la forma en que trabajan realmente tus equipos. Por ejemplo, una carpeta por región con una flota de producción y una de desarrollo dentro de cada una.
+
+* Las carpetas agrupan flotas relacionadas y permiten la administración delegada y la herencia de roles.
+* Las flotas son donde asocias recursos para la gestión y donde das acceso operativo a los usuarios.
+
+
+Puedes crear primero carpetas y flotas y añadir recursos y acceso de los miembros más adelante. Esto te permite planificar la jerarquía de recursos antes de añadir usuarios y recursos en la implementación local de NetApp Console. Si ya tienes definida la estructura, puedes añadir recursos y asignar acceso cuando crees la flota. Puedes actualizar las flotas en cualquier momento.
+
+Por ejemplo, pon los clústeres de producción en una flota de producción y los clústeres de prueba en una flota de prueba, y da a cada equipo acceso solo a la flota que le pertenece.
+
+
+
+[[folders]]
+=== Carpetas
+
+Las carpetas organizan las flotas según la estructura de la empresa, como por unidad de negocio, región o equipo. Puedes anidar carpetas para reflejar tu organización.
+
+Los roles asignados a nivel de carpeta se heredan en las carpetas secundarias y las flotas. También puedes usar una carpeta para delegar las tareas de asignación de flotas a un administrador de carpeta o de flota para esa parte de la jerarquía.
+
+
+NOTE: Los miembros trabajan con flotas, no con carpetas. Un recurso asociado únicamente a una carpeta no puede ser gestionado por los miembros hasta que se asocie a una flota.
+
+Por ejemplo, una empresa regional podría utilizar carpetas para organizar el almacenamiento ONTAP por unidad de negocio y carga de trabajo. Podría crear una carpeta de nivel superior para North America, subcarpetas para Production y Development, y flotas para los clústeres ONTAP que alojan SAP, VMware y volúmenes de backup. Los administradores de almacenamiento asignados a la carpeta de North America heredan el acceso a todas las flotas secundarias, mientras que los equipos de aplicaciones solo tienen acceso a las flotas que gestionan.
+
+
+
+[[fleets]]
+=== Flotas
+
+Asocia recursos con las flotas para que los miembros puedan gestionarlos. Una flota puede existir directamente bajo la organización o dentro de una carpeta.
+
+Por ejemplo, una empresa del sector sanitario utiliza el almacenamiento ONTAP en flotas independientes de producción y desarrollo. La flota de producción ejecuta aplicaciones clínicas y bases de datos de historiales de pacientes, mientras que la flota de desarrollo se encarga de las pruebas y la validación. Esta separación protege los datos activos, impone un control de acceso más estricto a la producción, facilita la auditabilidad y los controles de privilegios mínimos, y permite a los equipos de desarrollo trabajar sin afectar las cargas de trabajo orientadas a los pacientes.
+
+Los usuarios navegan entre las flotas asignadas en la página *Sistemas* para gestionar los recursos asociados a cada flota.
+
+
+
+[[add-a-folder-or-fleet]]
+== Agrega una carpeta o fleet
+
+Añade una flota siempre que necesites un nuevo límite para los recursos y el acceso de los miembros, y añade una carpeta cuando quieras agrupar flotas relacionadas y delegar su administración. Por ejemplo, añade una `Production` carpeta que contenga una `Production-US-East` flota y una `Production-EU-West` flota, luego asigna a un responsable regional el rol de administrador de carpeta o de flota solo en su propia flota.
+
+Puedes crear hasta siete niveles jerárquicos.
+
+Puedes añadir recursos y asignar acceso a los miembros cuando creas una flota o una carpeta, o puedes hacerlo más tarde.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Organization*.
+. En la página *Organización*, selecciona *Add folder or fleet*.
+. Selecciona *Carpeta* o *Flota*.
+. En *Nombre y ubicación*: introduce un nombre y elige una ubicación para la carpeta o la flota.
+
+
+[[associate-resource-folder]]
+. Opcional: despliega la sección *Recursos* para asociar recursos a la flota o a la carpeta.
++
+.. Marca la casilla de comprobación situada junto al recurso que quieras asociar y luego selecciona *Asociar a la flota*. Si aún no has añadido sistemas a Console local deployment, puedes hacer este paso más tarde.
++
+
+NOTE: Los miembros no pueden acceder a los recursos de una carpeta hasta que esos recursos se asignen a una flota.
+
+
+
+. Opcional: despliega la sección *Acceso* para asignar acceso a los miembros. Selecciona *Add a member* para asignar acceso y un rol. Por defecto, el usuario que crea la flota tiene acceso a ella.
++
+link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+. Selecciona *Add*.
+
+
+
+
+[[rename-a-folder-or-fleet]]
+== Cambiar el nombre de una carpeta o flota
+
+Cambia el nombre de una carpeta o flota según sea necesario. Cambiar el nombre no afecta a los recursos asociados ni al acceso de los miembros.
+
+.Pasos
+. Desde la página *Organización*, ve a una flota o carpeta de la tabla, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Editar carpeta* o *Editar flota*.
+. En la página *Editar*, introduce un nuevo nombre y selecciona *Aplicar*.
+
+
+
+
+[[delete-a-folder-or-fleet]]
+== Eliminar una carpeta o flota
+
+Elimina las carpetas y flotas que ya no necesites, como después de una reestructuración del equipo o al completar una flota.
+
+Antes de eliminar una carpeta o una flota, completa las siguientes comprobaciones:
+
+* Comprueba que la carpeta o la flota no contengan recursos. link:task-iam-manage-resources.html#remove-resource["Descubre cómo eliminar las asociaciones de recursos"].
+* Comprueba qué miembros siguen teniendo acceso a la carpeta o a la flota. link:task-iam-users-fleets-assign.html["Ver asignaciones de acceso de los miembros"].
+* Elimina o actualiza los permisos de acceso de los miembros según sea necesario. link:task-iam-users-fleets-assign.html["Modificar las asignaciones de acceso de los miembros"].
+* Si vas a eliminar una flota, traslada primero los recursos a la flota de destino. link:task-iam-manage-resources.html["Descubre cómo trasladar recursos entre flotas"].
+
+
+.Pasos
+. Desde la página *Organización*, ve a una flota o carpeta de la tabla, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Eliminar*.
+. Confirma que deseas eliminar la carpeta o la flota.
+
+
+
+
+[[manage-fleets-and-folders-in-netapp-console-local-deployment]]
+== Gestiona flotas y carpetas en la implementación local de NetApp Console
+
+Después de la configuración inicial, puedes hacer lo siguiente:
+
+* *Gestiona las asociaciones de recursos para carpetas y flotas*: link:task-iam-manage-resources.html["Aprende a asociar recursos a flotas y carpetas"].
+* *Ver o actualizar los permisos de acceso a una carpeta o a una flota*: link:task-iam-users-fleets-assign.html["Descubre cómo conceder acceso a las flotas a los usuarios"].
+* *Gestiona un miembro en varias carpetas y flotas*: link:task-iam-manage-roles.html["Aprende a gestionar el acceso de los miembros"].
+* *Añade miembros adicionales y asigna permisos iniciales*: link:task-iam-manage-members-permissions.html["Aprende a gestionar los miembros y los permisos"].
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:concept-identity-and-access-management.html["Conoce la identidad y el acceso en NetApp Console"]
+* link:task-iam-fleet-mgmt-get-started.html["Empieza con la identidad y el acceso en NetApp Console"]
+* link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Conoce la API de identidad y acceso"^]
+

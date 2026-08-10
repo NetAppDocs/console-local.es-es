@@ -1,0 +1,198 @@
+---
+sidebar: sidebar 
+permalink: task-alerts-monitor.html 
+keywords: view alerts, alerts overview, alerts dashboard, org-wide alerts, fleet alerts, netapp console local 
+summary: Consulta las alertas activas en toda tu organización o para una flota concreta desde la página de resumen de alertas en la implementación local de NetApp Console. 
+---
+= Supervisa e investiga alertas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Supervisa e investiga las alertas en la implementación local de NetApp Console para mantener tu almacenamiento en buen estado y minimizar las interrupciones.
+
+Consulta las alertas activas en toda tu organización o en una flota concreta, priorízalas según su gravedad y el área de impacto, e investiga las causas fundamentales para que puedas resolver los problemas antes de que se agraven. Cuando una alerta incluye una acción recomendada o la opción Fix It, puedes pasar directamente de la investigación a la corrección.
+
+.Rol de acceso requerido
+Todos los roles excepto Federation admin y Federation viewer. Los usuarios con el rol Federation admin o Federation viewer no pueden ver las alertas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+En el caso de las alertas de ONTAP, puedes acceder a herramientas como System Manager y Workload Analyzer directamente desde la página de Alertas para investigar y resolver problemas.
+
+Para la elaboración de informes externos, puedes exportar la lista de alertas a un archivo CSV para analizarla sin conexión.
+
+
+NOTE: También puedes configurar reglas de notificación para recibir alertas por correo electrónico o webhook. link:task-alert-rules-manage.html["Descubre cómo configurar las notificaciones de alerta"].
+
+
+
+[[available-alerts]]
+== Alertas disponibles
+
+NetApp Console la implementación local admite alertas para ONTAP y NetApp Backup and Recovery.
+
+* link:reference-ontap-alerts.html["Conoce las alertas de ONTAP en la implementación local de NetApp Console"]
+* link:https://docs.netapp.com/us-en/data-services-backup-recovery/reference-audit-actions.html["Obtén más información sobre las alertas de NetApp Backup and Recovery."^]
+
+
+
+
+[[view-the-alerts-dashboard]]
+== Ver el panel de alertas
+
+Utiliza el panel de alertas para obtener una visión general rápida de la actividad actual de alertas en el ámbito que seleccionaste. El panel resume las alertas activas por gravedad y área de impacto, e incluye un gráfico que muestra la distribución de las alertas en las últimas 24 horas para que puedas detectar tendencias rápidamente.
+
+Puedes filtrar el panel de control para centrarte en las alertas críticas o en las alertas de un área de impacto específica.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. Filtra el panel de control según las alertas que necesites ver, entre ellas:
++
+** Gravedad (crítica, advertencia o informativa)
+** Alertas críticas agrupadas por área de impacto
+** Área afectada (seguridad, protección, disponibilidad, rendimiento, capacidad o configuración)
+
+
+
+
+
+
+[[view-all-alerts]]
+== Ver todas las alertas
+
+Utiliza la pestaña «Alertas» para ver la lista completa de alertas activas correspondientes al ámbito que hayas seleccionado. La lista se actualiza para reflejar el ámbito actual de la organización o la flota, y puedes buscar en la lista alertas específicas por nombre o descripción.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. Selecciona la pestaña *Alertas* para ver la lista completa de alertas activas para el ámbito seleccionado.
+. Opcionalmente, busca en la lista una alerta específica por nombre o descripción.
++
+image:screenshot-alerts-search.png["Buscar alertas por nombre o descripción"]
+
+
+
+
+
+[[view-alerts-by-system]]
+== Ver alertas por sistema
+
+Puedes consultar las alertas de un sistema concreto dentro de una flota o tu organización.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. Selecciona la pestaña *Estado de los sistemas* para ver un resumen de las alertas relacionadas con los sistemas incluidos en el ámbito que has seleccionado.
+. Selecciona *Ver alertas* en la fila del sistema correspondiente para ver la lista completa de alertas activas asociadas a ese sistema.
+
+
+
+
+[[investigate-an-alert]]
+== Investigar una alerta
+
+Puedes investigar una alerta para ver qué la activó y quién recibió la notificación.
+
+Al investigar una alerta de ONTAP, también puedes acceder directamente a la interfaz de System Manager del sistema que generó la alerta para ver detalles adicionales y tomar medidas.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. En cualquiera de las dos pestañas, selecciona el nombre de la alerta que quieras analizar para ver sus detalles.
++
+image:screenshot-alerts-investigate.png["Ver detalles de la alerta"]
+
+. Si procede, selecciona el nombre de la máquina virtual o del clúster para abrir la interfaz de System Manager para el sistema que generó la alerta.
++
+image:screenshot-alerts-details.png["Ver los detalles de la alerta y navegar a System Manager"]
+
+
+
+
+
+[[remediate-an-alert]]
+== Resolver una alerta
+
+Cuando una alerta incluya una acción recomendada o la opción Fix It, utilízala para pasar de la investigación a la corrección sin salir de los detalles de la alerta.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. Selecciona la alerta que quieras solucionar.
+. Revisa los detalles de la alerta y, a continuación, selecciona la acción recomendada o la opción *Solucionar* si está disponible.
+. Sigue los pasos indicados para aplicar la solución y luego vuelve a los detalles de la alerta para confirmar el estado de la alerta.
+
+
+Si la acción resuelve el problema, la alerta ya no aparece como activa para ese ámbito. Si la alerta sigue activa, revisa de nuevo los detalles de la alerta y continúa la investigación.
+
+
+
+[[analyze-an-alert]]
+== Analizar una alerta
+
+Puedes analizar una alerta de ONTAP en Workload Analyzer para comprender qué la activó.
+
+Al investigar una alerta de ONTAP, también puedes acceder directamente a la interfaz de System Manager del sistema que generó la alerta para ver detalles adicionales y tomar medidas.
+
+.Pasos
+. Selecciona *Salud > Alertas > Resumen*.
+. En el selector de alcance, elige una de las siguientes opciones:
++
+** *Todas* (por defecto) para ver las alertas de todas las flotas a las que tienes acceso
+** Una flota concreta para ver solo las alertas de esa flota
+
+
+. Selecciona la pestaña *Estado de los sistemas* para ver la lista completa de alertas activas para el ámbito seleccionado.
+. En cualquiera de las dos pestañas, selecciona el nombre de la alerta que quieras analizar para ver sus detalles.
++
+image:screenshot-alerts-investigate.png["Ver detalles de la alerta"]
+
+. Si procede, selecciona *Analizar* para abrir la interfaz del Workload Analyzer del sistema que generó la alerta.
++
+image:screenshot-alerts-analyze.png["Ver los detalles de la alerta y navegar a Workload Analyzer"]
+
+. Introduce el intervalo de tiempo que abarca el periodo en el que se activó la alerta y, a continuación, selecciona *Analizar* para ver los resultados del análisis. link:concept-workload-analyzer.html["Conoce Workload Analyzer."]
+
+
+
+
+[[export-alerts-to-csv]]
+== Exportar alertas a CSV
+
+Exporta la lista de alertas en la implementación local de la NetApp Console a un archivo CSV para análisis o informes sin conexión. La exportación refleja el ámbito actual (organización o flota), el texto de búsqueda y los filtros.
+
+.Pasos
+. Selecciona *Salud > Alertas* y luego selecciona la pestaña *Alertas*.
+. Establece el ámbito (organización o flota) y aplica cualquier filtro o texto de búsqueda que quieras incluir en la exportación.
+. Selecciona el icono de descarga para exportar la lista de alertas a un archivo CSV.
+

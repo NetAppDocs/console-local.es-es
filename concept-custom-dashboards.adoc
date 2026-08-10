@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: concept-custom-dashboards.html 
+keywords: dashboards, predefined dashboards, custom dashboards, cards, card templates, metrics, KPI, fleet health, performance monitoring, capacity monitoring, storage visibility, netapp console local, monitoring 
+summary: Descubre cómo funcionan juntos los paneles de control predefinidos de la página de inicio y los paneles de control personalizados en NetApp Console implementación local. 
+---
+= Conoce los paneles personalizados en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza los paneles personalizados en NetApp Console en una implementación local para crear vistas de supervisión enfocadas para equipos, flotas, cargas de trabajo y objetivos operativos concretos. Los paneles personalizados complementan el panel de la página de inicio al añadir visibilidad específica a la supervisión general siempre disponible.
+
+
+
+[[how-dashboard-types-work-together]]
+== Cómo funcionan juntos los distintos tipos de paneles de control
+
+Panel de control de la página de inicio:: Paneles de supervisión listos para usar sobre capacidad, alertas, capacidad de rendimiento, licencias y estado de la protección de datos. Las vistas están preconfiguradas y se actualizan automáticamente. link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"].
+Paneles de control personalizados:: Vistas de supervisión específicas para cada función, creadas a partir de tarjetas predefinidas, que incluyen ámbito, métricas, recursos de destino y ventanas de tiempo seleccionables.
+
+
+Utilízalas ambas a la vez: * Empieza en la página de inicio para el seguimiento diario de los valores de referencia. * Usa los paneles personalizados para investigar de forma específica por equipo, flota, carga de trabajo o pregunta operativa.
+
+Solo puedes añadir un panel de control personalizado a la página de inicio a la vez.
+
+
+
+[[understand-custom-dashboards]]
+== Entiende los paneles personalizados
+
+Un panel personalizado es una colección guardada de tarjetas que tú organizas en una cuadrícula. Cada tarjeta se basa en una plantilla predefinida con una métrica y un tipo de gráfico. Cuando añades una tarjeta, configuras el alcance, los objetos de destino, la agregación y la ventana temporal.
+
+Los paneles y las fichas personalizados son privados para ti. Cada ficha muestra datos solo de los recursos de almacenamiento que estás autorizado a ver.
+
+Puedes eliminar el panel de control personalizado de tu página de inicio y añadir otro diferente a medida que cambian las prioridades de supervisión.
+
+
+
+[[monitor-what-matters]]
+== Haz un seguimiento de lo que realmente importa
+
+Las plantillas de tarjetas están organizadas por tipo de métrica, así puedes centrar un panel de control en un área operativa concreta. Por ejemplo, usa tarjetas de capacidad para vigilar un volumen que está creciendo más rápido de lo esperado, o tarjetas de alerta para hacer un seguimiento de los fallos recurrentes en un clúster con mucha actividad:
+
+Rendimiento:: Latencia, IOPS, rendimiento, utilización y capacidad de rendimiento en toda la flota, los sistemas, las SVM, los volúmenes y los LUN.
+Capacidad:: Capacidad utilizada, capacidad libre, porcentaje de capacidad utilizada y capacidad de snapshots en toda la flota, los sistemas, los SVM, los volúmenes, los LUN y los niveles locales.
+Salud:: Estado de salud, recuentos de objetos degradados o críticos, discos fallidos, errores de interfaz de red y objetos activos.
+Alertas:: Número de alertas críticas, alertas por gravedad, alertas por área de impacto, alertas recientes y tendencias de alertas a lo largo del tiempo.
+
+
+Para consultar el catálogo completo de tarjetas y métricas predefinidas, consulta link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"].
+
+
+
+[[resource-types]]
+== Tipos de recursos
+
+Puedes aplicar tarjetas a cualquier nivel de la jerarquía de almacenamiento de ONTAP: flota, clúster, sistema (nodo), SVM, volumen, LUN y nivel local (agregado). Los tipos de recursos disponibles dependen de la plantilla de tarjeta que selecciones.
+
+
+
+[[plan-dashboard-views]]
+== Planificar vistas del panel de control
+
+Organiza paneles personalizados en función de los objetivos de administración del almacenamiento, como la evaluación del rendimiento de las cargas de trabajo, la planificación de capacidad, la detección de riesgos y la priorización de alertas.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-dashboard-get-started.html["Empieza con los paneles de control en la implementación local de NetApp Console"]
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"]
+

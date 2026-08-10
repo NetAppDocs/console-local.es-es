@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: concept-console-alerts.html 
+keywords: alerts, alerting, fleet monitoring, severity, impact area, netapp console local 
+summary: Descubre cómo las alertas de almacenamiento en la implementación local de NetApp Console te ayudan a supervisar el estado de tus clústeres ONTAP locales en toda tu organización y flotas. 
+---
+= Conoce las alertas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La implementación local de NetApp Console genera alertas que identifican problemas de estado en tus clústeres ONTAP locales y en las operaciones de NetApp Backup and Recovery.
+
+La implementación local de la consola agrupa las alertas de los clústeres ONTAP y las operaciones de Backup and Recovery en una única vista. La página de alertas incluye un panel, una lista de alertas y una vista de sistemas, así puedes revisar las alertas de toda la organización o limitarlas a una flota o sistema específico. Cada alerta identifica el sistema afectado, su gravedad y su área de impacto.
+
+Utiliza las alertas en la implementación local de Console para:
+
+* Detecta problemas de capacidad, conectividad, protección de datos, rendimiento y seguridad.
+* Prioriza las alertas según su gravedad y área de impacto.
+* Abre una alerta en System Manager o Workload Analyzer y luego ejecuta una acción de Fix-It guiada o automatizada cuando la página te ofrezca una.
+* Envía notificaciones por correo electrónico a los usuarios con roles de acceso específicos o envía datos de alertas a un sistema externo a través de un webhook.
+* Exporta la lista de alertas a un archivo CSV para analizarla sin conexión.
+
+
+
+
+[[alert-severity-and-impact-areas]]
+== Gravedad de las alertas y áreas de impacto
+
+Cada alerta incluye un nivel de gravedad y un ámbito de impacto:
+
+* *Gravedad* indica el nivel de urgencia, de mayor a menor: Crítico, Importante, Menor, Advertencia e Información.
+* *Área de impacto* identifica el ámbito afectado: capacidad, conectividad, protección de datos, rendimiento y seguridad.
+
+
+
+
+[[alert-sources-and-scope]]
+== Fuentes y alcance de las alertas
+
+* *Las alertas de ONTAP* proceden del Sistema de Gestión de Eventos (EMS) de ONTAP en los clústeres locales que ha detectado la implementación local de Console. link:https://docs.netapp.com/us-en/ontap-ems/acp-auto-events.html["Obtén más información sobre el ONTAP EMS y las alertas disponibles."^]
+* *Las alertas de NetApp Backup and Recovery* se originan a partir de acciones de Backup and Recovery. link:https://docs.netapp.com/us-en/data-services-backup-recovery/reference-audit-actions.html["Obtén más información sobre las alertas de NetApp Backup and Recovery."^]
+* Tus permisos determinan qué flotas puedes ver. Limita la vista a toda la organización, a una flota específica o a un sistema concreto. La pestaña *Estado de los sistemas* muestra el estado de cada sistema y la pestaña *Alertas* muestra la lista actual de alertas para el ámbito seleccionado.
+* La exportación a CSV refleja el alcance actual, el texto de búsqueda y los filtros.
+
+
+
+
+[[alert-notification-rules]]
+== Reglas de notificación de alertas
+
+Crea reglas de notificación para determinar qué alertas generan notificaciones y quién las recibe. Una regla de notificación tiene las siguientes características:
+
+* Coincide con las alertas del servicio (como ONTAP management o NetApp Backup and Recovery), la gravedad, el área de impacto y el sistema de destino.
+* En el caso de la entrega por correo electrónico, envía notificaciones a los usuarios con los roles de acceso especificados. En el caso de la entrega mediante webhook, envía los datos de las alertas al punto final configurado; el acceso a dichos datos lo controla la aplicación receptora, no la implementación local de Console.
+* Se aplica a sistemas concretos, no a flotas.
+* Se puede silenciar durante una ventana de mantenimiento planificada para suprimir las alertas esperadas.
+
+
+La implementación local de la Console incluye una regla de notificación predeterminada que está activa inmediatamente después de la instalación. La regla predeterminada supervisa todos los servicios y sistemas en busca de alertas de gravedad crítica y envía notificaciones solo al Centro de notificaciones de la Console; no se configura el envío por correo electrónico ni mediante webhook hasta que tú lo configures. Puedes ver y ajustar esta regla, y crear reglas personalizadas que se adapten a tu entorno.
+
+Las alertas de nivel Info se muestran en la página Alertas, pero no se envían mediante notificaciones a menos que crees explícitamente una regla que incluya el nivel de gravedad Info.
+
+.Información relacionada
+* link:task-alerts-monitor.html["Supervisa e investiga las alertas"]
+* link:task-alert-rules-manage.html["Crear y gestionar reglas de notificación de alertas"]
+* link:reference-ontap-alerts.html["Conoce las alertas de ONTAP en la implementación local de NetApp Console"]
+

@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-manage.html 
+keywords: manage dashboard, view dashboards, edit dashboard, clone dashboard, delete dashboard, netapp console local 
+summary: Visualiza y gestiona los paneles de control en la implementación local de NetApp Console abriéndolos, editándolos, clonándolos y eliminándolos. 
+---
+= Gestiona los paneles de control en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Gestiona los paneles personalizados en NetApp Console implementación local para mantener las vistas alineadas con las operaciones. Puedes editar, duplicar y eliminar paneles a medida que cambian los equipos, las flotas y las prioridades.
+
+Esta tarea solo se aplica a los paneles personalizados de *Almacenamiento > Paneles*. Los paneles predefinidos de la página de inicio no se pueden editar de la misma manera.
+
+
+
+[[view-dashboards]]
+== Ver paneles de control
+
+Consulta los paneles personalizados y predefinidos para encontrar el panel que quieras abrir, editar, duplicar o eliminar.
+
+
+TIP: Puedes duplicar un panel predefinido para crear una versión personalizada que puedas editar.
+
+.Pasos
+. Selecciona *Storage > Dashboards*.
+. Revisa la tabla del dashboard para encontrar el dashboard que deseas abrir.
+. Selecciona el nombre del panel de control para abrirlo y ver sus métricas.
+. Si es necesario, utiliza las acciones disponibles para editar, duplicar o eliminar los paneles personalizados.
+
+
+
+
+[[update-a-dashboard-as-priorities-change]]
+== Actualiza un panel de control a medida que cambian las prioridades
+
+Modifica un panel de control cuando cambien tus prioridades operativas y necesites ajustar qué tarjetas y métricas son visibles.
+
+.Pasos
+. Selecciona *Storage > Dashboards*.
+. Abre el panel que quieras editar.
+. Modifica una ficha existente en el panel de control seleccionando Editar en el menú de acciones de la ficha.
+. Agrega una nueva tarjeta al panel seleccionando *Add Card*.
++
+link:task-customize-dashboard-cards.html["Personaliza tarjetas en la implementación local de NetApp Console"].
+
+. Selecciona *Guardar cambios* para guardar el panel de control.
++
+** También puedes optar por guardar los cambios como un nuevo panel de control seleccionando *Guardar como nuevo panel de control* en el menú de acciones. Esta opción es útil cuando quieres conservar el panel de control original para otros equipos o flotas mientras creas una nueva versión para tus necesidades actuales de supervisión.
+** También puedes optar por descartar tus cambios seleccionando *Descartar cambios* en el menú de acciones. Esta opción es útil cuando quieres volver a la última versión guardada del panel.
+
+
+
+
+
+
+[[reuse-a-custom-dashboard-for-another-resource-or-fleet]]
+== Reutiliza un panel de control personalizado para otro recurso o flota
+
+Duplica un panel de control cuando quieras reutilizar un diseño que ya ha demostrado su eficacia para otro equipo, flota o escenario de supervisión sin tener que volver a crearlo desde cero.
+
+
+TIP: Puedes duplicar un panel predefinido para crear una versión personalizada que puedas editar.
+
+.Pasos
+. Selecciona *Storage > Dashboards*.
+. Para el panel que deseas duplicar, selecciona *Duplicar* en el menú de acciones.
++
+La implementación local desde la consola crea una copia que incluye todas las tarjetas del panel de control original.
+
+. Introduce un nombre y una descripción para el panel duplicado.
+. Selecciona el panel duplicado que acabas de crear. Modifica las métricas, los recursos y los tipos de tarjetas para adaptarlos a tu nuevo escenario de supervisión.
++
+link:task-customize-dashboard-cards.html["Personaliza tarjetas en la implementación local de NetApp Console"].
+
+
+
+
+
+[[remove-dashboards-you-no-longer-use]]
+== Elimina los paneles que ya no utilices
+
+Elimina un panel de control cuando ya no sea compatible con las operaciones actuales y quieras que tu lista de paneles se centre en los casos de uso activos.
+
+.Pasos
+. Selecciona *Storage > Dashboards*.
+. Para el panel que quieras eliminar, selecciona *Eliminar*.
+. Confirma la eliminación.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:task-dashboard-get-started.html["Empieza con los paneles de control en la implementación local de NetApp Console"]
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:task-dashboard-create.html["Crear un panel de control personalizado"]
+* link:task-customize-dashboard-cards.html["Personaliza las tarjetas del panel de control en la implementación local de NetApp Console"]
+

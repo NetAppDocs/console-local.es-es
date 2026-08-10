@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: task-storage-class-manage.html 
+keywords: create storage class, storage class, define, policy, netapp console 
+summary: Crea una clase de almacenamiento en el despliegue local de NetApp Console para estandarizar el aprovisionamiento de almacenamiento. 
+---
+= Crea clases de almacenamiento en el despliegue local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Crea una clase de almacenamiento en la implementación local de la NetApp Console para estandarizar la forma en que se aprovisiona y gobierna el almacenamiento en todas tus flotas. Una clase de almacenamiento es una plantilla reutilizable que agrupa políticas de clase de almacenamiento, como objetivos de rendimiento, comportamiento de la capacidad, requisitos de seguridad y programaciones de protección de datos, en una única definición con nombre.
+
+Cuando los usuarios (o la automatización) aprovisionan un volumen o un LUN utilizando una clase de almacenamiento, NetApp Console local deployment aplica automáticamente las políticas de dicha clase. Después del aprovisionamiento, Console local deployment supervisa continuamente las cargas de trabajo en relación con la clase de almacenamiento para detectar desviaciones y puede guiarte o automatizar la corrección para restablecer el cumplimiento.
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Detecta al menos un clúster ONTAP para que la implementación local de Console tenga destinos para las recomendaciones de ubicación.
+* Asegúrate de que tienes el rol de Organization admin (o un rol que te otorgue permisos para gestionar las clases de almacenamiento en tu entorno).
+* Crea (o identifica) las políticas de clase de almacenamiento que planeas usar—rendimiento, capacidad, seguridad y protección de datos— porque las clases de almacenamiento se ensamblan a partir de políticas.
+
+
+
+
+[[create-a-storage-class]]
+=== Crear una clase de almacenamiento
+
+Debes tener el rol de Organization admin, Folder o fleet admin para añadir una clase de almacenamiento.
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Clases de almacenamiento*.
+. Selecciona *Add*.
+. En el apartado *Información básica*, introduce lo siguiente:
++
+** *Nombre de la clase de almacenamiento*: Introduce un nombre único para la clase de almacenamiento.
+** *Descripción*: (Opcional) Introduce una descripción de la clase de almacenamiento.
+** *Aplicaciones recomendadas*: (Opcional) introduce una lista de aplicaciones recomendadas para la clase de almacenamiento.
+
+
+. En *Políticas de almacenamiento*, selecciona una o varias políticas para asociar con la clase de almacenamiento.
+. Selecciona *Add*.
+
+
+
+
+[[customize-an-existing-storage-class]]
+=== Personaliza una clase de almacenamiento existente
+
+Debes tener el rol de Organization admin o Folder o fleet admin para personalizar una clase de almacenamiento existente.
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Clases de almacenamiento*.
+. Para la clase de almacenamiento que quieras personalizar, selecciona *…* y, a continuación, selecciona *Duplicar*.
+. En la sección *Información básica*, actualiza lo siguiente según sea necesario:
++
+** *Nombre de la clase de almacenamiento*: Introduce un nombre único para la clase de almacenamiento.
+** *Descripción*: (Opcional) Introduce una descripción de la clase de almacenamiento.
+** *Aplicaciones recomendadas*: (Opcional) introduce una lista de aplicaciones recomendadas para la clase de almacenamiento.
+
+
+. En *Políticas de almacenamiento*, selecciona una o varias políticas para asociar con la clase de almacenamiento.
+. Selecciona *Add*.
+
+
+
+
+[[edit-a-user-defined-storage-class]]
+=== Editar una clase de almacenamiento definida por el usuario
+
+Debes tener el rol de Organization admin, Folder admin o fleet admin para editar una clase de almacenamiento definida por el usuario.
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Clases de almacenamiento*.
+. Para la clase de almacenamiento que quieras editar, selecciona *…* y luego selecciona *Editar*.
+. En *Información básica*, edita lo siguiente según sea necesario:
++
+** *Nombre de la clase de almacenamiento*: Introduce un nombre único para la clase de almacenamiento.
+** *Descripción*: (Opcional) Introduce una descripción de la clase de almacenamiento.
+** *Aplicaciones recomendadas*: (Opcional) introduce una lista de aplicaciones recomendadas para la clase de almacenamiento.
+
+
+. En *Políticas de almacenamiento*, selecciona una o varias políticas para asociar con la clase de almacenamiento.
+. Selecciona *Editar*.
+
+
+
+
+[[delete-a-user-defined-storage-class]]
+=== Eliminar una clase de almacenamiento definida por el usuario
+
+Debes tener el rol de administrador de la organización, de carpetas o de flota para eliminar una clase de almacenamiento definida por el usuario.
+
+.Pasos
+. Selecciona *Storage > Management*.
+. Selecciona *Clases de almacenamiento*.
+. Para la clase de almacenamiento que quieras eliminar, selecciona *…* y luego selecciona *Eliminar*.
+. Selecciona *Borrar*.
++
+Ten en cuenta que esta acción no se puede deshacer. Si eliminas una clase de almacenamiento que se está utilizando actualmente, los volúmenes o LUNs aprovisionados con esa clase seguirán funcionando pero ya no estarán asociados con la clase eliminada.
+
+

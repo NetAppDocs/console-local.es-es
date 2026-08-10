@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: task-customize-dashboard-cards.html 
+keywords: add card, dashboard card, card template, widget, preview, netapp console local 
+summary: Personaliza las tarjetas del panel de control en una implementación local de NetApp Console configurando el ámbito, las plantillas, los recursos y las franjas horarias. 
+---
+= Personaliza tarjetas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, personaliza las tarjetas del panel cuando necesites que los operadores se centren en las señales que más importan, como el riesgo de SLA, la presión de capacidad o el ruido de alertas recurrentes. Usa este tema para adaptar las vistas del panel a las decisiones operativas que tu equipo necesita tomar.
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Crea o abre un panel en el que quieras colocar las tarjetas.
+* Consulta las plantillas y métricas disponibles en link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"].
+
+
+
+
+[[add-cards-while-refining-an-existing-dashboard]]
+== Agrega tarjetas mientras perfeccionas un panel de control existente
+
+Utiliza esta opción cuando estés perfeccionando un panel de control ya existente y necesites añadir rápidamente tarjetas que respondan a una pregunta operativa concreta.
+
+.Pasos
+. Abre el panel de control al que quieras añadir una tarjeta.
+. Selecciona *Add Card*.
+. Selecciona el *tipo de recurso* de la tarjeta, como flota, sistema o volumen y luego elige los recursos de la lista de recursos disponibles.
+. Selecciona *Siguiente* para continuar y elegir una métrica y un tipo de tarjeta.
+. Elige una métrica para mostrar. Puedes filtrar las métricas disponibles por tipo: el *Tipo de métrica*: *Rendimiento*, *Capacidad*, *Estado* o *Alertas* o buscar una métrica concreta por nombre. Las métricas disponibles dependen del tipo de recurso que seleccionaste.
++
+link:reference-dashboard-card-templates.html#metrics-list["Infórmate sobre las métricas disponibles."]
+
+. Selecciona una tarjeta para incluirla en el panel de control y selecciona *Siguiente*.
++
+Solo puedes seleccionar una tarjeta a la vez. La vista previa de la tarjeta muestra datos en tiempo real para la métrica y el tipo de recurso seleccionados.
+
+. Asigna un nombre a tu tarjeta. El nombre debe ser único dentro del panel de control.
+. Revisa la vista previa de la ficha, introduce un nombre y una descripción para la ficha y, a continuación, selecciona *Add*.
+. Repite estos pasos para las tarjetas adicionales.
+. Guarda el panel de control.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:task-dashboard-create.html["Crear un panel de control personalizado"]
+* link:task-dashboard-manage.html["Gestiona paneles personalizados"]
+* link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"]
+

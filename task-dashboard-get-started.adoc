@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-get-started.html 
+keywords: dashboards, quick start, get started, custom dashboards, predefined dashboards, monitoring, netapp console local 
+summary: Empieza a utilizar los paneles de control en la implementación local de NetApp Console revisando la página de inicio y los paneles predefinidos, creando paneles personalizados y manteniéndolos actualizados. 
+---
+= Empieza con los paneles de control en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, sigue este flujo de trabajo para monitorear desde vistas generales hasta vistas específicas: revisa el panel de inicio, revisa los paneles predefinidos, crea paneles personalizados y mantén los paneles actualizados.
+
+.Roles de acceso necesarios
+Todos los roles. Los paneles de control solo muestran los recursos que estás autorizado a ver. Si no ves un recurso en la lista de recursos disponibles, no tienes permiso para verlo.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] Consulta el estado de salud inicial en la página de inicio
+[role="quick-margin-para"]
+Utiliza el panel de control de la página de inicio para consultar la capacidad a nivel de organización, las alertas, el rendimiento y el estado de la protección de datos.
+
+[role="quick-margin-list"]
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:concept-monitor-storage.html["Conoce la supervisión del almacenamiento en la implementación local de NetApp Console"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Consulta otros paneles predefinidos
+[role="quick-margin-para"]
+Abre *Almacenamiento > Paneles* para revisar los paneles predefinidos y ver vistas adicionales específicas para cada rol.
+
+[role="quick-margin-list"]
+* link:task-dashboard-manage.html["Gestiona los paneles de control en la implementación local de NetApp Console"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Crea paneles personalizados para una supervisión específica
+[role="quick-margin-para"]
+Crea paneles personalizados cuando necesites vistas específicas para determinados recursos, métricas y periodos de tiempo.
+
+[role="quick-margin-list"]
+* link:task-dashboard-create.html["Crear un panel de control personalizado"]
+* link:task-customize-dashboard-cards.html["Personaliza las tarjetas del panel de control en la implementación local de NetApp Console"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Mantén los paneles de control actualizados
+[role="quick-margin-para"]
+Actualiza los paneles de control a medida que cambian las prioridades editando, duplicando o eliminando los paneles personalizados.
+
+[role="quick-margin-list"]
+* link:task-dashboard-manage.html["Gestiona los paneles de control en la implementación local de NetApp Console"]
+* link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"]
+
+
+.Información relacionada
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+

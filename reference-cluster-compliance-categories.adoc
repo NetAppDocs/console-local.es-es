@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: reference-cluster-compliance-categories.html 
+keywords: cluster compliance, security compliance, cluster security, ontap cluster security, compliance categories, netapp console local 
+summary: Referencia sobre las categorías de cumplimiento de seguridad de los clústeres y la configuración recomendada en la implementación local de NetApp Console. 
+---
+= Categorías de cumplimiento de seguridad de clúster en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza esta referencia para revisar las categorías de cumplimiento de seguridad de los clústeres que se muestran en la implementación local de NetApp Console, incluyendo el valor recomendado y si cada categoría afecta al estado general de cumplimiento.
+
+Estas categorías se basan en las comprobaciones de la postura de seguridad de ONTAP.
+
+[cols="20,50,15,15"]
+|===
+| Categoría | Qué comprueba la categoría | Valor recomendado | Afecta al cumplimiento normativo en general 
+
+
+| FIPS global | Si está activado el modo FIPS 140-2. Cuando está activado, se desactivan TLSv1 y SSLv3 y solo se permiten TLSv1.1 y TLSv1.2. | Habilitado | Sí 
+
+
+| Telnet | Si el acceso por Telnet está habilitado. SSH es el método de acceso remoto seguro recomendado. | Deshabilitado | Sí 
+
+
+| Configuración insegura de SSH | Si SSH está configurado con algoritmos de cifrado no seguros, como los que comienzan con `cbc`. | No | Sí 
+
+
+| Banner de inicio de sesión | Si se ha configurado un banner de inicio de sesión para acceder al sistema. | Habilitado | Sí 
+
+
+| Emparejamiento de clústeres | Si la comunicación entre los clústeres de iguales está cifrada. El cifrado debe estar activado tanto en el clúster de origen como en el de destino. | Cifrado | Sí 
+
+
+| Protocolo de tiempo de red | Si hay uno o más servidores NTP configurados para el clúster. NetApp recomienda al menos tres servidores NTP para resiliencia. | Configurado | Sí 
+
+
+| OCSP | Si está habilitada la validación mediante el Protocolo de estado de certificados en línea (OCSP) para la validación de certificados SSL/TLS. | Habilitado | No 
+
+
+| Registro de auditoría remota | Si el reenvío de registros (syslog) está cifrado. | Cifrado | Sí 
+
+
+| AutoSupport transporte HTTPS | Si se utiliza HTTPS como protocolo de transporte predeterminado para los mensajes de AutoSupport. | Habilitado | Sí 
+
+
+| Usuario administrador predeterminado | Si la cuenta de administrador predeterminada integrada está desactivada. | Deshabilitado | Sí 
+
+
+| Usuarios de SAML | Si SAML está configurado para el inicio de sesión único y autenticación compatible con MFA. | No | No 
+
+
+| Usuarios de Active Directory | Si se ha configurado la autenticación de Active Directory para el acceso al clúster. | No | No 
+
+
+| Usuarios LDAP | Si se ha configurado la autenticación LDAP para el acceso al clúster. | No | No 
+
+
+| Usuarios de certificados | Si los usuarios basados en certificados están configurados para iniciar sesión en el clúster. | No | No 
+
+
+| Usuarios locales | Si los usuarios locales están configurados para iniciar sesión en el clúster. | No | No 
+
+
+| Shell remoto | Si RSH está activado. Se prefiere SSH para un acceso remoto seguro. | Deshabilitado | Sí 
+
+
+| MD5 en uso | Si las cuentas de usuario de ONTAP siguen utilizando el algoritmo de hash MD5 en lugar de algoritmos más seguros como SHA-512. | No | Sí 
+
+
+| Tipo de emisor del certificado | El tipo de emisor de certificados que utiliza el clúster. | Firmado por CA | No 
+|===

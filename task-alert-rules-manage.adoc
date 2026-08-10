@@ -1,0 +1,178 @@
+---
+sidebar: sidebar 
+permalink: task-alert-rules-manage.html 
+keywords: notifications, alerts, notification rules, alert rules, severity, impact area, email, webhook, mute, netapp console local 
+summary: Configura las reglas de notificación en la implementación local de NetApp Console para controlar qué alertas generan notificaciones, quién las recibe y cómo se entregan. 
+---
+= Configura reglas de notificación para alertas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Configura las reglas de notificación en la implementación local de NetApp Console para controlar qué alertas generan notificaciones, quién las recibe y cómo se entregan.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización, administrador de almacenamiento, analista de soporte de operaciones o cualquiera de los roles de administrador de NetApp Backup and Recovery. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Utiliza las reglas de notificación para dirigir las alertas adecuadas a las personas adecuadas a través de los canales que mejor se adapten a tu entorno, mientras reduces el ruido de las alertas que no son relevantes para ti. Las reglas de notificación complementan la página de Alertas: investigas o resuelves la alerta en el flujo de trabajo de Alertas y luego usas las reglas para controlar cómo se entregarán alertas similares en el futuro.
+
+Una regla de notificación filtra las alertas en función de las condiciones que definas, como el servicio, la gravedad y el área de impacto, y luego envía una notificación a través de los canales que selecciones. La implementación local de NetApp Console incluye reglas de notificación predeterminadas que puedes consultar y ajustar, y puedes crear tus propias reglas personalizadas. También puedes silenciar reglas para suprimir temporalmente las notificaciones durante eventos planificados como ventanas de mantenimiento.
+
+* link:https://docs.netapp.com/us-en/ontap-ems/acp-auto-events.html["Obtén más información sobre el ONTAP EMS y las alertas disponibles."^]
+
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Para enviar notificaciones por correo electrónico, el administrador de tu organización debe configurar un servidor de correo electrónico en la implementación local de la Console. Para enviar notificaciones a un sistema externo, el administrador de tu organización debe configurar un webhook. Para conocer los pasos, consulta link:task-console-configure-notifications-delivery.html["Configura la entrega de notificaciones"].
+* El Centro de notificaciones de la implementación local de la Console muestra las notificaciones de forma predeterminada, por lo que no es necesario realizar ninguna configuración adicional para las notificaciones dentro de la Console.
+
+
+
+
+[[view-notification-rules]]
+== Ver reglas de notificación
+
+La página de reglas de notificación es el lugar central para revisar y gestionar todas las reglas que se aplican a tu organización. Cada regla muestra sus atributos clave para que puedas evaluar y ajustar rápidamente el comportamiento de las alertas.
+
+.Pasos
+. En el menú de navegación de la izquierda, selecciona *Salud > Alertas*.
+. Selecciona *Configuración de notificaciones*.
+. Revisa las reglas de la lista. Cada regla muestra su estado de activación, nombre, los servicios y los niveles de gravedad que supervisa, los roles autorizados para recibir notificaciones, los canales de envío habilitados, cuándo se modificó por última vez y cualquier periodo de silenciamiento programado.
+. Para encontrar una regla concreta, utiliza los controles de filtro y búsqueda para filtrar por estado activo, servicio, gravedad, rol, canal o estado de silenciamiento.
+
+
+
+
+[[create-a-notification-rule]]
+== Crear una regla de notificación
+
+Crea una regla de notificación para definir las condiciones que activan una notificación y cómo se entrega esa notificación.
+
+
+NOTE: No puedes configurar reglas de notificación para flotas. Solo puedes configurarlas para sistemas específicos. En entornos grandes con muchos sistemas, considera crear reglas más amplias según la gravedad en lugar de duplicar reglas por sistema; por ejemplo, una regla crítica que abarque todos los sistemas actúa como una regla general, con reglas adicionales específicas para los sistemas que necesiten un enrutamiento o destinatarios diferentes.
+
+.Ejemplo de regla de notificación para alertas críticas en todos los sistemas
+Supongamos que quieres asegurarte de que ninguna alerta crítica pase desapercibida, independientemente del sistema del que proceda. Puedes crear una regla general que redirija todas las alertas críticas al Centro de notificaciones de la consola para los administradores de almacenamiento.
+
+En este ejemplo, creas una regla con los siguientes parámetros:
+
+* *Servicios*: todos
+* *Gravedad*: Crítica
+* *Rol de IAM*: administrador de almacenamiento
+* *Sistema*: (Déjalo en blanco para que se aplique a todos los sistemas)
+* *Método de entrega*: Centro de notificaciones de la consola
+
+
+Con esta regla activada, los administradores de almacenamiento ven una notificación en la Console por cada alerta crítica en todos los sistemas. Esta regla sirve como base que puedes complementar con reglas más específicas.
+
+.Ejemplo de una regla de notificación específica para alertas de capacidad de Storage admin
+Supongamos que tus administradores de almacenamiento necesitan responder de inmediato a problemas críticos de capacidad en un sistema de producción concreto, pero no quieres que sus bandejas de entrada se vean inundadas de alertas de menor gravedad. Puedes crear una regla específica para que se envíe un correo electrónico a los administradores de almacenamiento solo cuando se active una alerta crítica de capacidad en ese sistema.
+
+En este ejemplo, creas una regla con los siguientes parámetros:
+
+* *Servicios*: gestión de ONTAP
+* *Gravedad*: Crítica
+* *Ámbito de impacto*: Capacidad
+* *Rol de IAM*: administrador de almacenamiento
+* *Sistema*: <system_name>
+* *Método de entrega*: Correo electrónico
+
+
+Con esta regla activada, Console envía un correo electrónico a todos los administradores de almacenamiento del sistema especificado cuando se produce una alerta de capacidad crítica. Las alertas de menor gravedad, como las de advertencia o las informativas, no generan ningún correo electrónico, así que el equipo puede centrarse en los problemas que requieren atención urgente.
+
+.Pasos
+. En el menú de navegación de la izquierda, selecciona *Salud > Alertas*.
+. Selecciona *Configuración de notificaciones* y, a continuación, selecciona *Agregar regla*.
+. Define las condiciones que la regla debe cumplir:
++
+** *Nombre de la regla*: introduce un nombre conciso y descriptivo. Este campo es obligatorio.
+** *Descripción de la regla*: opcionalmente, introduce información adicional sobre la finalidad de la regla.
+** *Servicios*: selecciona uno o varios servicios de ONTAP o de la plataforma a los que se aplique la regla.
+** *Roles*: selecciona los roles de acceso que deben tener los usuarios para recibir notificaciones cuando se active la regla.
+** *Niveles de gravedad*: selecciona los niveles de gravedad que supervisa la regla, como «Crítico», «Advertencia», «Error» o «Información».
+** *Área de impacto*: selecciona las áreas operativas que correspondan, como Capacidad o Rendimiento.
+** *Nombre de la alerta*: selecciona los tipos de alerta específicos que activan la regla.
+** *Sistema*: selecciona el contexto del sistema al que se aplica la regla.
+
+
+. Selecciona los canales de envío de la notificación:
++
+** *Correo electrónico*: envía correos electrónicos de alerta a los usuarios que tengan los roles seleccionados. Requiere un servidor de correo electrónico configurado.
+** *Webhook*: envía datos de alertas a un sistema externo. Requiere seleccionar una integración de webhook configurada.
+** *Centro de notificaciones de la consola*: muestra alertas en tiempo real para los usuarios que tienen los roles seleccionados.
+
+
+. Si lo deseas, para desactivar las notificaciones de esta regla durante un periodo planificado, como una ventana de mantenimiento, configura una programación de *Silenciar notificaciones* y elige una periodicidad si quieres que el periodo de silencio se repita. Puedes añadir varias ventanas de silencio por regla, lo cual resulta útil para ciclos de mantenimiento recurrentes como la aplicación semanal de parches.
+. Selecciona *Crear*.
+
+
+
+
+[[enable-or-disable-a-notification-rule]]
+== Activar o desactivar una regla de notificación
+
+Activa o desactiva reglas de notificación concretas para controlar qué condiciones generan notificaciones. Desactiva las reglas que no sean relevantes para tu entorno a fin de reducir el ruido y activa las reglas para volver a recibir sus notificaciones.
+
+.Pasos
+. En el menú de navegación de la izquierda, selecciona *Salud > Alertas*.
+. Selecciona *Configuración de notificaciones*.
+. Busca la regla que quieras modificar.
+. Activa o desactiva el interruptor *Activo* de la regla. El cambio surte efecto de inmediato.
+
+
+
+
+[[mute-a-notification-rule]]
+== Silenciar una regla de notificación
+
+Silencia una regla de notificación para evitar que se envíen alertas durante un evento programado, como una ventana de mantenimiento, sin desactivar la regla. Las alertas siguen apareciendo en la página Alertas durante el periodo de silencio; solo se suprimen las notificaciones por correo electrónico, webhook y en la consola. Cuando finaliza el periodo de silencio, las notificaciones se reanudan automáticamente.
+
+Puedes añadir varias ventanas de silencio a una misma regla y configurar cada una para que se repita según una programación.
+
+.Ejemplos de ventanas silenciadas
+* *Ventana de mantenimiento puntual*: Estás realizando una actualización de firmware en un sistema de almacenamiento el sábado por la noche y quieres silenciar las alertas previstas durante esa ventana. Configura una ventana de silencio desde el sábado a las 22:00 hasta el domingo a las 02:00, sin recurrencia. Cuando finalice la ventana, las notificaciones se reanudan automáticamente.
+* *Ventana de actualizaciones semanal recurrente*: Tu equipo aplica las actualizaciones a los sistemas todos los domingos, desde la medianoche hasta las 4:00 de la madrugada. Añade una ventana de silencio con periodicidad semanal para que las notificaciones se silencien automáticamente cada semana sin necesidad de intervención manual. Si un segundo sistema tiene su propio horario de aplicación de parches en un momento diferente, añade una segunda ventana de silencio a la misma regla con su propia hora de inicio y periodicidad.
+
+
+.Pasos
+. En el menú de navegación de la izquierda, selecciona *Salud > Alertas*.
+. Selecciona *Reglas de notificación*.
+. En la lista de reglas, busca la regla que quieras silenciar y selecciona el menú de acciones correspondiente a esa regla.
+. Selecciona *Editar*.
+. En la sección *Silenciar notificaciones*, establece la fecha y la hora de inicio y fin para la ventana de silenciamiento.
+. Si lo deseas, selecciona una periodicidad para que la ventana se repita según un calendario.
+. Para añadir más ventanas de silencio, selecciona *Add mute window* y repite los pasos anteriores.
+. Selecciona *Guardar*.
+
+
+
+
+[[delete-a-notification-rule]]
+== Eliminar una regla de notificación
+
+Elimina una regla de notificación si ya no la necesitas. Al eliminar una regla, esta se borra de forma definitiva, por lo que no puedes recuperarla.
+
+.Pasos
+. En el menú de navegación de la izquierda, selecciona *Salud > Alertas*.
+. Selecciona *Configuración de notificaciones*.
+. En la lista de reglas, busca la regla que quieras eliminar y selecciona el menú de acciones correspondiente a esa regla.
+. Selecciona *Eliminar* en el menú de acciones.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-console-configure-notifications-delivery.html["Configura la entrega de notificaciones"]
+* link:concept-console-alerts.html["Conoce las alertas de la consola"]
+* link:task-alerts-monitor.html["Ver alertas"]
+

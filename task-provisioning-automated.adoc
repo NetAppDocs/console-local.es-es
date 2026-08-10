@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: task-provisioning-automated.html 
+keywords: automated provisioning, automation, policy-driven, storage class, netapp console 
+summary: Configura el aprovisionamiento de almacenamiento automático usando clases y políticas de almacenamiento en la implementación local de NetApp Console. 
+---
+= Aprovisiona almacenamiento automáticamente en el despliegue local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, utiliza el aprovisionamiento automatizado para asignar almacenamiento en función de los estándares de clase de almacenamiento y la capacidad de la flota. El aprovisionamiento automatizado es la mejor opción cuando quieres resultados coherentes y menos decisiones manuales.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización, administrador de carpetas o de flotas, o administrador de almacenamiento. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+El aprovisionamiento automatizado normalmente selecciona la ubicación más adecuada entre los sistemas disponibles de la flota según la capacidad y el margen de rendimiento, y luego aprovisiona la carga de trabajo con configuraciones alineadas a la clase de almacenamiento.
+
+
+
+[[before-you-begin]]
+== Antes de empezar
+
+* Asegúrate de que se detecte al menos un clúster ONTAP en la flota de destino.
+* Si deseas obtener resultados basados en clases, asegúrate de que la clase de almacenamiento exista y esté asociada a la flota.
+

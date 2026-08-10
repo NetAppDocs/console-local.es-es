@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: whats-new.html 
+keywords: 'what"s new, new features, release notes, netapp console local' 
+summary: Descubre las nuevas funciones y mejoras en la última versión de la implementación local de NetApp Console. 
+---
+= Novedades en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Descubre las nuevas funciones y mejoras en la última versión de la implementación local de la NetApp Console.
+
+
+
+[[introducing-netapp-console-local-deployment]]
+=== Presentación de la implementación local de NetApp Console
+
+https://docs.netapp.com/us-en/console-local/netapp-console-local.html["Aprende a implementar localmente la NetApp Console"].

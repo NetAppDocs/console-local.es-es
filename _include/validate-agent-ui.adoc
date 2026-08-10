@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+Si marcaste la casilla de comprobación *Validar la configuración del agente* en la página *Revisión*, la Console verifica la configuración del agente de la Console después de que se crea. Si la Console no logra implementar el agente, te proporciona un informe descargable para ayudarte a solucionar el problema.
+
+
+NOTE: Si NetApp Console implementa correctamente el agente, no se genera ningún informe y aparece un cuadro de diálogo de confirmación que verifica que la implementación fue exitosa.
+
+.Pasos
+. En el cuadro de diálogo *Error en la instalación del agente*, selecciona *Descargar informe* para descargar un archivo PDF que contiene el informe de validación.
+. También puedes seleccionar *Empezar de nuevo* para volver al asistente *Deploy agent* e intentarlo de nuevo.
++
+Si quieres volver a intentar instalar el agente, tienes que empezar todo el proceso desde el principio.
+
+
+
+Accede al informe y a los registros desde el host del agente de la consola

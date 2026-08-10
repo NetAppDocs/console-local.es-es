@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: task-manage-member-security.html 
+keywords: member security, password reset, MFA, multi-factor authentication, service account, credentials, netapp console local, AD, Active Directory, directory services 
+summary: Gestiona la configuración de seguridad de los miembros en la implementación local de NetApp Console, incluyendo el restablecimiento de contraseñas, la gestión de MFA y las credenciales de cuentas de servicio. 
+---
+= Gestiona la seguridad de los miembros en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Garantiza el acceso seguro de los usuarios a tu organización de implementación local de NetApp Console gestionando la configuración de seguridad de los miembros. Puedes indicar a los usuarios locales que cambien sus propias contraseñas, gestionar la autenticación multifactor (MFA) de los usuarios locales y volver a generar las credenciales de las cuentas de servicio.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+
+
+[[reset-user-passwords-local-users-only]]
+== Restablecer contraseñas de usuario (solo usuarios locales)
+
+Los administradores no pueden restablecer directamente las contraseñas de los usuarios locales.
+
+Indica a los usuarios locales que restablezcan sus contraseñas desde la página de inicio de sesión de la implementación local de la Console, seleccionando *¿Has olvidado tu contraseña?*.
+
+
+NOTE: Esta opción no está disponible para los usuarios de directorio.
+
+
+
+[[manage-a-local-users-multi-factor-authentication-mfa]]
+== Gestiona la autenticación multifactor (MFA) de un usuario local
+
+Si un usuario local pierde el acceso a su dispositivo MFA, puedes eliminar o desactivar su configuración de MFA.
+
+
+NOTE: La autenticación multifactor solo está disponible para los usuarios locales. Los usuarios de directorio no pueden habilitar MFA a través de la implementación local de Console.
+
+Sigue estas pautas para elegir la medida adecuada:
+
+* Selecciona *Desactivar* cuando el usuario pierda temporalmente el acceso a su dispositivo MFA. Desactivar MFA permite un inicio de sesión sin MFA durante ocho horas y luego vuelve a activar MFA automáticamente.
+* Selecciona *Eliminar* cuando el usuario deba restablecer completamente MFA. Después de que elimines MFA, el usuario inicia sesión sin MFA hasta que la configure de nuevo.
+
+
+Si un usuario tiene guardado un código de recuperación, puede iniciar sesión con él. Si un usuario no tiene un código de recuperación, desactiva MFA para que pueda iniciar sesión y recuperar el acceso.
+
+
+NOTE: Para gestionar la autenticación multifactor de un usuario local, debes tener una dirección de correo electrónico en el mismo dominio que el usuario afectado.
+
+.Pasos
+. Selecciona *Administración* > *Identidad y acceso*.
+. Selecciona *Miembros*.
+. Desde la página Miembros, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Gestionar la autenticación multifactor*.
+. Elige si deseas eliminar o desactivar la configuración MFA del usuario.
+
+
+.Después de que termines
+Consulta el registro de auditoría para comprobar quién modificó el acceso MFA, cuándo lo hizo y si la acción se completó con éxito. link:task-audit-console-activity.html["Descubre cómo auditar la actividad de implementación local de NetApp Console"].
+
+
+
+[[recreate-the-credentials-for-a-service-account]]
+== Vuelve a generar las credenciales de una cuenta de servicio
+
+Puedes crear nuevas credenciales para una cuenta de servicio si las pierdes o necesitas actualizarlas.
+
+Al crear nuevas credenciales, se eliminan las antiguas. No puedes usar las credenciales antiguas.
+
+.Pasos
+. Selecciona *Administración* > *Identidad y acceso*.
+. Selecciona *Miembros*.
+. En la tabla Members, busca una cuenta de servicio, selecciona image:icon-action.png["Un icono con tres puntos"] y luego selecciona *Recrear secretos*.
+. Selecciona *Recrear*.
+. Descarga o copia el client ID y el client secret.
++
+La implementación local de Console muestra el secreto de cliente solo una vez. Asegúrate de copiarlo o descargarlo y guardarlo en un lugar seguro.
+
+

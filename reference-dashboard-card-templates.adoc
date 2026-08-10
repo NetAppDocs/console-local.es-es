@@ -1,0 +1,265 @@
+---
+sidebar: sidebar 
+permalink: reference-dashboard-card-templates.html 
+keywords: card templates, dashboard cards, metric types, chart types, performance, capacity, health, alerts, netapp console local 
+summary: Referencia sobre los paneles predefinidos y las tarjetas y métricas personalizadas de los paneles en una implementación local de NetApp Console. 
+---
+= Referencia de los paneles predefinidos y las tarjetas de panel personalizadas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, los paneles predefinidos y las plantillas personalizadas de tarjetas de panel proporcionan cobertura de supervisión para el rendimiento, la capacidad, el estado y las operaciones de alerta de ONTAP.
+
+
+
+[[predefined-dashboards]]
+== Cuadros de mando predefinidos
+
+Los siguientes paneles predefinidos están disponibles de serie.
+
+[cols="35,65"]
+|===
+| Nombre | Descripción 
+
+
+| Volúmenes | Rendimiento de volumen, capacidad, QoS, FabricPool, tasa de crecimiento y métricas de previsión. 
+
+
+| Tiempo hasta que se llene | Predicciones de ONTAP sobre el tiempo hasta el llenado completo para clústeres, volúmenes y agregados. 
+
+
+| Seguridad | Resumen sobre el cumplimiento de las normas de seguridad, el cifrado, la protección autónoma contra ransomware y la autenticación. 
+
+
+| SVM | Supervisión del rendimiento, la capacidad, el volumen, el LIF, el protocolo (CIFS, FCP, iSCSI, NFS, NVMe/FC), la QoS y el mapa de calor de latencia de ONTAP SVM. 
+
+
+| Potencia | Supervisión del consumo energético, la temperatura y la velocidad de los ventiladores del clúster ONTAP para nodos, estantes y agregados. 
+
+
+| Nodos | Supervisión del rendimiento de los nodos ONTAP, la CPU, la red y el backend. 
+
+
+| Red | Métricas de rendimiento de la red, entre las que se incluyen Ethernet, FibreChannel, NVMe/FC, grupos de agregación de enlaces y rutas. 
+
+
+| LUN | Supervisión del rendimiento, la capacidad y la eficiencia de los LUN de ONTAP. 
+
+
+| Salud | Supervisión del estado del clúster ONTAP, incluyendo errores, advertencias, alertas EMS, problemas de HA, estado de nodos, discos y bandejas, volúmenes, licencias y puertos de red. 
+
+
+| Agregados | Supervisión de la capacidad de los agregados de ONTAP, los índices de eficiencia y la tasa de crecimiento. 
+|===
+
+
+[[dashboard-level-time-windows-and-aggregation]]
+== Ventanas temporales y agregación a nivel del panel de control
+
+Los intervalos de tiempo disponibles son 30 minutos, 1 hora, 24 horas, 48 horas, 7 días y 30 días. Las opciones de agregación varían según la plantilla e incluyen vistas como el resumen de toda la flota o resultados del tipo top-N. El intervalo de tiempo y la agregación se configuran a nivel del panel de control y se aplican a todas las tarjetas del panel de control.
+
+
+
+[[dashboard-card-templates-and-metrics]]
+== Plantillas de tarjetas y métricas del panel de control
+
+Las tarjetas son los elementos básicos de los paneles personalizados. Cada tarjeta utiliza una plantilla predefinida con una métrica y un tipo de gráfico, luego asocia esa vista a objetos ONTAP específicos y a objetivos de supervisión.
+
+
+NOTE: Las plantillas de tarjetas están predefinidas y no las crea el usuario.
+
+
+
+[[storage-operations-metric-index-at-a-glance]]
+[[metrics-list]]
+=== Índice de métricas de operaciones de almacenamiento (de un vistazo)
+
+Los tipos de métricas se ajustan a los resultados habituales de la administración del almacenamiento, incluyendo cuellos de botella de rendimiento, presión sobre la capacidad, riesgos para la salud y volumen de alertas.
+
+[cols="18,37,30,15"]
+|===
+| Tipo de métrica | Métricas compatibles | Caso de uso de administrador de almacenamiento | Plantillas detalladas 
+
+
+| Rendimiento | Latencia media, latencia máxima, IOPS, rendimiento (MB/s), utilización, capacidad de rendimiento | Identifica los cuellos de botella, la presión constante y el margen de rendimiento | <<performance-templates,Ir a las plantillas>> 
+
+
+| Capacidad | Capacidad utilizada, capacidad libre, capacidad utilizada (%), capacidad utilizada en instantáneas | Haz un seguimiento del crecimiento, identifica las áreas con baja capacidad libre y supervisa el impacto de las instantáneas | <<capacity-templates,Ir a las plantillas>> 
+
+
+| Salud | Estado de salud, objetos deteriorados o en estado crítico, discos averiados, errores en la interfaz de red, objetos calientes (por latencia) | Detecta regresiones en el estado de salud y prioriza el triaje operativo | <<health-templates,Ir a las plantillas>> 
+
+
+| Alertas | Alertas (críticas), alertas por gravedad, alertas por área de impacto, alertas recientes, tendencia de alertas | Supervisa los incidentes activos y la tendencia del volumen de alertas a lo largo del tiempo | <<alerts-templates,Ir a las plantillas>> 
+|===
+
+
+[[supported-ontap-object-hierarchy-resource-types]]
+=== Jerarquía de objetos compatible de ONTAP (tipos de recursos)
+
+Los datos de tarjetas pueden representarse en varios niveles de objetos de ONTAP, desde la visibilidad a nivel de flota hasta la resolución de problemas a nivel de objeto.
+
+Los ajustes de *Tipo de recurso* se corresponden con uno o varios de los siguientes niveles de recurso:
+
+* Flota
+* Clúster
+* Sistema (nodo)
+* SVM
+* Volumen
+* LUN
+* Nivel local (agregado)
+
+
+Los niveles de recursos disponibles dependen de la plantilla y la métrica que selecciones.
+
+
+
+[[chart-types-for-operational-analysis]]
+=== Tipos de gráficos para el análisis operativo
+
+El tipo de gráfico influye en la rapidez con la que puedes interpretar las tendencias, comparaciones, distribuciones y los valores en un momento específico.
+
+[cols="25,75"]
+|===
+| Tipo de gráfico | Ideal para 
+
+
+| Gráfico de líneas | Tendencias de series temporales, como la latencia, las IOPS, el rendimiento, la utilización y las tendencias de alertas a lo largo del tiempo. 
+
+
+| Gráfico de barras | Comparación y distribución por categorías, como las alertas según su gravedad o área de impacto. 
+
+
+| Gráfico circular o de rosquilla | Distribución proporcional, como el porcentaje de capacidad utilizada. 
+
+
+| Tabla | Datos detallados, presentados en varias columnas, como la capacidad utilizada, el estado de funcionamiento y las alertas recientes. 
+
+
+| Número único (stat) | Un único valor clave de un solo vistazo, como el número de alertas críticas o discos fallidos. 
+|===
+
+
+[[performance-templates-for-workload-triage]]
+[[performance-templates]]
+=== Plantillas de rendimiento para la clasificación de cargas de trabajo
+
+Las plantillas de rendimiento se centran en las señales de latencia, rendimiento y utilización que indican presión de la carga de trabajo.
+
+[cols="25,20,55"]
+|===
+| Plantilla | Tipo de gráfico | Descripción 
+
+
+| Latencia media | Línea | Latencia media en los objetivos seleccionados durante el intervalo de tiempo elegido. 
+
+
+| Latencia máxima | Línea | Latencia máxima observada en los objetivos seleccionados durante el intervalo de tiempo elegido. 
+
+
+| IOPS | Línea | Suma de las operaciones de E/S por segundo en los destinos seleccionados. 
+
+
+| Rendimiento (MB/s) | Línea | Suma del caudal de datos en los objetivos seleccionados. 
+
+
+| Utilización | Línea | Utilización media de CPU o disco en los objetivos seleccionados. 
+
+
+| Capacidad de rendimiento | Tabla | Análisis del margen de capacidad que compara la utilización actual con el punto óptimo. 
+|===
+
+
+[[capacity-templates-for-growth-and-headroom]]
+[[capacity-templates]]
+=== Plantillas de capacidad para el crecimiento y el margen de maniobra
+
+Las plantillas de capacidad se centran en el espacio consumido y disponible para facilitar la planificación del crecimiento y la detección de riesgos.
+
+[cols="25,20,55"]
+|===
+| Plantilla | Tipo de gráfico | Descripción 
+
+
+| Capacidad utilizada | Tabla | Suma de la capacidad utilizada en los objetivos seleccionados. 
+
+
+| Capacidad libre | Tabla | Suma de la capacidad libre o disponible en los destinos seleccionados. 
+
+
+| Capacidad utilizada (%) | Gráfico circular o de rosquilla | Proporción media de usado a total en los objetivos seleccionados. 
+
+
+| Capacidad utilizada de snapshot | Tabla | Suma del espacio ocupado por las instantáneas en los destinos seleccionados. 
+|===
+
+
+[[health-templates-for-risk-detection]]
+[[health-templates]]
+=== Plantillas de estado para la detección de riesgos
+
+Las plantillas de estado se centran en el estado de los objetos y en los indicadores de fallo para facilitar la clasificación operativa.
+
+[cols="25,20,55"]
+|===
+| Plantilla | Tipo de gráfico | Descripción 
+
+
+| Estado de salud | Tabla | Estado de salud más reciente de cada objeto de destino seleccionado. 
+
+
+| Objetos degradados o en estado crítico | Un solo número | Cantidad de objetos cuyo estado de salud no es OK. 
+
+
+| Discos averiados | Un solo número | Suma de discos fallidos en los sistemas seleccionados. 
+
+
+| Errores de interfaz de red | Gráfico circular o de rosquilla | Suma de los contadores de errores de la interfaz de red en los objetivos seleccionados. 
+
+
+| Objetos calientes (por latencia) | Tabla | Recursos ordenados por latencia máxima, en orden descendente. 
+|===
+
+
+[[alerts-templates-for-incident-prioritization]]
+[[alerts-templates]]
+=== Plantillas de alertas para la priorización de incidencias
+
+Las plantillas de alertas se centran en el volumen de incidencias, la gravedad y el área de impacto para apoyar la supervisión y la priorización.
+
+[cols="25,20,55"]
+|===
+| Plantilla | Tipo de gráfico | Descripción 
+
+
+| Alertas (críticas) | Un solo número | Recuento de alertas de gravedad crítica dentro del intervalo de tiempo. 
+
+
+| Alertas por gravedad | Barra | Alertas agrupadas por nivel de gravedad. 
+
+
+| Alertas por área de impacto | Barra | Alertas agrupadas por área de impacto, como capacidad, rendimiento o seguridad. 
+
+
+| Alertas recientes | Tabla | Las alertas más recientes, ordenadas por hora en orden descendente. 
+
+
+| Tendencia de alertas | Línea | Número de alertas por intervalo de tiempo durante la ventana de tiempo seleccionada. 
+|===
+
+
+[[related-information]]
+== Información relacionada
+
+* link:task-storage-dashboard.html["Ver las métricas de la página de inicio en NetApp Console en una implementación local"]
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:task-dashboard-create.html["Crear un panel de control personalizado"]
+* link:task-customize-dashboard-cards.html["Personaliza las tarjetas del panel de control en la implementación local de NetApp Console"]
+* link:task-dashboard-manage.html["Gestiona paneles personalizados"]
+

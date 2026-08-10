@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Suscríbete a NetApp Intelligent Services desde el marketplace de tu proveedor de nube para pagar los servicios de datos por hora (PAYGO) o mediante un contrato anual. Si compraste una licencia de NetApp (BYOL), también necesitas suscribirte a la oferta del marketplace. Tu licencia siempre se cobra primero, pero se te cobrará la tarifa por hora si excedes la capacidad licenciada o si vence el plazo de la licencia.

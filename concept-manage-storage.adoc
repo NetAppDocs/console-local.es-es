@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: concept-manage-storage.html 
+keywords: fleet management, folders, fleets, storage management, storage classes, provisioning, netapp console local 
+summary: Descubre cómo funcionan la gestión de flotas y la gestión de almacenamiento en NetApp Console en una implementación local, incluyendo la jerarquía, el control de acceso, los estándares y los métodos de aprovisionamiento. 
+---
+= Conoce la gestión de flotas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La gestión de flotas en la implementación local de NetApp Console es la práctica de organizar los sistemas de almacenamiento en grupos lógicos para que puedas aplicar políticas coherentes, controlar el acceso y supervisar el estado de los clústeres relacionados. En lugar de gestionar cada clúster de forma independiente, la gestión de flotas te permite tratar tu flota como un conjunto común de recursos para cumplir tus objetivos de almacenamiento de datos.
+
+A medida que tu entorno de almacenamiento crece, gestionar clústeres individuales deja de ser práctico. La gestión de flotas resuelve esto dándote una forma estructurada de agrupar sistemas relacionados, delegar responsabilidades y asegurarte de que cada clúster opere bajo los mismos estándares.
+
+
+
+[[why-fleet-management-matters]]
+== Por qué es importante la gestión de flotas
+
+La gestión de flotas aborda tres retos fundamentales:
+
+* *Simplificación mediante la abstracción* - la gestión de flotas elimina la complejidad que supone gestionar cada infraestructura de almacenamiento por separado. En lugar de tener que ocuparte de la configuración en clúster, gestionas tu parque de almacenamiento como un todo unificado, lo que reduce la carga operativa y la fatiga decisoria.
+* *Coherencia y escalabilidad* - sin una organización clara, los distintos equipos toman decisiones diferentes para cargas de trabajo similares, lo que da lugar a configuraciones fragmentadas. La gestión de flotas te permite aplicar estándares en docenas de sistemas a la vez, lo que garantiza que las nuevas cargas de trabajo partan de la misma base de referencia en todos los equipos y flotas.
+* *Gobernanza y control* - a medida que los equipos crecen, necesitas límites claros sobre quién puede gestionar qué. La gestión de flotas proporciona esos límites mediante una estructura organizativa y control de acceso, asegurando que las decisiones de almacenamiento sigan estando gobernadas y sean auditables.
+
+
+
+
+[[how-fleets-organize-your-resources]]
+== Cómo las flotas organizan tus recursos
+
+La jerarquía de recursos de tu organización está formada por carpetas y flotas:
+
+Para obtener una descripción detallada de la jerarquía y el modelo de acceso, consulta link:concept-folders-fleets-overview.html["Conoce las carpetas y las flotas en la implementación local de NetApp Console"].
+
+* *Organización* - el nivel superior que representa a tu empresa.
+* *Carpetas* - te ayudan a organizar flotas relacionadas. Por ejemplo, puedes crear una carpeta para cada región o unidad de negocio, y luego crear flotas dentro de cada carpeta. Las carpetas pueden contener otras carpetas o flotas. Cuando asignas un rol a nivel de carpeta, los miembros heredan ese rol para todas las flotas dentro de la carpeta.
+* *Flotas* - agrupa los sistemas de almacenamiento que gestionas. Asocias los sistemas de almacenamiento a las flotas y asignas miembros a las flotas para darles acceso.
+
+
+
+NOTE: Las carpetas son una herramienta de organización y no son visibles para los miembros que no tengan permisos de IAM, como los roles de Organization admin, Folder admin o Fleet admin. Los miembros acceden a las flotas, no a las carpetas.
+
+
+
+[[common-fleet-organization-patterns]]
+== Modelos habituales de organización de flotas
+
+La forma de organizar las flotas depende de tu modelo operativo:
+
+* *Por entorno* - crea flotas independientes para las cargas de trabajo de producción, desarrollo y prueba. Esto mantiene el almacenamiento de producción bajo políticas más estrictas, mientras permite más flexibilidad en los entornos de menor nivel.
+* *Por unidad de negocio* - agrupa los clústeres que dan servicio a un departamento específico, como finanzas, ingeniería o recursos humanos, en una flota dedicada. Luego puedes asignar responsabilidades de gestión del almacenamiento a los miembros del equipo de esa unidad de negocio sin exponerles a otras flotas.
+* *Por ubicación o centro de datos* - cuando los clústeres están distribuidos entre distintos emplazamientos, organizarlos por ubicación te permite supervisar el estado a nivel de emplazamiento, aplicar políticas específicas para cada región y realizar un seguimiento del consumo de capacidad por emplazamiento.
+* *Por nivel de aplicación* - agrupa los clústeres que alojan un tipo específico de carga de trabajo, como bases de datos, recursos compartidos de archivos o máquinas virtuales, para que puedas aplicar normas coherentes y adaptadas a ese tipo de carga de trabajo en toda la flota.
+
+
+
+TIP: Utiliza carpetas para añadir otro nivel de organización. Por ejemplo, crea una carpeta para cada región y luego crea flotas por entorno dentro de cada carpeta regional.
+
+
+
+[[how-fleet-management-enables-access-control]]
+== Cómo la gestión de flotas facilita el control de acceso
+
+Las flotas y las carpetas sirven para delimitar el acceso de los usuarios y las responsabilidades administrativas:
+
+* *Acceso a nivel de carpeta* - cuando asignas un rol a nivel de carpeta, el miembro hereda ese rol para todas las flotas y recursos dentro de la carpeta. Esto te permite delegar responsabilidades administrativas sin conceder acceso a toda la organización.
+* *Acceso a nivel de flota* - cuando asignas un rol a nivel de flota, el miembro solo tiene acceso a los sistemas de almacenamiento dentro de esa flota. Esto te permite delegar la gestión del almacenamiento a miembros del equipo o a responsables de aplicaciones sin exponer partes no relacionadas de tu infraestructura.
+
+
+La implementación local de la consola permite la supervisión del estado y el rendimiento a nivel de flota, así puedes ver el estado de todos los clústeres de una flota desde una sola vista, identificar problemas temprano y actuar antes de que afecten a las cargas de trabajo.
+
+
+
+[[how-storage-management-works]]
+== Cómo funciona la gestión del almacenamiento
+
+La gestión del almacenamiento consiste en definir normas de almacenamiento, aplicarlas de forma coherente y gestionar las cargas de trabajo para que se mantengan alineadas a lo largo del tiempo. En la implementación local de Console, dichas normas se expresan como políticas de clase de almacenamiento y clases de almacenamiento, se aplican a flotas y se hacen cumplir mediante flujos de trabajo de aprovisionamiento regidos por RBAC y el registro de auditoría.
+
+La implementación local de NetApp Console integra cuatro conceptos en un único flujo de trabajo:
+
+* Las *flotas* definen el ámbito en el que gestionas el almacenamiento. Una flota agrupa sistemas para que puedas controlar el acceso, aplicar normas de forma coherente y gestionar los recursos como una unidad.
+* Las *políticas de clase de almacenamiento* definen los estándares como módulos reutilizables (rendimiento, capacidad, seguridad, protección de datos).
+* *Las clases de almacenamiento* expresan la finalidad de la carga de trabajo. Una clase de almacenamiento es una plantilla con nombre compuesta por una o más políticas.
+* *Los flujos de trabajo de aprovisionamiento* crean almacenamiento dentro de unos límites preestablecidos. Los distintos flujos de trabajo toman decisiones de configuración de forma diferente, pero todos pueden aplicar clases de almacenamiento y siguen estando gobernados por RBAC y el registro de auditoría.
+
+
+
+
+[[provisioning-approaches]]
+== Enfoques de aprovisionamiento
+
+La implementación local de NetApp Console admite tres métodos de aprovisionamiento, todos ellos regulados por RBAC, el registro de auditoría y las normas de clase de almacenamiento:
+
+* *Aprovisionamiento manual* - Tú seleccionas el sistema de destino y especificas directamente los detalles de configuración. Usa esto cuando necesites un control explícito sobre la selección y la configuración del sistema.
+* *Aprovisionamiento automatizado* - tú proporcionas los datos de la carga de trabajo y, si lo deseas, seleccionas una clase de almacenamiento. La implementación local de NetApp Console recomienda la ubicación más adecuada y aplica ajustes basados en las clases para reducir las decisiones manuales.
+* *Aprovisionamiento asistido por IA (agente)*: describes lo que necesitas en lenguaje natural. La implementación local de NetApp Console propone un plan sujeto a las restricciones de RBAC y clases de almacenamiento, y solo realiza el aprovisionamiento después de que lo revises y apruebes.
+
+
+
+
+[[where-to-go-next]]
+== A dónde ir ahora
+
+* Para conocer las normas de almacenamiento, consulta link:concept-storage-classes.html["Obtén información sobre las clases de almacenamiento y las políticas en el despliegue local de NetApp Console"].
+* Para crear y gestionar flotas, consulta link:task-iam-manage-folders-fleets.html["Gestiona carpetas y flotas"].
+* link:task-provisioning-manual.html["Provisiona almacenamiento manualmente"]
+* link:task-provisioning-automated.html["Provisiona almacenamiento automáticamente"]
+* link:task-provisioning-agentic.html["Provisiona almacenamiento con asistencia de IA"]
+

@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: task-console-local-vm-config.html 
+keywords: Console local VM, vcenter, esxi, increase cpu, increase ram, vm maintenance, Console local maintenance, Console local operating system, Console local host 
+summary: Puedes realizar cambios en tu VCenter o host ESXi actual después de implementar Console local deployment. Por ejemplo, puedes aumentar la CPU o la RAM de la instancia de VM que aloja Console local deployment. 
+---
+= Realiza el mantenimiento de tu vCenter o host ESXi para la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, puedes realizar cambios en tu VCenter o host ESXi existentes después de implementar la Console local deployment. Por ejemplo, puedes aumentar la CPU o la RAM de la instancia de VM que aloja la Console local deployment.
+
+Realiza estas tareas de mantenimiento mediante la consola web de la VM:
+
+* Aumentar el tamaño del disco
+* Reinicia la implementación local de la consola
+* Actualizar rutas estáticas
+* Actualizar dominios de búsqueda
+
+
+.Limitaciones
+Sólo puedes ver (no actualizar) la información sobre la dirección IP, DNS y gateways a través de la consola de mantenimiento.
+
+
+
+[[access-the-vm-maintenance-console]]
+== Accede a la consola de mantenimiento de la VM
+
+Puedes acceder a la consola de mantenimiento desde el cliente vSphere.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+
+
+
+
+[[change-the-maint-user-password]]
+=== Cambia la contraseña del usuario «maint»
+
+Puedes cambiar la contraseña para el usuario  `maint`.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Introduce `1` para ver el menú `System Configuration`.
+. Accede a `1` para cambiar la contraseña del usuario de mantenimiento y sigue las instrucciones que aparecen en pantalla.
+
+
+
+
+[[increase-the-cpu-or-ram-of-the-vm-instance]]
+=== Aumenta la CPU o la RAM de la instancia de VM
+
+Puedes aumentar la CPU o la RAM de la instancia de VM que aloja la implementación local de Console.
+
+Modifica la configuración de la instancia de VM en tu VCenter o en el host ESXi y luego usa la consola de mantenimiento para aplicar los cambios.
+
+.Pasos en el cliente vSphere
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Haz clic con el botón derecho del ratón en la instancia de VM y selecciona *Editar configuración*.
+. Aumenta el espacio en el disco duro usado para /opt o la partición /var.
++
+.. Selecciona *Hard Disk 2* para aumentar el espacio en disco destinado a /opt.
+.. Selecciona *Disco duro 3* para aumentar el espacio en disco usado para /var.
+
+
+. Guarda tus cambios.
+
+
+.Pasos en la consola de mantenimiento
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Entra al menú  `1 to view the `System Configuration`.
+. Introduce  `2` y sigue las instrucciones que aparecen en pantalla. La consola busca nuevas configuraciones y aumenta el tamaño de las particiones.
+
+
+
+
+[[view-network-settings-for-the-console-local-deployment-vm]]
+=== Ver la configuración de red de la VM de implementación local de la NetApp Console
+
+Consulta la configuración de red de la máquina virtual de implementación local de la Console en el cliente VSphere para confirmar o solucionar problemas de red. Solo puedes consultar (no modificar) los siguientes parámetros de red: dirección IP y detalles de DNS.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Introduce `2` para ver el menú `Network Configuration`.
+. Introduce un número entre 1 y 6 para ver la configuración de red correspondiente.
+
+
+
+
+[[update-the-static-routes-for-the-console-local-deployment-vm]]
+=== Actualiza las rutas estáticas de la VM de implementación local de Console
+
+Agrega, actualiza o elimina rutas estáticas para la VM de implementación local de la NetApp Console según sea necesario.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Introduce `2` para ver el menú `Network Configuration`.
+. Introduce `7` para actualizar las rutas estáticas y sigue las instrucciones que aparecen en pantalla.
+. Pulsa Intro.
+. Opcionalmente, haz cambios adicionales.
+. Escribe  `9` para guardar los cambios.
+
+
+
+
+[[update-domain-search-settings-for-the-console-local-deployment-vm]]
+=== Actualizar la configuración de búsqueda de dominios para la VM de implementación local de la Console
+
+Puedes actualizar la configuración del dominio de búsqueda de la VM de implementación local de la Console.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Introduce `2`` para ver el menú `Network Configuration`.
+. Accede a `8` para actualizar la configuración de búsqueda de dominios y sigue las instrucciones que aparecen en pantalla.
+. Pulsa Intro.
+. Opcionalmente, haz cambios adicionales.
+. Escribe  `9` para guardar los cambios.
+
+
+
+
+[[access-the-console-local-deployment-diagnostic-tools]]
+[[connect-vcenter-host]]
+=== Accede a las herramientas de diagnóstico de la implementación local de la consola
+
+Accede a las herramientas de diagnóstico para solucionar problemas con la implementación local de la Console. NetApp Support puede pedirte que hagas esto al solucionar problemas.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Escribe `3` para ver el menú de Soporte y diagnóstico.
+. Introduce `1` para acceder a las herramientas de diagnóstico y sigue las indicaciones en pantalla.
+
+
+
+
+[[access-the-console-local-deployment-diagnostic-tools-remotely]]
+=== Accede de forma remota a las herramientas de diagnóstico de la implementación local de la consola
+
+Puedes acceder a las herramientas de diagnóstico de forma remota mediante una herramienta como Putty. Activa el acceso SSH a la VM de implementación local de la Console asignando una contraseña de un solo uso.
+
+El acceso SSH permite utilizar funciones avanzadas del terminal, como copiar y pegar.
+
+.Pasos
+. Abre el cliente vSphere e inicia sesión en tu vCenter.
+. Selecciona la instancia de VM que aloja la implementación local de la Console.
+. Selecciona *Launch Web Console*.
+. Inicia sesión en la instancia de VM con el nombre de usuario y la contraseña que especificaste al crear la instancia de VM. El nombre de usuario es `maint` y la contraseña es la que especificaste al crear la instancia de VM.
+. Introduce `3` para ver el menú `Support and Diagnostics`.
+. Accede a `2` para utilizar las herramientas de diagnóstico y sigue las instrucciones que aparecen en pantalla para configurar una contraseña de un solo uso que caduca en 24 horas.
+. Utiliza una herramienta SSH, como Putty, para conectarte a la máquina virtual de implementación local de Console con el nombre de usuario `diag` y la contraseña de un solo uso que configuraste.
+

@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: reference-local-known-limitations.html 
+keywords: console local deployment, known limitations, unsupported platforms, unsupported devices, unsupported functions, IP range 
+summary: Referencia sobre las limitaciones conocidas en la implementación local de NetApp Console. 
+---
+= Limitaciones conocidas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o que no interoperan correctamente con él. Revisa estas limitaciones cuidadosamente.
+
+Estas limitaciones son específicas de la configuración de la NetApp Console y la administración: el agente, la plataforma de software como servicio (SaaS) y más.
+
+
+
+[[console-vm-limitations]]
+== Limitaciones de la consola VM
+
+
+
+[[possible-conflict-with-ip-addresses-in-the-10-42-0-016-and-10-43-0-016-ranges]]
+=== Posible conflicto con direcciones IP en los rangos 10.42.0.0/16 y 10.43.0.0/16
+
+NetApp Console local deployment utiliza un espacio de direcciones fijo para la comunicación entre servicios. El rango de direcciones IP 10.42.0.0/16 y 10.43.0.0/16 se usa para la red interna. Antes de implementar Console local deployment, asegúrate de que estos rangos de IP no estén asignados a otras instancias de VM, ámbitos DHCP, registros DNS o grupos VIP del balanceador de carga en las VLAN disponibles para Console local deployment.
+
+Consulta el artículo de base de conocimientos Agent IP conflict with existing network para obtener instrucciones sobre cómo cambiar la dirección IP de las interfaces del agente.
+
+
+
+[[shared-linux-hosts-are-not-supported]]
+=== No se admiten servidores Linux compartidos
+
+El agente no es compatible con una máquina virtual compartida con otras aplicaciones. La máquina virtual debe estar dedicada al software del agente.
+
+
+
+[[third-party-agents-and-extensions]]
+=== Agentes y extensiones de terceros
+
+La máquina virtual del agente no admite agentes de terceros ni extensiones de máquina virtual.

@@ -1,0 +1,395 @@
+---
+sidebar: sidebar 
+permalink: reference-ontap-alerts.html 
+keywords: ONTAP alerts, EMS alerts, metric alerts, alert categories, netapp console, alerts reference 
+summary: Referencia de las alertas de ONTAP supervisadas en la implementación local de NetApp Console, organizadas por categoría de impacto. 
+---
+= Referencia de alertas de ONTAP en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Esta referencia enumera las alertas de ONTAP que el despliegue local de NetApp Console puede monitorizar, organizadas por categoría de impacto.
+
+
+
+[[severity-mapping]]
+== Clasificación por gravedad
+
+La misma alerta de EMS puede aparecer como Crítica, Advertencia o Información, dependiendo del evento de ONTAP que la haya provocado:
+
+* *Crítico*: Mapas de las gravedades de ONTAP `alert`, `emergency`
+* *Advertencia*: Mapas de gravedad de ONTAP `error`
+* *Información*: Mapas de las gravedades de ONTAP `notice`, `informational`
+* *Otros*: Pasado tal cual
+
+
+La asignación dinámica permite que una misma regla de alerta genere diferentes niveles de gravedad según el contexto de ejecución del evento EMS.
+
+En las secciones siguientes se agrupan las alertas por categoría de impacto y cada tabla se ordena alfabéticamente por nombre de alerta.
+
+
+
+[[availability-alerts]]
+== Alertas de disponibilidad
+
+Estas alertas pueden afectar la disponibilidad del sistema, los servicios o los datos.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| Conexión con el servidor de Active Directory interrumpida | Crítico | EMS | No se puede acceder a ninguno de los servidores AD/LDAP configurados para este SVM. 
+
+
+| El aggregate no está en línea | Crítico | Métrica | Algunos agregados están sin conexión. La creación de volúmenes podría causar FSID duplicados. 
+
+
+| El servidor antivirus está ocupado | Crítico, Advertencia, Información | EMS | El servidor antivirus está sobrecargado y no puede aceptar más solicitudes de análisis. 
+
+
+| Las credenciales de AWS no se han inicializado | Crítico, Advertencia, Información | EMS | Un módulo intentó acceder a las credenciales basadas en roles de AWS IAM antes de que se hubieran inicializado. 
+
+
+| No se puede acceder al nivel de la nube | Crítico, Advertencia, Información | EMS | Un nodo de almacenamiento no puede conectarse a la API del almacén de objetos de Cloud Tier. Algunos datos serán inaccesibles. 
+
+
+| Fallo del disco | Crítico | Métrica | Un disco ha fallado, se está saneando o está en modo de mantenimiento. 
+
+
+| Disco fuera de servicio | Crítico, Advertencia, Información | EMS | Se ha retirado un disco del servicio debido a un fallo, a un proceso de saneamiento o a tareas de mantenimiento. 
+
+
+| Se retiró la fuente de alimentación de las estanterías de discos | Crítico, Advertencia, Información | EMS | Se ha retirado una fuente de alimentación de la bandeja de discos. 
+
+
+| Se ha superado el límite de comandos del puerto objetivo de FC | Crítico, Advertencia, Información | EMS | El número de comandos pendientes en el puerto objetivo FC físico supera el límite permitido. 
+
+
+| Error al devolver el grupo de almacenamiento | Crítico, Advertencia, Información | EMS | Este evento se produce durante la reubicación de un grupo de almacenamiento (agregado) como parte de una reversión de la conmutación por error de almacenamiento (SFO), cuando el nodo de destino no puede acceder a los almacenes de objetos. 
+
+
+| Interconexión de alta disponibilidad inactiva | Crítico, Advertencia, Información | EMS | La interconexión de alta disponibilidad (HA) está inactiva. Riesgo de interrupción del servicio cuando no está disponible la conmutación de sitios. 
+
+
+| InstanceDown | Crítico | Métrica | La instancia supervisada no es accesible y puede estar inactiva o experimentando problemas de red. 
+
+
+| LUN destruido | Crítico, Advertencia, Información | EMS | Se destruyó una LUN y ya no es accesible. 
+
+
+| LUN fuera de línea | Crítico, Advertencia, Información | EMS | Se desconectó manualmente una LUN. 
+
+
+| Fallo del ventilador de la unidad principal | Crítico, Advertencia, Información | EMS | Uno o varios ventiladores de la unidad principal han dejado de funcionar. El sistema sigue funcionando. 
+
+
+| El ventilador de la unidad principal está en estado de alerta | Crítico, Advertencia, Información | EMS | Uno o varios ventiladores de refrigeración de la unidad principal están en estado de aviso. 
+
+
+| Se ha superado el número máximo de sesiones por usuario | Crítico, Advertencia, Información | EMS | Has superado el número máximo de sesiones permitidas por usuario en una conexión TCP. 
+
+
+| Se ha superado el número máximo de veces que se puede abrir un archivo | Crítico, Advertencia, Información | EMS | Has superado el número máximo de veces que puedes abrir el archivo a través de una conexión TCP. 
+
+
+| MetroCluster conmutación de sitios automática no planificada desactivada | Crítico, Advertencia, Información | EMS | La función de conmutación de sitios automática no planificada se ha desactivado en este clúster. 
+
+
+| MetroCluster monitorización | Crítico, Advertencia, Información | EMS | Se ha detectado una alerta del control del estado del sistema. 
+
+
+| Se ha agotado el grupo de almacenamiento de NFSv4 | Crítico, Advertencia, Información | EMS | Se ha agotado un pool de almacenamiento NFSv4. 
+
+
+| Conflicto de nombres NetBIOS | Crítico, Advertencia, Información | EMS | El servicio de nombres NetBIOS ha recibido una respuesta negativa a una solicitud de registro de nombre de un equipo remoto. 
+
+
+| No hay ningún motor de análisis registrado | Crítico, Advertencia, Información | EMS | El conector antivirus notificó a ONTAP que no tiene un motor de análisis registrado. 
+
+
+| No hay conexión con Vscan | Crítico, Advertencia, Información | EMS | ONTAP no tiene conexión Vscan para atender las solicitudes de análisis de virus. Esto podría causar indisponibilidad de datos si la opción de análisis obligatorio está activada. 
+
+
+| Servidor antivirus sin respuesta | Crítico, Advertencia, Información | EMS | ONTAP detectó un servidor antivirus que no respondía y cerró forzosamente su conexión Vscan. 
+
+
+| Recurso compartido de administrador inexistente | Crítico, Advertencia, Información | EMS | Problema de Vscan: un cliente ha intentado conectarse a un recurso compartido ONTAP_ADMIN$ que no existe. 
+
+
+| La batería de la NVRAM está baja | Crítico, Advertencia, Información | EMS | La capacidad de la batería de la NVRAM es extremadamente baja. Podría producirse una pérdida de datos si la batería se agota. 
+
+
+| Espacio de nombres NVMe destruido | Crítico, Advertencia, Información | EMS | Se destruyó un espacio de nombres NVMe y ya no es accesible. 
+
+
+| Espacio de nombres NVMe desconectado | Crítico, Advertencia, Información | EMS | Se desconectó manualmente un espacio de nombres NVMe. 
+
+
+| Espacio de nombres NVMe en línea | Crítico, Advertencia, Información | EMS | Se ha vuelto a poner en funcionamiento un espacio de nombres NVMe. 
+
+
+| Periodo de gracia de la licencia de NVMe-oF activo | Crítico, Advertencia, Información | EMS | Este evento se produce a diario cuando se utiliza el protocolo NVMe over Fabrics (NVMe-oF) y el periodo de gracia de la licencia está activo. 
+
+
+| Ha vencido el periodo de gracia de la licencia de NVMe-oF | Crítico, Advertencia, Información | EMS | El periodo de gracia de la licencia de NVMe over Fabrics (NVMe-oF) ha finalizado y la funcionalidad NVMe-oF está desactivada. 
+
+
+| Inicio del periodo de gracia de la licencia de NVMe-oF | Crítico, Advertencia, Información | EMS | Se ha detectado la configuración de NVMe over Fabrics (NVMe-oF) durante la actualización al software ONTAP 9.5. 
+
+
+| No se puede resolver el host del almacén de objetos | Crítico, Advertencia, Información | EMS | No se puede resolver el nombre de host del servidor del almacén de objetos en una dirección IP. 
+
+
+| El LIF entre clústeres del almacén de objetos está inactivo | Crítico, Advertencia, Información | EMS | El cliente del almacén de objetos no puede encontrar un LIF operativo para comunicarse con el servidor del almacén de objetos. 
+
+
+| Discrepancia en la firma del almacén de objetos | Crítico, Advertencia, Información | EMS | La firma de la solicitud enviada al servidor del almacén de objetos no coincide con la firma calculada por el cliente. 
+
+
+| Estado del puerto inactivo | Crítico | EMS | Este puerto Ethernet está inactivo. El tráfico en ese enlace podría verse afectado. 
+
+
+| Tiempo de espera de READDIR | Crítico, Advertencia, Información | EMS | Una operación de archivo READDIR ha superado el tiempo de espera permitido para su ejecución en WAFL. 
+
+
+| Error al reubicar el grupo de almacenamiento | Crítico, Advertencia, Información | EMS | Este evento se produce durante la reubicación de un grupo de almacenamiento (agregado), cuando el nodo de destino no puede acceder a los almacenes de objetos. 
+
+
+| El estado «activo-activo» de SAN ha cambiado | Crítico, Advertencia, Información | EMS | La ruta SAN ya no es simétrica. 
+
+
+| No se ha detectado el pulso del Service Processor | Crítico, Advertencia, Información | EMS | ONTAP no está recibiendo la señal de pulso esperada del SP. 
+
+
+| Se ha detenido el heartbeat del procesador de servicios | Crítico, Advertencia, Información | EMS | ONTAP ya no recibe señales de actividad del SP. 
+
+
+| El procesador de servicios no está configurado | Crítico, Advertencia, Información | EMS | Este evento se produce cada semana para recordarte que debes configurar el procesador de servicios (SP). 
+
+
+| Procesador de servicio desconectado | Crítico, Advertencia, Información | EMS | El procesador de servicio (SP) está desconectado. 
+
+
+| SFP en el adaptador objetivo FC recibe poca potencia | Crítico, Advertencia, Información | EMS | Esta alerta se produce cuando la potencia recibida (RX) por un transceptor enchufable de factor de forma pequeño (SFP en FC objetivo) está en un nivel por debajo del umbral definido. 
+
+
+| SFP en adaptador objetivo FC transmitiendo a baja potencia | Crítico, Advertencia, Información | EMS | Esta alerta se produce cuando la potencia transmitida (TX) por un transceptor enchufable de factor de forma pequeño (SFP en FC target) se encuentra por debajo del umbral definido. 
+
+
+| Error al crear una copia en la sombra | Crítico, Advertencia, Información | EMS | Un Servicio de copias en la sombra de volumen (VSS), una operación del servicio de copia de seguridad y restauración de Microsoft Server, ha fallado. 
+
+
+| Se ha averiado el ventilador de la estantería | Crítico, Advertencia, Información | EMS | El ventilador o módulo de ventilación indicado de la estantería ha fallado. 
+
+
+| SnapMirror el tiempo de retraso es alto | Crítico | Métrica | La relación SnapMirror lleva más de una hora de retraso respecto al horario previsto de actualización. 
+
+
+| Interconexión de alta disponibilidad del almacenamiento: uno o más enlaces inactivos | Advertencia | EMS | Uno o varios enlaces de interconexión de alta disponibilidad con el nodo asociado están inactivos. La redundancia de conmutación de sitios se reduce. 
+
+
+| Fallaron las fuentes de alimentación de los conmutadores de almacenamiento | Crítico, Advertencia, Información | EMS | Falta una fuente de alimentación en el conmutador del clúster. La redundancia se reduce. 
+
+
+| La detención de la máquina virtual de almacenamiento se realizó correctamente | Crítico, Advertencia, Información | EMS | La máquina virtual de almacenamiento se detuvo correctamente. 
+
+
+| Licencia de replicación de la configuración de SVM no válida | Advertencia | EMS | Falta la licencia de replicación de la configuración de SVM-DR, ha caducado o no se ha aplicado 
+
+
+| El sistema no puede funcionar debido a un fallo en el ventilador de la unidad principal | Crítico, Advertencia, Información | EMS | Uno o varios ventiladores de la unidad principal han dejado de funcionar, lo que ha interrumpido el funcionamiento del sistema. Esto podría provocar una posible pérdida de datos. 
+
+
+| Demasiada autenticación CIFS | Crítico, Advertencia, Información | EMS | Se han producido muchas negociaciones de autenticación simultáneamente. Hay 256 solicitudes de nuevas sesiones incompletas de este cliente. 
+
+
+| Discos sin asignar | Crítico, Advertencia, Información | EMS | El sistema tiene discos sin asignar: se está desperdiciando capacidad. 
+
+
+| Estado del volumen sin conexión | Informativo | Métrica | El volumen se ha puesto fuera de línea. 
+
+
+| Volumen restringido | Crítico, Advertencia, Información | EMS | Este evento indica que un volumen flexible ha pasado a ser restringido. 
+
+
+| Se ha detectado un virus | Crítico, Advertencia, Información | EMS | Un servidor de Vscan informó que un archivo podría estar infectado con un virus. 
+|===
+
+
+[[capacity-alerts]]
+== Alertas de capacidad
+
+Estas alertas indican el consumo de almacenamiento o presión de capacidad.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| FabricPool la resincronización de la replicación en espejo se completó | Crítico, Advertencia, Información | EMS | El proceso de resincronización del espejo de FabricPool se completó correctamente desde el almacén de objetos principal al almacén de objetos espejo. 
+
+
+| FabricPool el límite de uso de espacio está casi alcanzado | Crítico, Advertencia, Información | EMS | El uso total de espacio de FabricPool en todo el clúster de los almacenes de objetos de proveedores con licencia por capacidad ha alcanzado casi el límite de la licencia. 
+
+
+| FabricPool se alcanzó el límite de uso de espacio | Crítico, Advertencia, Información | EMS | El uso total de espacio FabricPool en todo el clúster de los almacenes de objetos de proveedores con licencia por capacidad ha alcanzado el límite de la licencia. 
+
+
+| Espacio libre en el volumen raíz del nodo insuficiente | Crítico, Advertencia, Información | EMS | El sistema ha detectado que el volumen raíz tiene muy poco espacio disponible. 
+
+
+| La memoria del monitor de QoS ha alcanzado su límite máximo | Crítico, Advertencia, Información | EMS | La memoria dinámica de un subsistema de QoS ha alcanzado su límite en el hardware actual de la plataforma. 
+
+
+| El cambio automático de tamaño del volumen se realizó correctamente | Crítico, Advertencia, Información | EMS | El volumen se redimensionó automáticamente porque el crecimiento automático del volumen está habilitado. 
+
+
+| Volumen completo | Crítico | Métrica | El volumen está lleno en más del 90 %. Libera espacio o añade capacidad para evitar errores de escritura. 
+|===
+
+
+[[configuration-alerts]]
+== Alertas de configuración
+
+Estas alertas indican cambios en la configuración o actualizaciones del inventario.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| Fuente de alimentación de la estantería de discos detectada | Crítico, Advertencia, Información | EMS | Se ha añadido una fuente de alimentación a la bandeja de discos. 
+
+
+| Volumen creado | Información | Métrica | Se ha creado un volumen. 
+
+
+| Volumen eliminado | Advertencia | Métrica | Se eliminó un volumen. 
+
+
+| Volumen modificado | Información | Métrica | Se ha modificado un volumen. 
+
+
+| Comprobación de coherencia de WAFL pendiente | Advertencia | EMS | Las comprobaciones de coherencia de WAFL en este agregado superaron el límite horario. 
+|===
+
+
+[[performance-alerts]]
+== Alertas de rendimiento
+
+Estas alertas indican problemas de latencia o de rendimiento de los nodos.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| La latencia de NFS en el nodo es elevada | Crítico | Métrica | Las operaciones NFS en este nodo están experimentando una latencia alta (>5000 us). 
+
+
+| Pánico en el nodo | Crítico, Advertencia, Información | EMS | El nodo entró en pánico y se reinició. 
+|===
+
+
+[[protection-alerts]]
+== Alertas de protección
+
+Estas alertas afectan la replicación, la conmutación por error o la recuperación.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| Se eliminó la snapshot común de la relación Fanout SnapMirror | Crítico, Advertencia, Información | EMS | Se elimina una copia de Snapshot más antigua como parte de una operación de resincronización o actualización de SnapMirror Synchronous. 
+
+
+| ONTAP Mediator añadido | Crítico, Advertencia, Información | EMS | El mediador ONTAP se añadió correctamente a este clúster. 
+
+
+| El certificado CA de ONTAP Mediator ha caducado | Crítico, Advertencia, Información | EMS | El certificado de la autoridad de certificación (CA) de ONTAP Mediator ha caducado. 
+
+
+| El certificado CA de ONTAP Mediator está por caducar | Crítico, Advertencia, Información | EMS | El certificado de la autoridad de certificación (CA) de ONTAP Mediator caducará en los próximos 30 días. 
+
+
+| El certificado de cliente de ONTAP Mediator ha caducado | Crítico, Advertencia, Información | EMS | El certificado de cliente de ONTAP Mediator ha caducado. 
+
+
+| Caducidad del certificado de cliente de ONTAP Mediator | Crítico, Advertencia, Información | EMS | El certificado de cliente de ONTAP Mediator caducará en los próximos 30 días. 
+
+
+| No se puede acceder a ONTAP Mediator | Crítico, Advertencia, Información | EMS | No se puede acceder al ONTAP Mediator, ya sea porque se le ha dado un nuevo uso o porque el paquete de Mediator ya no está instalado. 
+
+
+| ONTAP Mediator eliminado | Crítico, Advertencia, Información | EMS | El mediador ONTAP se eliminó correctamente de este clúster. 
+
+
+| ONTAP Mediator inaccesible | Crítico, Advertencia, Información | EMS | El mediador de ONTAP no es accesible, lo que significa que la conmutación por error de SnapMirror no es posible hasta que se restablezca la conectividad. 
+
+
+| El certificado del servidor ONTAP Mediator ha caducado | Crítico, Advertencia, Información | EMS | El certificado del servidor ONTAP Mediator ha caducado. 
+
+
+| El certificado del servidor ONTAP Mediator está a punto de caducar | Crítico, Advertencia, Información | EMS | El certificado del servidor ONTAP Mediator caducará en los próximos 30 días. 
+
+
+| SnapMirror relación de active sync fuera de sincronización | Crítico, Advertencia, Información | EMS | La relación sincrónica SnapMirror pasó de estar sincronizada a no estarlo. La protección de datos se ve afectada. 
+
+
+| SnapMirror la conmutación por error automática no planificada de active sync se completó | Crítico, Advertencia, Información | EMS | La operación de conmutación automática no planificada de la Continuidad de Negocio de SnapMirror (SMBC) se completó. 
+
+
+| SnapMirror active sync conmutación por error automática no planificada fallida | Crítico, Advertencia, Información | EMS | La operación de conmutación automática ante fallos no planificados de SnapMirror Business Continuity (SMBC) falló. 
+
+
+| SnapMirror la conmutación por error planificada de active sync se completó | Crítico, Advertencia, Información | EMS | La operación de conmutación por error planificada de SnapMirror Business Continuity (SMBC) se completó. 
+
+
+| SnapMirror error en la conmutación por error planificada de active sync | Crítico, Advertencia, Información | EMS | La operación de conmutación por error planificada de SnapMirror Business Continuity (SMBC) falló. 
+
+
+| Error en la instantánea común de la relación SnapMirror | Crítico, Advertencia, Información | EMS | Se ha producido un error al crear una copia Snapshot común. 
+
+
+| Error al inicializar la relación de SnapMirror | Crítico, Advertencia, Información | EMS | El comando de inicialización de SnapMirror falla y no se intentarán más reintentos. 
+
+
+| SnapMirror relación fuera de sincronización | Crítico, Advertencia, Información | EMS | La relación sincrónica SnapMirror pasó de estar sincronizada a no estarlo. La protección de datos se ve afectada. 
+
+
+| Ha fallado el intento de resincronización de la relación SnapMirror | Crítico, Advertencia, Información | EMS | Un intento de sincronización de SnapMirror entre los volúmenes de origen y destino falló. 
+
+
+| La instantánea de la relación SnapMirror no se replica | Crítico, Advertencia, Información | EMS | La copia Snapshot para la relación SnapMirror Synchronous no se replicó correctamente. 
+|===
+
+
+[[security-alerts]]
+== Alertas de seguridad
+
+Estas alertas indican amenazas o accesos no autorizados.
+
+[cols="23,12,20,45"]
+|===
+| Nombre de la alerta | Gravedad | Tipo | Descripción 
+
+
+| Actividad de ransomware detectada | Crítico, Advertencia, Información | EMS | Para proteger los datos frente al ransomware detectado, se ha creado una copia Snapshot que puede utilizarse para restaurar los datos originales. 
+
+
+| Supervisión antiransomware de las máquinas virtuales de almacenamiento | Crítico, Advertencia, Información | EMS | Ha cambiado el estado de protección contra ransomware de la Storage VM. 
+
+
+| Acceso no autorizado de un usuario a la carpeta compartida de administración | Crítico, Advertencia, Información | EMS | Un cliente intentó conectarse al recurso compartido con privilegios ONTAP_ADMIN$, pero el usuario que ha iniciado sesión no forma parte de ningún pool de escáneres activo de Vscan en este SVM. 
+
+
+| Supervisión anti-ransomware de volúmenes | Crítico, Advertencia, Información | EMS | El estado anti-ransomware de un volumen ha cambiado. 
+|===

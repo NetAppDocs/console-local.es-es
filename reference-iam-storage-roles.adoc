@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: reference-iam-storage-roles.html 
+keywords: storage roles, Storage admin, Storage viewer, System health specialist, ONTAP management, storage governance, identity and access management, access roles, rbac, netapp console local 
+summary: Puedes asignar los siguientes roles a los usuarios para darles acceso a las funciones de gestión del almacenamiento en la implementación local de NetApp Console. Puedes asignar a los usuarios un rol administrativo para gestionar el almacenamiento o un rol de visualización para monitorear. 
+---
+= Roles de acceso al almacenamiento para la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puedes asignar los siguientes roles a los usuarios para darles acceso a las funciones de gestión del almacenamiento en la implementación local de NetApp Console. Puedes asignar a los usuarios un rol administrativo para gestionar el almacenamiento o un rol de visualización para monitorear.
+
+Los administradores pueden asignar roles de almacenamiento a los usuarios para los siguientes recursos de almacenamiento y funciones:
+
+Recursos de almacenamiento:
+
+* Clústeres de ONTAP locales
+
+
+Servicios y funciones de la consola:
+
+* Funciones de estado del almacenamiento
+
+
+.Ejemplo de roles de almacenamiento en una implementación local de NetApp Console
+XYZ Corporation, una empresa multinacional, cuenta con un amplio equipo de ingenieros y administradores de almacenamiento. Permiten a este equipo gestionar los activos de almacenamiento de sus regiones mientras limitan el acceso a tareas principales de implementación local de Console como la gestión de usuarios y la gestión de licencias.
+
+Dentro de un equipo de 12 personas, a dos usuarios se les asigna el rol de *Storage viewer*, que les permite supervisar los recursos de almacenamiento asociados a las flotas de implementación local de Console a las que están asignados. A los nueve restantes se les asigna el rol de *Storage admin*, que incluye la capacidad de gestionar actualizaciones de software, acceder a ONTAP System Manager a través de la implementación local de Console, así como descubrir recursos de almacenamiento (añadir sistemas). A una persona del equipo se le asigna el rol de *System health specialist* para que pueda gestionar el estado de los recursos de almacenamiento de su región, pero sin poder modificar ni eliminar ningún sistema. Esta persona también puede realizar actualizaciones de software en los recursos de almacenamiento de las flotas a las que está asignada.
+
+La organización cuenta con dos usuarios adicionales con el rol de *Organization admin* que pueden gestionar todos los aspectos de la implementación local de la Console, incluida la gestión de usuarios y de licencias, así como varios usuarios con el rol de *Folder or fleet admin* que pueden realizar tareas de administración de la implementación local de la Console para las carpetas y flotas a las que están asignados.
+
+La siguiente tabla muestra las acciones que realiza cada rol de almacenamiento.
+
+[cols="40,20a,20a,20a"]
+|===
+| Función y acción | Administrador de almacenamiento | Especialista en estado del sistema | Visor de almacenamiento 
+
+
+4+| *Gestión del almacenamiento*: 
+
+
+| Descubre nuevos recursos (agregar sistemas)  a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+| Ver sistemas añadidos  a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+
+
+| Eliminar sistemas desde la consola  a| 
+Sí
+ a| 
+No
+ a| 
+No
+
+
+
+| Modificar sistemas  a| 
+Sí
+ a| 
+No
+ a| 
+No
+
+
+
+4+| *Acceso de system manager* 
+
+
+| Puedes introducir tus credenciales  a| 
+Sí
+ a| 
+Sí
+ a| 
+No
+
+|===

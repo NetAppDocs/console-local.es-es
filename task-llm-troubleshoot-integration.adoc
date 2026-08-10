@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: task-llm-troubleshoot-integration.html 
+keywords: LLM, AI, troubleshooting, openai, openai-compatible, proxy, endpoint, api key, netapp console 
+summary: Soluciona los problemas de integración de LLM en NetApp Console en una implementación local con un flujo de diagnóstico rápido para la configuración, la disponibilidad del asistente, los errores en tiempo de ejecución y los problemas de credenciales. 
+---
+= Soluciona problemas de la integración de LLM en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza este flujo de clasificación rápida para diagnosticar y resolver problemas habituales de integración de LLM en NetApp Console en una implementación local.
+
+
+NOTE: Esta documentación sobre cómo conectar un modelo de lenguaje grande (LLM) al asistente de la Consola para habilitar funciones de IA se ofrece como una versión preliminar tecnológica. Con esta versión preliminar, NetApp se reserva el derecho a modificar los detalles de la oferta, los contenidos y el calendario antes de su disponibilidad general.
+
+Si aún no has completado la configuración, consulta link:task-llm-connect.html["Conecta tu LLM y activa el asistente de NetApp Console"].
+
+
+
+[[triage-llm-integration-issues-quickly]]
+== Soluciona rápido los problemas de integración de Triage LLM
+
+. Valida la configuración de las herramientas de IA en *Administración > Herramientas de IA*.
++
+Confirma el tipo de proveedor, la URL del endpoint, la clave de API, el modelo seleccionado y el acceso a la red de salida.
+
+. Comprueba la disponibilidad del asistente en el panel de control.
++
+Comprueba que el botón *Console assistant* aparezca para los usuarios y las organizaciones previstos.
+
+. Valida el comportamiento en tiempo de ejecución.
++
+Realiza una solicitud sencilla de solo lectura y comprueba la accesibilidad del endpoint del proveedor, la disponibilidad del modelo y el estado del servicio del proveedor.
+
+
+
+
+
+[[troubleshoot-by-symptom]]
+== Solucionar problemas según los síntomas
+
+[cols="1,1,2,2"]
+|===
+| Síntoma | Causa probable | Qué hay que comprobar | Próxima acción 
+
+
+| Guardar o probar falla en AI Tools | Incompatibilidad de configuración o conectividad | Tipo de proveedor, URL del punto final, formato de la clave de API, modelo seleccionado y acceso saliente | Corrige el valor que no supera la validación y vuelve a guardar 
+
+
+| Falta el botón *Console assistant* | Estado de integración inadecuado, incompatibilidad de la organización o incompatibilidad de RBAC | Guardado exitoso de herramientas de IA, estado de integración, organización actual y rol de acceso esperado | Actualiza la sesión y verifica con una cuenta de administrador que sepas que funciona correctamente 
+
+
+| El asistente se abre pero la solicitud falla | Problema con el proveedor o con la ruta de ejecución | Accesibilidad del endpoint, disponibilidad del modelo en ese endpoint, límites del proveedor y estado temporal del proveedor | Vuelve a intentarlo tras solucionar la incompatibilidad entre el endpoint y el modelo o los problemas de límite por parte del proveedor. 
+
+
+| La respuesta del asistente es lenta o irregular | Tamaño de la solicitud, rendimiento del endpoint o inestabilidad de la red/proxy | Prueba breve de respuesta, estado del servicio del proveedor y estabilidad de la red/proxy | Utiliza una instrucción más breve, prueba con otro modelo compatible y estabiliza la red o el enrutamiento del proxy 
+|===
+
+
+[[respond-to-llm-credential-exposure-or-misuse]]
+== Responde ante la divulgación o el uso indebido de credenciales de LLM
+
+Si sospechas que se ha filtrado una clave API o que se ha producido un uso no autorizado:
+
+. Revoca la clave API existente en el sistema de tu proveedor.
+. Crea una nueva clave de API.
+. Actualiza la clave en *Administración > Herramientas de IA*.
+. Verifica que la reconexión se realizó correctamente con una prueba de asistente de solo lectura.
+

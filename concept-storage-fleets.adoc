@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-fleets.html 
+keywords: storage fleets, fleet management, storage organization, folders, ONTAP, clusters, storage systems, resource grouping, delegated administration, fleet design, netapp console local 
+summary: Una flota de almacenamiento agrupa los sistemas de almacenamiento que gestionas de forma conjunta en la implementación local de NetApp Console. Usa carpetas para agrupar flotas relacionadas. Puedes aplicar políticas, conceder acceso y supervisar el estado en el ámbito que necesites. 
+---
+= Conoce las flotas de almacenamiento en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Una flota de almacenamiento agrupa los sistemas de almacenamiento que gestionas de forma conjunta en la implementación local de NetApp Console. Usa carpetas para agrupar flotas relacionadas. Puedes aplicar políticas, conceder acceso y supervisar el estado en el ámbito que necesites.
+
+
+
+[[why-fleets-matter]]
+== Por qué son importantes las flotas
+
+A medida que crecen los entornos de almacenamiento, gestionar los clústeres de forma aislada deja de ser viable. Las flotas te ofrecen una forma estructurada de agrupar sistemas de almacenamiento relacionados para que puedas gestionarlos como una unidad. En lugar de configurar políticas o controles de acceso clúster por clúster, los aplicas una sola vez a nivel de flota. Esto reduce el trabajo administrativo repetitivo y asegura que todos los clústeres de una flota funcionen bajo los mismos estándares.
+
+
+
+[[how-folders-and-fleets-organize-your-resources]]
+== Cómo las carpetas y las flotas organizan tus recursos
+
+La jerarquía de recursos de tu organización está formada por carpetas y flotas. Las carpetas agrupan flotas relacionadas y las flotas agrupan sistemas de almacenamiento.
+
+* *Organización* es el nivel superior de la jerarquía y representa tu empresa.
+* Las *carpetas* te ayudan a organizar flotas relacionadas. Por ejemplo, puedes crear una carpeta para cada región o unidad de negocio y luego crear flotas dentro de cada carpeta. Las carpetas pueden contener otras carpetas o flotas, pero no pueden tener sistemas de almacenamiento asociados directamente a ellas. Cuando asignas un rol a un miembro a nivel de carpeta, el miembro hereda ese rol para todas las flotas dentro de la carpeta.
+* Las *flotas* agrupan los sistemas de almacenamiento que gestionas juntos. Asocias los sistemas de almacenamiento a las flotas y asignas miembros a las flotas para concederles acceso.
+
+
+
+NOTE: Las carpetas son una herramienta de organización y no son visibles para los miembros que no tienen permisos de IAM, como el rol de Organization admin o los roles de Folder o fleet admin. Los miembros acceden a las flotas, no a las carpetas.
+
+
+
+[[fleet-examples]]
+== Ejemplos de flotas
+
+La forma de organizar las flotas depende de tu modelo operativo. Entre los enfoques más habituales se incluyen:
+
+* *Por entorno* Crea flotas independientes para las cargas de trabajo de producción, desarrollo y pruebas. Esto mantiene el almacenamiento de producción bajo políticas de rendimiento y capacidad más estrictas, mientras permite mayor flexibilidad en los entornos de menor nivel.
+* *Por unidad de negocio* Agrupa los clústeres que dan servicio a un departamento específico—finanzas, ingeniería o RR. HH.—en una flota dedicada. Luego puedes asignar las responsabilidades de gestión del almacenamiento a los miembros del equipo de esa unidad de negocio sin exponerles a otras flotas.
+* *Por ubicación o centro de datos* Cuando los clústeres están distribuidos entre distintos sitios, organizarlos por ubicación te permite supervisar el estado a nivel de sitio, aplicar políticas de clasificación por niveles específicas para cada región y realizar un seguimiento del consumo de capacidad por sitio.
+* *Por nivel de aplicación* Agrupa los clústeres que alojan un tipo específico de carga de trabajo—bases de datos, recursos compartidos de archivos o máquinas virtuales—para que puedas aplicar una clase de almacenamiento adaptada al perfil de rendimiento de esa carga de trabajo en toda la flota.
+
+
+
+TIP: Utiliza carpetas para añadir otro nivel de organización. Por ejemplo, crea una carpeta para cada región y luego crea flotas por entorno dentro de cada carpeta regional.
+
+
+
+[[how-fleets-connect-to-storage-classes]]
+== Cómo se conectan las flotas a las clases de almacenamiento
+
+Al asociar una clase de almacenamiento a una flota, la implementación local de la NetApp Console aplica las políticas de esa clase a todo el aprovisionamiento de almacenamiento dentro de la flota. Las cargas de trabajo aprovisionadas dentro de la flota heredan automáticamente las reglas de rendimiento, capacidad y jerarquización definidas en la clase de almacenamiento, sin que los administradores tengan que seleccionar ni verificar la configuración de las políticas en el momento del aprovisionamiento. Esto hace que las flotas sean la forma principal de aplicar un comportamiento de almacenamiento coherente en todos los clústeres que cumplen un propósito común.
+
+
+
+[[how-folders-and-fleets-support-access-control-and-visibility]]
+== Cómo las carpetas y las flotas facilitan el control de acceso y la visibilidad
+
+Las carpetas y las flotas sirven como límites para el acceso de los usuarios:
+
+* Cuando asignas un rol a nivel de *carpeta*, el miembro hereda ese rol para todas las flotas y recursos dentro de la carpeta. Esto permite a los administradores de la organización delegar responsabilidades administrativas creando carpetas y asignando un rol de administrador de carpeta o de flota. Luego, esos administradores pueden gestionar todas las flotas dentro de su carpeta sin acceder a toda la organización.
+* Cuando asignas un rol a nivel de *flota*, el miembro solo tiene acceso a los sistemas de almacenamiento dentro de esa flota.
+
+
+Esto te permite delegar la gestión del almacenamiento a los miembros del equipo o a los responsables de las aplicaciones sin concederles visibilidad en partes de tu infraestructura que no estén relacionadas. La implementación local de Console ofrece supervisión del estado y el rendimiento a nivel de flota, así puedes ver el estado de todos los clústeres de una flota desde una única vista, identificar problemas temprano y actuar antes de que afecten a las cargas de trabajo.

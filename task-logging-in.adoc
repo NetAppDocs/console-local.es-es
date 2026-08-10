@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: task-logging-in.html 
+keywords: logging in, log in, sign in, signing in, user account, MFA, multi-factor authentication, AD, Active Directory, directory services, local user, Console local deployment access 
+summary: Después de registrarte en la implementación local de NetApp Console, puedes iniciar sesión desde la consola basada en la web para empezar a gestionar tus datos y tu infraestructura de almacenamiento. 
+---
+= Inicia sesión en NetApp Console implementación local
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puedes iniciar sesión en la implementación local de NetApp Console después de que el administrador de tu organización te haya invitado a la cuenta de usuario de la organización en Console local. Para iniciar sesión, usas la dirección de correo electrónico asociada con tu inicio de sesión.
+
+Si inicias sesión pero no ves ningún recurso, contacta al administrador de tu organización. link:task-user-settings.html#contact-admin["Contacta al administrador de tu organización"].
+
+.Pasos
+. Abre un navegador web y ve a la dirección IP donde está instalada la implementación local de NetApp Console.
+. En la página *Iniciar sesión*, introduce la dirección de correo electrónico que está asociada con tu inicio de sesión.
+. Dependiendo del método de autenticación asociado a tu inicio de sesión, se te pedirá que introduzcas tus credenciales.
++
+** Una cuenta de NetApp Console con tu dirección de correo electrónico y una contraseña
+
+
++
+[NOTE]
+====
+** Si la autenticación multifactorial (MFA) está activada: después de introducir tu contraseña, se te pedirá que ingreses un código TOTP (de tu sistema de autenticación) o que uses un código de recuperación.
+** Si vas a iniciar sesión con códigos de recuperación, utilízalos en el orden que se muestra en la interfaz de usuario durante la solicitud del código de recuperación.
+
+
+====
++
+** Una cuenta de Active Directory con tu dirección de correo electrónico y contraseña
+
+
+

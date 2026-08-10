@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-resources.html 
+keywords: resource, hierarchy, association, access, resource permissions, resource hierarchy, iam, identity and access management 
+summary: Controla el acceso de los usuarios a los recursos añadiéndolos a flotas y carpetas en tu organización de implementación local de NetApp Console. Concede acceso a los usuarios a nivel de flota. 
+---
+= Administra recursos en carpetas y flotas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Gestiona el acceso a los recursos en la implementación local de NetApp Console asociando los recursos con la carpeta o flota correcta, lo que controla qué equipos pueden acceder y gestionarlos.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Coloca los recursos donde los equipos adecuados puedan gestionarlos, muévelos cuando cambie la titularidad y elimina las asociaciones cuando ya no sean necesarias.
+
+Un _recurso_ es una entidad que reconoce la implementación local de Console, como un recurso de almacenamiento o una carga de trabajo de Backup and Recovery.
+
+
+
+[[console-resource-types]]
+== Tipos de recursos de la consola
+
+La implementación local de la consola es compatible tanto con recursos de almacenamiento como con cargas de trabajo de Backup and Recovery. Asocia cualquiera de los dos tipos de recursos a una flota para controlar el acceso y la gestión.
+
+Recursos de almacenamiento:: Los recursos de almacenamiento son el tipo de recurso más habitual en tu organización. Cuando añadas un sistema de almacenamiento a una implementación local de Console, asócialo a una flota para que los equipos correspondientes puedan acceder a él y gestionarlo. Por ejemplo, tras añadir un clúster ONTAP, asócialo a la  `Production-US-East` flota.
+Cargas de trabajo de copia de seguridad y recuperación:: Las cargas de trabajo de Backup and Recovery también se consideran recursos. Puedes asignar permisos a los miembros para que accedan a las cargas de trabajo de Backup and Recovery asociándolas a flotas. Por ejemplo, asigna a un miembro acceso a una carga de trabajo de Backup and Recovery asociándola a una flota a la que el miembro pueda acceder y otorgándole el rol adecuado de Backup and Recovery.
+
+
+
+
+[[view-the-resources-in-your-organization]]
+== Consulta los recursos de tu organización
+
+Consulta los recursos de tu organización para buscar un recurso específico y ver a qué flotas o carpetas está asociado. Si aún no has creado ninguna carpeta ni flota, todos los recursos están asociados a la flota predeterminada directamente bajo la organización.
+
+.Pasos
+. Selecciona *Administración > Identidad y acceso*.
+. Selecciona *Recursos*.
+. Selecciona *Búsqueda avanzada y filtros*.
+. Utiliza las opciones disponibles para buscar un recurso:
++
+** *Buscar por nombre de recurso*: Introduce una cadena de texto y selecciona *Add*.
+** *Plataforma*: Selecciona una o varias plataformas, como Amazon Web Services.
+** *Recursos*: selecciona uno o varios recursos, como Cloud Volumes ONTAP.
+** *Organización, carpeta o flota*: selecciona toda la organización, una carpeta concreta o una flota concreta.
+
+
+. Selecciona *Buscar*.
+
+
+
+
+[[associate-a-resource-with-a-folder-or-fleet]]
+[[associate-resource]]
+== Asocia un recurso con una carpeta o una flota
+
+Asocia un recurso a una flota o carpeta para que los equipos correspondientes puedan gestionarlo. Por ejemplo, después de añadir un clúster ONTAP, asócialo a la flota  `Production-US-East` para que los administradores regionales de almacenamiento de esa flota puedan gestionarlo.
+
+
+NOTE: Los usuarios con el rol de administrador de la organización pueden añadir recursos a una carpeta para delegar las tareas de asociación de flotas al administrador de la carpeta o al administrador de flotas de esa carpeta. link:task-iam-manage-folders-fleets.html#associate-resource-folder["Asociar un recurso a una carpeta"].
+
+.Pasos
+. Desde la página *Recursos*, navega hasta un recurso en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Asociar a una carpeta o flota*.
+. Selecciona una carpeta o una flota y luego selecciona *Aceptar*.
+. Para asociar una carpeta o flota adicional, selecciona *Add folder or fleet* y luego selecciona la carpeta o la flota.
++
+Ten en cuenta que solo puedes seleccionar las carpetas y flotas para las que tienes permisos de administrador.
+
+. Selecciona *Asociar recursos*.
++
+** Si has asociado el recurso a flotas, los miembros que tengan permisos para esas flotas ahora pueden acceder al recurso desde la Console.
+** Si has asociado el recurso a una carpeta, un _administrador de carpetas o de flotas_ ya puede acceder al recurso y asociarlo a una flota dentro de la carpeta. link:task-iam-manage-folders-fleets.html#associate-resource-folder["Asociar un recurso a una carpeta"].
+
+
+
+
+
+
+[[view-the-folders-and-fleets-associated-with-a-resource]]
+[[view-folders-and-fleets]]
+== Ver las carpetas y flotas asociadas a un recurso
+
+Comprueba a qué flotas o carpetas está asociado un recurso.
+
+
+NOTE: Para ver qué miembros tienen acceso al recurso, consulta los miembros asignados a la carpeta o flota correspondiente. link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"].
+
+.Pasos
+. Desde la página *Recursos*, ve a un recurso de la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+
+
+El siguiente ejemplo muestra un recurso asociado a una flota.
+
+image:screenshot-iam-resource-details.png["Una captura de pantalla de la página de detalles del recurso que muestra un recurso asociado a una flota que está directamente debajo de la organización."]
+
+
+NOTE: Para ver qué miembros tienen acceso al recurso, consulta la carpeta o la flota correspondiente.
+
+link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"]. link:task-iam-manage-roles.html["Gestiona el acceso de los miembros"].
+
+
+
+[[remove-a-resource-from-a-folder-or-fleet]]
+[[remove-resource]]
+== Eliminar un recurso de una carpeta o flota
+
+Elimina la asociación de un recurso con una carpeta o una flota para evitar que los miembros lo gestionen ahí.
+
+
+NOTE: Para eliminar un sistema de almacenamiento de toda la organización, ve a la página *Sistemas* y elimina el sistema.
+
+.Pasos
+. Desde la página *Recursos*, ve a un recurso de la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. Para eliminar un recurso de una carpeta o flota, selecciona image:icon-delete.png["Un icono de un cubo de basura"] junto a la carpeta o flota.
+. Selecciona *Eliminar* para eliminar la asociación.
+
+
+
+
+[[move-a-resource-between-fleets]]
+== Mover un recurso entre flotas
+
+Mueve un recurso de una flota a otra quitando su asociación con la flota actual y luego asociándolo con la flota de destino.
+
+
+NOTE: El acceso al recurso cambia en cuanto cambia la asociación. Si es posible, realiza ambos pasos en una sola ventana de mantenimiento.
+
+.Pasos
+. Desde la página *Recursos*, ve a un recurso de la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. Selecciona image:icon-delete.png["Un icono de un cubo de basura"] junto a la flota actual y selecciona *Eliminar*.
+. Selecciona *Add folder or fleet*.
+. Selecciona la flota de destino y selecciona *Aceptar*.
+. Selecciona *Asociar recursos*.
+
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:concept-identity-and-access-management.html["Conoce la identidad y el acceso en NetApp Console"]
+* link:task-iam-fleet-mgmt-get-started.html["Empieza con la identidad y el acceso en NetApp Console"]
+* link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota después de mover recursos"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Conoce la API de identidad y acceso"^]
+

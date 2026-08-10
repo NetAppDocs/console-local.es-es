@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: task-iam-fleet-mgmt-get-started.html 
+keywords: iam, quick start, get started, get started with iam, identity and access management 
+summary: Configura la gestión de identidades y accesos en la implementación local de NetApp Console creando tu jerarquía de carpetas y flotas, añadiendo miembros, añadiendo recursos y asignando esos recursos a las flotas correctas. 
+---
+= Comienza con la gestión de identidades y accesos en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, configura la jerarquía de carpetas y flotas, añade miembros y permisos iniciales, y añade y coloca los recursos en las flotas correctas para que los equipos adecuados puedan acceder a ellos y gestionarlos.
+
+.Roles de acceso necesarios
+Superadministrador, administrador de la organización o administrador de carpetas o flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Necesitas el rol de *Organization admin* o *Super admin* para completar la configuración inicial. Después de la configuración, gestiona los recursos, el acceso de los miembros y el acceso a la flota a medida que tu organización cambie.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] Agrega o descubre recursos
+[role="quick-margin-para"]
+Agrega sistemas a la implementación local de Console. Durante la configuración inicial, los sistemas suelen añadirse mientras la flota predeterminada está seleccionada.
+
+[role="quick-margin-para"]
+Aprende a crear o descubrir recursos:
+
+[role="quick-margin-list"]
+* https://docs.netapp.com/us-en/storage-management-ontap-onprem/index.html["Clústeres de ONTAP locales"^]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Crea tu jerarquía de carpetas y flotas
+[role="quick-margin-para"]
+Crea flotas y carpetas adicionales que se ajusten a la jerarquía de tu empresa.
+
+[role="quick-margin-para"]
+link:task-iam-manage-folders-fleets.html["Descubre cómo organizar tus recursos con carpetas y flotas"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Asocia los recursos con las flotas correctas
+[role="quick-margin-para"]
+Al añadir o descubrir un sistema en la implementación local de Console, el recurso se asocia automáticamente a la flota seleccionada en ese momento. Para que un sistema esté disponible para los equipos adecuados, asócialo a las flotas correspondientes de tu jerarquía.
+
+[role="quick-margin-list"]
+* link:task-iam-manage-resources.html["Aprende a gestionar los recursos en carpetas y flotas"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Agrega miembros y asigna permisos iniciales
+[role="quick-margin-para"]
+Añade miembros y asígnales funciones a nivel de organización, carpeta o flota según lo que gestionen.
+
+[role="quick-margin-para"]
+link:task-iam-manage-members-permissions.html["Aprende a gestionar los miembros y sus permisos"].
+
+
+
+[[after-initial-setup]]
+== Tras la configuración inicial
+
+Después de completar la configuración inicial, gestiona el acceso y la asignación de recursos a medida que tu organización cambie:
+
+* link:task-iam-manage-resources.html["Gestiona los recursos en carpetas y flotas"]
+* link:task-iam-manage-roles.html["Gestiona el acceso de los miembros en todas las flotas y carpetas (centrado en los miembros)"]
+* link:task-iam-users-fleets-assign.html["Gestiona quién puede acceder a una flota o carpeta específica (centrado en la flota)"]
+* link:task-iam-manage-folders-fleets.html#delete-a-folder-or-fleet["Elimina las carpetas y las flotas cuando ya no las necesites"]
+
+
+.Información relacionada
+* link:concept-identity-and-access-management.html["Aprende sobre la gestión de identidades y accesos en NetApp Console"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Conoce la API de identidad y acceso"^]
+

@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: concept-iam-rbac.html 
+keywords: roles, permissions, role-based access control, rbac, iam, identity and access management, least privilege, access control, NetApp Console local access, organization access, folder access, fleet access, resource access, directory users, AD, Active Directory, directory services 
+summary: 'Gestiona el acceso de los usuarios a la implementación local de NetApp Console mediante el control de acceso basado en roles (RBAC), asignando roles predefinidos a nivel de organización, carpeta o flota. Cada rol otorga permisos específicos que definen qué acciones pueden realizar los usuarios dentro del ámbito que se les ha asignado.' 
+---
+= Conoce el control de acceso basado en roles en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Gestiona el acceso de los usuarios a la implementación local de NetApp Console mediante el control de acceso basado en roles (RBAC), asignando roles predefinidos a nivel de organización, carpeta o flota. Cada rol otorga permisos específicos que definen qué acciones pueden realizar los usuarios dentro del ámbito que se les ha asignado.
+
+NetApp diseña los roles de implementación local de Console siguiendo el principio de menor privilegio, así que cada rol incluye solo los permisos necesarios para sus tareas. Este enfoque mejora la seguridad al limitar el acceso a lo que cada miembro necesita.
+
+Después de organizar los recursos en carpetas y flotas, asigna a los miembros de la organización uno o varios roles para carpetas o flotas específicas, que les permitan realizar solo sus responsabilidades.
+
+Por ejemplo, puedes asignar a un miembro el rol de Backup and Recovery admin para un nivel de flota específico, permitiéndole realizar operaciones de Backup and Recovery en los recursos dentro de esa flota, sin darle acceso más amplio a toda la organización. A este mismo usuario puedes asignarle el rol para varias flotas dentro de tu organización.
+
+Puedes asignar a los miembros varios roles para el mismo ámbito o para ámbitos diferentes, en función de sus responsabilidades. Por ejemplo, una organización más pequeña podría asignar al mismo miembro los roles de Storage admin y Backup and Recovery admin a nivel de organización, mientras que una organización más grande podría tener diferentes miembros asignados a cada rol a nivel de flota.
+
+
+
+[[types-of-console-organization-members]]
+== Tipos de miembros de la organización de la consola
+
+NetApp Console la implementación local admite los siguientes tipos de miembros:
+
+* _Usuarios_: Los usuarios individuales pueden ser usuarios locales que añadas a NetApp Console local deployment y que utilicen credenciales locales, o bien usuarios de directorio que se autentiquen a través de tu servicio integrado de Active Directory o LDAP. A ambos tipos de usuarios se les pueden asignar roles en NetApp Console local deployment para acceder a los recursos.
+* _Cuentas de servicio_: Cuentas no humanas que utilizan las aplicaciones o los servicios para interactuar con NetApp Console implementación local a través de las API. Puedes añadir cuentas de servicio directamente a tu organización de implementación local de Console.
+
+
+link:task-iam-manage-members-permissions.html#add-members["Descubre cómo añadir miembros a tu organización."]
+
+
+
+[[predefined-roles-in-netapp-console-local-deployment]]
+== Roles predefinidos en la implementación local de NetApp Console
+
+La implementación local de NetApp Console incluye roles predefinidos que puedes asignar a los miembros de la organización. Cada rol incluye permisos que especifican qué acciones puede realizar un miembro dentro de su ámbito asignado (organización, carpeta o flota).
+
+NetApp Console los roles de implementación local usan principios de privilegio mínimo que aseguran que los miembros solo tengan los permisos necesarios para sus tareas y categorizan los roles según el tipo de acceso que proporcionan:
+
+* Funciones de la plataforma: otorga permisos de administración para la implementación local de Console
+* Roles de servicios de datos: Otorgan permisos para gestionar servicios de datos específicos, como Ransomware Resilience y Backup and Recovery
+* Funciones de la aplicación: otorgan permisos para gestionar el almacenamiento, así como para auditar los eventos y alertas de la implementación local de la consola
+
+
+Puedes asignar varios roles a un miembro en función de sus responsabilidades. Por ejemplo, podrías asignar a un miembro tanto el rol de Storage admin como el de Backup and Recovery admin para una flota concreta.
+
+Para elegir el acceso de un miembro, haz coincidir la categoría del rol con las responsabilidades del miembro y luego asigna el rol en el ámbito (organización, carpeta o flota) que corresponda a lo amplio que debe ser ese acceso para el miembro. link:concept-folders-fleets-overview.html#organization-design-examples["Descubre cómo diferentes organizaciones estructuran los roles y el alcance en NetApp Console implementación local"].
+
+link:reference-iam-predefined-roles.html["Infórmate sobre los roles predefinidos que puedes asignar a los miembros en NetApp Console implementación local"].
+
+
+
+[[how-role-inheritance-works]]
+[[role-inheritance]]
+== Cómo funciona la herencia de roles
+
+Cuando asignas un rol a nivel de organización o de carpeta, ese rol se hereda en los ámbitos subordinados dentro de esa parte de la jerarquía. Esto significa que los roles a nivel de organización se aplican en toda la organización, los roles a nivel de carpeta se aplican a todas las carpetas subordinadas y flotas de esa carpeta, y los roles a nivel de flota se aplican solo a los recursos de esa flota.
+
+Utiliza el ámbito que se ajuste al acceso que deseas que tenga el miembro. Por ejemplo, asigna un rol a nivel de carpeta cuando el miembro necesite el mismo acceso en varias flotas de una misma región. Asigna el rol a nivel de flota cuando el miembro deba acceder únicamente a una flota.
+
+No puedes anular el acceso heredado en un ámbito inferior. Si un miembro hereda un rol de la organización o de una carpeta, cambia esa asignación en el ámbito superior donde la concediste originalmente.
+
+link:concept-folders-fleets-overview.html["Conoce las carpetas y las flotas en la implementación local de NetApp Console"]. link:task-iam-manage-roles.html["Gestiona el acceso de los miembros"]. link:task-iam-users-fleets-assign.html["Gestiona las asignaciones de acceso a la flota"].

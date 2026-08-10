@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: task-user-settings.html 
+keywords: user profile, mfa, change password, role, login, multi-factor, authentication, dark mode, read-only mode, contact admin, AD, Active Directory, directory services 
+summary: 'Puedes modificar tu perfil de la Console, lo que incluye cambiar tu contraseña, activar la autenticación multifactor (MFA) y ver quién es tu administrador de la Console.' 
+---
+= Gestiona la configuración de usuario de tu implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En una implementación local de NetApp Console, puedes modificar tu perfil de implementación local de Console, incluyendo cambiar tu contraseña, habilitar la autenticación multifactor (MFA) y ver quién es tu administrador de Console.
+
+
+
+[[change-your-display-name]]
+== Cambia tu nombre para mostrar
+
+Puedes cambiar el nombre que aparece en tu implementación local de la Console, que es el que te identifica ante los demás usuarios. No puedes cambiar tu nombre de usuario ni tu dirección de correo electrónico.
+
+.Pasos
+. Selecciona el icono de perfil en la esquina superior derecha de la implementación local de la NetApp Console para ver el panel de configuración del usuario.
+. Selecciona el icono *Editar* que aparece junto a tu nombre.
+. Introduce tu nuevo nombre para mostrar en el campo *Nombre*.
+
+
+
+
+[[configure-multi-factor-authentication]]
+[[task-user-mfa]]
+== Configura la autenticación multifactor
+
+Configura la autenticación multifactor (MFA) para mejorar la seguridad exigiendo un segundo método de verificación al iniciar sesión en la implementación local de NetAppConsole.
+
+Los usuarios que inician sesión a través del NetApp Support Site no pueden habilitar MFA. Si este es tu caso, no verás la opción para habilitar MFA en la configuración de tu perfil.
+
+No actives la autenticación multifactor (MFA) si tu cuenta de usuario se usa para acceder a la API. La autenticación multifactor impide el acceso a la API cuando se activa para una cuenta de usuario. Usa cuentas de servicio para todo acceso a la API.
+
+
+NOTE: No puedes configurar la autenticación multifactor (MFA) para tu cuenta a través de la implementación local de la Console si tu cuenta utiliza Active Directory u otro servicio de directorio integrado para la autenticación.
+
+.Antes de empezar
+* Ya debes haber descargado una app de autenticación, como Google Authenticator o Microsoft Authenticator, en tu dispositivo.
+* Necesitarás tu contraseña para configurar la autenticación multifactor (MFA).
+
+
+
+NOTE: Si no tienes acceso a tu aplicación de autenticación o pierdes tu código de recuperación, ponte en contacto con tu administrador de la NetApp Console para que te ayude.
+
+.Pasos
+. Selecciona el icono de perfil situado en la esquina superior derecha de la Console para acceder al panel de configuración del usuario.
+. Selecciona *Configurar* junto al encabezado *Multi-Factor Authentication*.
+. Sigue las instrucciones para configurar la autenticación multifactor (MFA) en tu cuenta.
+. Cuando termines, se te pedirá que guardes tus códigos de recuperación. Elige entre copiar los códigos o descargar un archivo de texto que los contenga. Guarda estos códigos en un lugar seguro. Necesitarás los códigos de recuperación si pierdes el acceso a tu app de autenticación.
++
+
+NOTE: Si necesitas iniciar sesión con un código de recuperación, utilízalos en el orden que se muestra en la interfaz de usuario durante la solicitud del código de recuperación.
+
++
+Después de configurar la autenticación multifactor (MFA), la implementación local de la Console te pedirá que introduzcas un código de un solo uso de tu aplicación de autenticación cada vez que inicies sesión.
+
+
+
+
+
+[[regenerate-your-mfa-recovery-code]]
+== Vuelve a generar tu código de recuperación de MFA
+
+Solo puedes utilizar un código de recuperación una vez. Si pierdes el tuyo, genera uno nuevo.
+
+.Pasos
+. Selecciona el icono de perfil situado en la esquina superior derecha de la implementación local de la Console para acceder al panel de configuración del usuario.
+. Selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] junto al encabezado *Autenticación multifactorial*.
+. Selecciona *Regenerar código de recuperación*.
+. Copia los códigos de recuperación generados y guárdalos en un lugar seguro.
+
+
+
+
+[[delete-your-mfa-configuration]]
+== Elimina tu configuración de MFA
+
+Eliminar la autenticación multifactor (MFA) quita el segundo paso de verificación para tu próximo inicio de sesión. Para usar MFA otra vez, tienes que configurarla de nuevo desde tus ajustes de usuario.
+
+
+NOTE: Si no puedes acceder a tu aplicación de autenticación o a tu código de recuperación, tendrás que ponerte en contacto con el administrador de tu organización para restablecer tu configuración de MFA.
+
+.Pasos
+. Selecciona el icono de perfil en la esquina superior derecha de la implementación local de la NetApp Console para ver el panel de configuración del usuario.
+. Selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] junto al encabezado *Autenticación multifactorial*.
+. Selecciona *Borrar*.
+
+
+
+
+[[contact-your-organization-administrator]]
+[[contact-admin]]
+== Ponte en contacto con el administrador de tu organización
+
+Si necesitas ponerte en contacto con el administrador de tu organización, puedes enviarle un correo electrónico directamente desde la NetApp Console. El administrador gestiona las cuentas de usuario y los permisos dentro de tu organización.
+
+
+NOTE: Debes tener configurada una aplicación de correo electrónico predeterminada en tu navegador para poder utilizar la función *Contact admins*.
+
+.Pasos
+. Selecciona el icono de perfil en la esquina superior derecha de la implementación local de la NetApp Console para ver el panel de configuración del usuario.
+. Selecciona *Contact admins* para enviar un correo electrónico al administrador de tu organización.
+. Selecciona la aplicación de correo electrónico que quieras utilizar.
+. Termina el correo electrónico y selecciona *Enviar*.
+
+
+
+
+[[configure-dark-mode-dark-theme]]
+== Configura el modo oscuro (tema oscuro)
+
+Puedes configurar la implementación local de NetApp Console para que se muestre en modo oscuro.
+
+.Pasos
+. Selecciona el icono de perfil en la esquina superior derecha de la implementación local de la NetApp Console para ver el panel de configuración del usuario.
+. Mueve el control deslizante *Tema oscuro* para activarlo.
+

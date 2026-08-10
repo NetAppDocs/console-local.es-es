@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+. Selecciona el menú de acciones image:icon-action.png["un icono con tres puntos verticales"] junto al miembro al que quieres asignar un rol y selecciona *Add a role*.
+. Para añadir un rol, sigue los pasos que se indican en el cuadro de diálogo:
++
+** *Selecciona una organización, carpeta o flota*: Elige el nivel de la jerarquía de recursos para el que el miembro debe tener permisos.
++
+Si seleccionas la organización o una carpeta, el miembro tendrá permisos para todo lo que se encuentre dentro de la organización o carpeta.
+
+** *Selecciona una categoría*: elige una categoría de función. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"^].
+** Selecciona un *rol*: elige un rol que otorgue al miembro permisos para los recursos que están asociados con la organización, la carpeta o la flota que seleccionaste.
+** *Añadir función*: Si quieres conceder acceso a carpetas o flotas adicionales dentro de tu organización, selecciona *Añadir función*, especifica otra carpeta o flota o categoría de función y luego selecciona una categoría de función y la función correspondiente.
+
+
+. Selecciona *Add new roles*.
+
+
+. Desde la página *Miembros*, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. En la tabla, despliega la fila correspondiente a la organización, carpeta o flota en la que desees modificar el rol asignado al miembro y selecciona *Ver* en la columna *Rol* para ver los roles asignados a este miembro.
+. Puedes cambiar un rol existente de un miembro o eliminar un rol.
++
+.. Para cambiar el rol de un miembro, selecciona *Cambiar* junto al rol que quieres cambiar. Solo puedes cambiar un rol por otro dentro de la misma categoría de roles. Por ejemplo, puedes cambiar de un rol de servicio de datos a otro. Confirma el cambio.
+.. Para desasignar un rol a un miembro, selecciona image:icon-delete.png["Un icono que se parece a un cubo de basura"] junto al rol para desasignar al miembro el rol correspondiente. Se te pedirá que confirmes la eliminación.
+
+
+
+
+. Desde la página *Miembros*, busca a un miembro en la tabla, selecciona image:icon-action.png["Un icono formado por tres puntos alineados"] y luego selecciona *Ver detalles*.
+. En la tabla, despliega la fila correspondiente a la organización, carpeta o flota en la que quieras ver el rol asignado al miembro y selecciona *Ver* en la columna *Role*.
+

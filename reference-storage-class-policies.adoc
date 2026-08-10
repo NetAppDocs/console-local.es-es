@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: reference-storage-class-policies.html 
+keywords: storage class policies, performance policy, capacity policy, security policy, data protection policy, netapp console 
+summary: Consulta las políticas de clases de almacenamiento definidas por el sistema disponibles en la implementación local de NetApp Console. 
+---
+= Revisa las políticas de clase de almacenamiento predefinidas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La implementación local de NetApp Console incluye políticas definidas por el sistema para los cuatro tipos de políticas. Utiliza esta referencia para identificar qué política se adapta mejor a los requisitos de tu carga de trabajo a la hora de crear o personalizar una clase de almacenamiento.
+
+
+
+[[performance-policies]]
+== Políticas de rendimiento
+
+Rendimiento extremo:: Úsalo para cargas de trabajo de HPC, IA/ML y análisis que requieren altos picos de IOPS y una latencia baja y predecible.
+Extreme para datos de bases de datos:: Úsalo para volúmenes de datos de bases de datos transaccionales que requieren IOPS altos y sostenidos y una latencia inferior al milisegundo.
+Extreme para registros de bases de datos:: Úsalo para los volúmenes de registro de transacción de base de datos que requieren el nivel mínimo más alto de IOPS para evitar cuellos de botella en la escritura.
+Extreme para datos compartidos de base de datos:: Úsalo para volúmenes de bases de datos compartidos a los que acceden varios hosts y que requieren un alto rendimiento y una latencia constante.
+Rendimiento:: Úsalo para aplicaciones virtualizadas y empresariales que requieren un rendimiento fiable sin demandas extremas de IOPS.
+Valor:: Úsalo para cargas de trabajo sensibles al coste, como directorios personales, recursos compartidos de archivos y archivos.
+
+
+
+
+[[capacity-policies]]
+== Políticas de capacidad
+
+Capacidad de autogrowth:: Úsalo para cargas de trabajo de producción que deban ampliarse automáticamente para evitar fallos por falta de espacio.
+
+
+
+
+[[security-policies]]
+== Políticas de seguridad
+
+Cifrado en reposo:: Úsalo para cargas de trabajo de producción donde se requiera el cifrado para el cumplimiento.
+Protección contra ransomware:: Úsalo para cargas de trabajo que contengan datos confidenciales o datos críticos para el negocio y que requieran protección activa contra el ransomware.
+Seguridad estándar:: Utilízalo para cargas de trabajo donde el comportamiento de seguridad predeterminado de la plataforma sea aceptable.
+
+
+
+
+[[data-protection-policies]]
+== Políticas de protección de datos
+
+por defecto:: Úsalo para cargas de trabajo estándar que requieren puntos de recuperación a corto plazo sin la sobrecarga de retención a largo plazo.
+3 meses - por horas:: Úsalo para cargas de trabajo reguladas o críticas para el negocio que requieren puntos de recuperación intradía granulares y tres meses de retención histórica.
+Recuperación de 30 días:: Úsalo para cargas de trabajo estándar que requieren puntos de recuperación a corto plazo sin la sobrecarga de retención a largo plazo.
+Recuperación de 90 días:: Úsalo para cargas de trabajo reguladas o críticas para el negocio que requieren puntos de recuperación intradía granulares y tres meses de retención histórica.
+

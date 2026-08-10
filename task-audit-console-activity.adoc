@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: task-audit-console-activity.html 
+keywords: administer, monitor, timeline, notifications, alerts, events, notification center, email, audit page, audit action 
+summary: 'Puedes auditar la actividad de los usuarios (tanto desde la interfaz de usuario como desde la API) desde la página de Auditoría, y puedes supervisar el estado de las operaciones que la Console está realizando para ver si hay algún problema que debas resolver. Puedes ver el estado desde la página de Auditoría o configurar los registros de auditoría para que se envíen a tu propio servidor syslog.' 
+---
+= Audita la actividad de implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puedes auditar la actividad de los usuarios iniciada tanto desde la interfaz de usuario como desde la API en la página de Auditoría, y puedes supervisar el estado de las operaciones en la implementación local de NetApp Console y el usuario que las inició.
+
+.Roles requeridos
+Superadministrador, administrador de la organización, administrador de carpetas y flotas, analista de soporte de operaciones, supervisor, visor de la organización o visor de carpetas y flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+
+Puedes consultar la actividad de auditoría en la implementación local de la Console, descargar un archivo CSV con los registros de auditoría o configurar el envío de dichos registros a tu propio servidor syslog mediante un webhook.
+
+
+
+[[audit-user-activity-from-the-audit-page]]
+== Audita la actividad de los usuarios desde la página Auditoría
+
+Utiliza la página de Auditoría para identificar quién realizó una acción o su estado.
+
+La página «Auditoría» muestra las acciones que los usuarios han realizado dentro de tu organización. Por ejemplo, puedes comprobar quién añadió un miembro a una organización o que una flota se eliminó correctamente, así como ver otras acciones de gestión de almacenamiento que los usuarios realizaron en tu organización.
+
+Los registros de auditoría muestran la actividad de los siguientes servicios:
+
+* Tenancy: acciones relacionadas con la gestión de tu organización, como añadir usuarios, crear flotas y asociar recursos.
+* Gestión del almacenamiento: acciones relacionadas con la gestión de tus recursos de almacenamiento.
+* Federación: acciones relacionadas con la gestión de federaciones, como crear federaciones y agregar o eliminar organizaciones federadas.
+
+
+.Pasos
+. Selecciona *Administración > Auditoría*.
+. Utiliza los filtros situados encima de la tabla para cambiar qué acciones se muestran en la tabla.
++
+Por ejemplo, puedes utilizar el filtro *Servicio* para mostrar las acciones relacionadas con un servicio concreto, o puedes utilizar el filtro *Usuario* para mostrar las acciones relacionadas con una cuenta de usuario concreta.
+
+
+
+
+
+[[filter-audit-logs-for-identity-and-access-management-actions]]
+=== Filtra los registros de auditoría para las acciones de gestión de identidades y acceso
+
+Para ver únicamente las acciones relacionadas con la gestión de tu organización, como añadir miembros, crear flotas o eliminar recursos, filtra el registro de auditoría por el servicio Tenancy.
+
+.Pasos
+. Selecciona *Administración > Auditoría*.
+. Utiliza los filtros para acotar los resultados. Selecciona *Service* y luego selecciona *Tenancy*.
+. Utiliza cualquiera de los demás filtros para refinar aún más los resultados.
++
+Por ejemplo, utiliza el filtro *Usuario* para mostrar las acciones de IAM realizadas por una cuenta de usuario concreta.
+
+
+
+
+
+[[download-audit-logs-from-the-audit-page]]
+=== Descarga los registros de auditoría desde la página de Auditoría
+
+Puedes descargar los registros de auditoría desde la página de Auditoría a un archivo CSV. Esto te permite mantener un registro de las acciones que realizan los usuarios en tu organización. El archivo CSV descargado incluye todas las columnas del registro de auditoría, independientemente de los filtros o de las columnas que se muestren en la página de Auditoría.
+
+.Pasos
+. En la página *Audit*, selecciona el icono de descarga situado en la esquina superior derecha de la tabla.
+

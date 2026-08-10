@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: task-storage-dashboard.html 
+keywords: storage dashboard, home page, fleet health, capacity monitoring, IOPS, performance metrics, alerts, storage KPIs, monitoring, netapp console local 
+summary: Dentro de la implementación local de NetApp Console, puedes ver las métricas en la página de inicio. 
+---
+= Ver las métricas de la página de inicio en NetApp Console en una implementación local
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza el panel de control de la página de inicio en la implementación local de NetApp Console como tu punto de partida predeterminado para supervisar el estado y el rendimiento del almacenamiento. Ofrece métricas a grandes rasgos sobre el estado de la flota, alertas, seguridad, uso de la capacidad, latencia, rendimiento y IOPS.
+
+El panel de control de la página de inicio se limita automáticamente solo a las flotas y sistemas que estás autorizado a ver. También puedes añadir un panel de control personalizado a la página de inicio para el monitoreo específico de tu rol.
+
+Utiliza las tarjetas como un flujo de trabajo de clasificación por niveles. Empieza por *Fleet health* y *Alerts* para detectar puntos de riesgo. Utiliza *System health status* y *Recommended remediations* para identificar los recursos afectados. Utiliza *Capacity usage*, *Latency*, *Throughput* e *IOPS* para investigar las causas raíz.
+
+
+
+[[fleet-health]]
+== Estado de la flota
+
+La ficha *Estado de la flota* muestra un resumen a grandes rasgos del estado de las cinco principales flotas, incluyendo el número de sistemas, la capacidad utilizada, el cumplimiento de las normas de seguridad y las alertas críticas. Utiliza esta ficha para identificar qué flotas requieren atención inmediata. Selecciona el nombre de la flota para ver un panel de control específico de la flota seleccionada.
+
+
+
+[[recommended-remediations]]
+== Medidas correctivas recomendadas
+
+La ficha *Medidas correctivas recomendadas* recoge los problemas activos y las acciones sugeridas. La ficha prioriza las medidas correctivas en función de la presión sobre la capacidad, los recursos fuera de línea y los riesgos relacionados con la protección.
+
+
+
+[[alerts]]
+== Alertas
+
+La ficha *Alertas* resume el volumen de alertas en el intervalo de tiempo seleccionado y las agrupa por gravedad. Utiliza esta ficha para conocer la carga actual de incidentes y detectar cambios recientes en las alertas críticas, de advertencia o informativas.
+
+
+
+[[security]]
+== Seguridad
+
+La ficha *Seguridad* resume los indicadores de cumplimiento y protección, como el cumplimiento del sistema y los controles relacionados con el ransomware. Utiliza esta vista para supervisar las tendencias de seguridad en todos tus recursos.
+
+
+
+[[capacity-usage]]
+== Uso de la capacidad
+
+La ficha *Uso de la capacidad* muestra las tendencias de uso previstas e históricas en las flotas o sistemas seleccionados. Usa esta ficha para identificar patrones de crecimiento y planificar capacidad adicional.
+
+
+
+[[latency]]
+== Latencia
+
+La tarjeta *Latencia* muestra la evolución del tiempo de respuesta a lo largo del tiempo en los sistemas seleccionados. Utiliza esta tendencia para detectar retrasos de rendimiento incipientes y comparar la latencia relativa entre los distintos recursos.
+
+
+
+[[throughput]]
+== Rendimiento
+
+La ficha *Throughput* muestra las tasas de transferencia de datos a lo largo del tiempo para los sistemas seleccionados. Utiliza esta ficha para comprender la intensidad de la carga de trabajo y supervisar los cambios en la demanda de throughput.
+
+
+
+[[iops]]
+== IOPS
+
+La tarjeta *IOPS* muestra las tasas de operaciones de entrada/salida a lo largo del tiempo. Utiliza esta tarjeta para comparar los niveles de actividad entre sistemas e identificar la demanda de E/S sostenida o intermitente.
+
+
+
+[[dashboard-card-example-metric-card]]
+== Tarjeta del panel de control (ejemplo de tarjeta de métricas)
+
+La zona inferior del *Dashboard* puede mostrar un dashboard personalizado seleccionado por el usuario, como la latencia media de un ámbito de producción concreto. Utiliza estas tarjetas para realizar un seguimiento específico por equipo, carga de trabajo u objetivo.
+
+
+
+[[system-health-status]]
+== Estado de salud del sistema
+
+La ficha *Estado de salud del sistema* muestra una lista de los sistemas individuales junto con su estado de salud actual. Utiliza esta ficha para identificar rápidamente los sistemas que no funcionan correctamente y relacionar los cambios de estado con las alertas y las señales de rendimiento.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:concept-custom-dashboards.html["Conoce los paneles personalizados en la implementación local de NetApp Console"]
+* link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"]
+

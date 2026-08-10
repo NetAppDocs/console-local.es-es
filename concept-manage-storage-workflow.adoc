@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: concept-manage-storage-workflow.html 
+keywords: storage management workflow, storage classes, provisioning, storage class policies, ONTAP, fleet, drift detection, compliance monitoring, storage governance, operational efficiency, netapp console local 
+summary: Descubre cómo gestionar el almacenamiento en una implementación local de NetApp Console, incluyendo las clases de almacenamiento, las políticas y los métodos de aprovisionamiento. 
+---
+= Descripción general del flujo de trabajo de gestión del almacenamiento en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+En la implementación local de NetApp Console, netApp Console (local) te ayuda a gestionar el almacenamiento ONTAP a gran escala usando estándares coherentes y reutilizables. En vez de tomar decisiones puntuales para cada volumen o LUN, defines el comportamiento aprobado una sola vez y lo aplicas en todas las flotas, ya sea que aprovisiones manualmente, uses ubicación automatizada o flujos de trabajo de planificación y aprobación asistidos por IA.
+
+Esta página es el punto de partida para los administradores de almacenamiento que gestionan el almacenamiento ONTAP mediante flotas, políticas de clase de almacenamiento y clases de almacenamiento. Organiza el flujo de trabajo de principio a fin y enlaza a procedimientos detallados.
+
+Si eres nuevo en estos conceptos, empieza con [Aprende sobre la gestión del almacenamiento con la implementación local de NetApp Console](concept-manage-storage.html).
+
+
+
+[[prerequisites-and-dependencies]]
+== Requisitos previos y dependencias
+
+El administrador de la organización se asegura de que los sistemas de almacenamiento se descubran y se asignen a las flotas correctas. Los administradores de almacenamiento no pueden aplicar estándares ni aprovisionar en una flota hasta que los sistemas estén disponibles en esa flota y se haya concedido el acceso mediante RBAC.
+
+Se requiere acceso RBAC. Confirma que tienes acceso a las flotas donde definirás estándares y aprovisionarás almacenamiento.
+
+
+
+[[typical-workflow]]
+== Flujo de trabajo típico
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["1"] Revisar flotas y acceso
+[role="quick-margin-list"]
+* Revisa las flotas disponibles y comprueba que tienes acceso a las flotas donde quieres gestionar el almacenamiento.
+* Comprueba los permisos y el ámbito antes de crear o asignar estándares de almacenamiento.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Definir políticas de clases de almacenamiento
+[role="quick-margin-list"]
+* Define políticas de clases de almacenamiento que representen tus estándares.
+* Captura los requisitos (rendimiento, protección, ubicación) en políticas reutilizables.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Crear clases de almacenamiento
+[role="quick-margin-list"]
+* Crea clases de almacenamiento combinando políticas en plantillas de carga de trabajo.
+* Utiliza plantillas uniformes para garantizar que las cargas de trabajo se aprovisionen según tus estándares.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Asociar clases de almacenamiento a flotas
+[role="quick-margin-list"]
+* Asocia las clases de almacenamiento con las flotas donde correspondan.
+* Asigna las clases a las flotas adecuadas para que aparezcan las opciones correctas durante el aprovisionamiento.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"] Provisiona volúmenes o LUN
+[role="quick-margin-list"]
+* Asigna volúmenes o LUNs utilizando el método que mejor se adapte a tu modelo operativo.
+* Elige el flujo de trabajo que mejor se adapte a la forma en que tus equipos solicitan, aprueban y entregan almacenamiento.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"] Supervisar las cargas de trabajo y corregir las desviaciones
+[role="quick-margin-list"]
+* Supervisa las cargas de trabajo para detectar desviaciones respecto a las políticas definidas.
+* Corrige las configuraciones que no cumplen con las políticas para restablecer la alineación con las políticas.
+

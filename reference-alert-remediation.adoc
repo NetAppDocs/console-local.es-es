@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: reference-alert-remediation.html 
+keywords: alert remediation, fix-it, guided remediation, automated remediation, ONTAP alerts, storage alerts, compliance alerts, remediate drift, alert actions, netapp console local 
+summary: Referencia de las acciones de remediación disponibles en la implementación local de NetApp Console, incluyendo las alertas relacionadas, las áreas de impacto y los resúmenes de acciones. 
+---
+= Acciones de corrección de alertas en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Utiliza esta referencia para entender las acciones de corrección disponibles en *Fix it* en la implementación local de NetApp Console. Para cada acción, la tabla describe lo que hace la acción y la alerta relacionada. Revisa los detalles de la acción en el cuadro de diálogo de confirmación antes de ejecutarla.
+
+
+
+[[remediation-actions]]
+== Acciones de remediación
+
+[cols="20,17,28,12,23"]
+|===
+| Acción de remediación | Nombre de la alerta | Descripción de la alerta | Área de impacto | Resumen de corrección 
+
+
+| *Activar el aumento automático del volumen* | Volumen completo | El volumen se está quedando sin espacio y está a punto de alcanzar su capacidad máxima. | Capacidad | Aumenta automáticamente el tamaño de un volumen (hasta un límite configurado) para reducir el riesgo de quedarse sin espacio. 
+
+
+| *Cambiar el tamaño del volumen* | Volumen completo | El volumen se está quedando sin espacio y está a punto de alcanzar su capacidad máxima. | Capacidad | Aumenta el tamaño de un volumen para disponer de más espacio de forma inmediata. 
+
+
+| *Poner el volumen en línea* | Volumen sin conexión | El volumen está sin conexión y no está sirviendo datos. | Disponibilidad | Pone en línea un volumen sin conexión para que pueda volver a proporcionar datos. 
+
+
+| *Poner en línea el agregado* | Agregado sin conexión | El agregado no está en línea y los volúmenes alojados en él pueden no estar disponibles. | Disponibilidad | Pone en línea un agregado sin conexión para restablecer el acceso a los volúmenes que aloja. 
+
+
+| *Poner el LUN en línea* | LUN fuera de línea | El LUN está fuera de línea y el acceso al host no está disponible. | Disponibilidad | Pone en línea un LUN sin conexión para que los hosts puedan reanudar el acceso y las operaciones de E/S. 
+
+
+| *Desbloquear volumen* | Volumen restringido | El volumen se encuentra en un estado restringido y es posible que no pueda gestionar las operaciones de E/S con normalidad. | Disponibilidad | Devuelve un volumen restringido a un estado en línea para que los clientes puedan volver a acceder a él. 
+
+
+| *Poner en línea el espacio de nombres NVMe* | El espacio de nombres NVMe está sin conexión | El espacio de nombres NVMe está sin conexión y el acceso al host no está disponible. | Disponibilidad | Activa un espacio de nombres NVMe sin conexión para restablecer el acceso del host. 
+
+
+| *Activar el LIF entre clústeres* | LIF entre clústeres inactivo | Un LIF interclúster está inactivo y la comunicación entre clústeres podría verse afectada. | Conectividad | Activa un LIF interclúster para restablecer la conectividad entre clústeres utilizada para la replicación. 
+
+
+| *Vuelve a habilitar AUSO de MetroCluster* | MetroCluster conmutación de sitios automática no planificada desactivada | La conmutación de sitios automática no planificada está desactivada en este clúster. | Disponibilidad | Vuelve a activar la conmutación de sitios automática no planificada (AUSO) para que la protección MetroCluster funcione como se espera. 
+
+
+| *Configurar la red del Service Processor* | El procesador de servicios no está configurado | La red del procesador de servicios (SP) no está configurada. | Facilidad de gestión | Configura los parámetros de red del Service Processor (SP) para habilitar el acceso de gestión fuera de banda. 
+
+
+| *Asignar discos sin asignar* | Se han detectado discos sin asignar | Hay discos sin asignar y es posible que haya capacidad disponible sin utilizar. Asigna los discos a un nodo para que puedan usarse como almacenamiento. | Disponibilidad | Asigna los discos que actualmente no están asignados a un nodo para que puedan usarse como almacenamiento. 
+
+
+| *Recuperación del espacio en el volumen raíz* | Espacio libre en el volumen raíz del nodo insuficiente | El espacio disponible en el volumen raíz del nodo es escaso y puede afectar el funcionamiento normal del sistema. | Estado del sistema | Libera espacio en el volumen raíz del nodo eliminando la instantánea más grande o el archivo de volcado de memoria más grande. Las eliminaciones son permanentes. 
+|===
