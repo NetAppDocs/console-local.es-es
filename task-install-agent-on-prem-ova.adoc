@@ -36,9 +36,15 @@ Asegúrate de que tu equipo host cumpla los requisitos de instalación antes de 
 * vSphere 7.0u3 o superior, con hardware virtual versión 19 o superior
 
 
+[NOTE]
+====
+* La CPU y la memoria se reservan en el host ESXi cuando se enciende la VM, no solo se asignan. Asegúrate de que el host de destino tenga al menos 16 núcleos de CPU y 64 GB disponibles como capacidad no reservada. Las reservas de VM existentes en el host reducen la capacidad disponible.
+* El almacén de datos debe cumplir unos requisitos mínimos de rendimiento de escritura en disco: latencia de escritura fsync p99 ≤ 20 ms e IOPS de escritura aleatoria de 4K ≥ 200. Una latencia superior a 50 ms o un valor de IOPS inferior a 30 provocan un error en la implementación.
+* IPv6 no es compatible. Se requiere una dirección IPv4 estática.
+* Instala NetApp Console local deployment en un entorno vCenter en lugar de directamente en un host ESXi.
 
-NOTE: Instala NetApp Console local deployment en un entorno vCenter en lugar de directamente en un host ESXi.
 
+====
 
 
 [[set-up-network-access-for-the-netapp-console-local-deployment]]

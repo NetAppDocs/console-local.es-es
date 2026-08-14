@@ -1,10 +1,10 @@
 ---
 sidebar: sidebar 
 permalink: reference-ports-on-prem.html 
-keywords: networking, network requirements, ports, on-premises, TCP, HTTP, HTTPS, firewall, connectivity requirements, Console agent, agent connectivity, netapp console local 
-summary: El agente de Console utiliza puertos _inbound_ cuando se instala manualmente en un host Linux local. Consulta estos puertos para fines de planificación. 
+keywords: networking, network requirements, ports, on-premises, TCP, UDP, firewall, connectivity requirements, Console agent, agent connectivity, netapp console local, inbound ports, OVA 
+summary: El archivo OVA de implementación local de la NetApp Console gestiona su propio cortafuegos interno. Si tu entorno aplica una política de cortafuegos externo a la VM, asegúrate de que se pueda acceder a los siguientes puertos de entrada desde tus hosts de gestión. 
 ---
-= Puertos para el agente de Console on-premises en el despliegue local de NetApp Console
+= Puertos de entrada para la implementación local de NetApp Console
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,21 +14,39 @@ summary: El agente de Console utiliza puertos _inbound_ cuando se instala manual
 
 
 [role="lead"]
-En una implementación local de NetApp Console, el agente de Console utiliza puertos _de entrada_ cuando se instala manualmente en un host Linux local. Consulta estos puertos para fines de planificación.
-
-Estas reglas de entrada se aplican a todos los modos de implementación de NetApp Console.
+El archivo OVA de implementación local de la NetApp Console gestiona su propio cortafuegos interno. Si tu entorno aplica una política de cortafuegos externo a la VM, asegúrate de que se pueda acceder a los siguientes puertos de entrada desde tus hosts de gestión.
 
 [cols="10,10,80"]
 |===
-| Protocolo | Puerto | Propósito 
+| Puerto | Protocolo | Propósito 
 
 
-| HTTP | 80  a| 
-* Permite el acceso HTTP desde los navegadores web de los clientes a la interfaz de usuario local
-* Se utiliza durante el proceso de actualización de Cloud Volumes ONTAP
+| 22 | TCP | SSH para el mantenimiento remoto y el acceso al shell para diagnóstico 
 
 
+| 123 | UDP | NTP para la sincronización horaria 
 
 
-| HTTPS | 443 | Permite el acceso HTTPS desde los navegadores web de los clientes a la interfaz de usuario local 
+| 2379 | TCP | API de cliente etcd para el tráfico de cliente etcd del plano de control de RKE2 
+
+
+| 2380 | TCP | Puerto de par de etcd para la replicación entre miembros de etcd 
+
+
+| 6443 | TCP | Servidor de la API de Kubernetes para el acceso a la API de kubectl y RKE2 
+
+
+| 8472 | UDP | Superposición VXLAN Canal/Flannel para el tráfico entre pods de los nodos RKE2 
+
+
+| 9091 | TCP | Punto final de métricas de Calico Felix para el estado y las métricas de CNI 
+
+
+| 9100 | TCP | Prometheus node_exporter para la recopilación de métricas de host 
+
+
+| 9345 | TCP | Punto final de registro del supervisor y del servidor RKE2 
+
+
+| 10250 | TCP | API de Kubelet para metrics-server y kube-apiserver hacia kubelet 
 |===
