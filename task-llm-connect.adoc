@@ -40,7 +40,7 @@ Antes de conectar tu LLM, reúne lo siguiente:
 * Tu elección del tipo de proveedor: OpenAI o OpenAI-compatible. link:concept-llm-integration.html["Infórmate sobre las opciones de proveedores."]
 * Una clave API válida para la ruta del proveedor que selecciones.
 * La URL del endpoint para la ruta de tu proveedor.
-* Tu nombre de usuario o identificador de inicio de sesión único (SSO) para la cuenta del proveedor de LLM, si es necesario.
+* Tu nombre de usuario o ID para la cuenta del proveedor de LLM, si es necesario.
 * Acceso a la red desde la implementación local de Console al endpoint seleccionado.
 * Clases de almacenamiento y controles de acceso basados en roles para las acciones del asistente que planeas permitir.
 
@@ -83,9 +83,8 @@ link:task-llm-troubleshoot-integration.html["Soluciona los problemas de tu integ
 Después de guardar la configuración, verifica la disponibilidad y el comportamiento del asistente.
 
 .Pasos
-. Comprueba que el botón *Asistente de la consola* aparece en el panel de control de implementación local de la NetApp Console.
-. Abre el asistente en modo *Solo lectura* y ejecuta una consulta básica.
-. Abre el asistente en modo *lectura/escritura* y confirma que las acciones que modifican el almacenamiento requieran la confirmación del usuario antes de ejecutarse.
+. Abre el *Console assistant* en modo *Read only* y ejecuta una consulta básica.
+. Abre el *Console assistant* en modo *read/write* y confirma que las acciones que cambian el almacenamiento requieren la confirmación del usuario antes de ejecutarse.
 . Comprueba que los usuarios que necesitan flujos de trabajo de acciones dispongan de los controles de acceso basados en roles necesarios.
 
 

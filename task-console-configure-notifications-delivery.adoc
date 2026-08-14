@@ -75,21 +75,6 @@ Si la prueba falla, vuelve a verificar la configuración que introdujiste y aseg
 
 
 
-[[remove-an-email-server-configuration]]
-=== Eliminar la configuración de un servidor de correo electrónico
-
-Puedes eliminar la configuración del servidor de correo electrónico si ya no quieres que la implementación local de Console envíe correos electrónicos.
-
-.Pasos
-. Selecciona *Administración > Consola*.
-. Selecciona *Configuración* para abrir la página de configuración de sistemas.
-. En la sección *Servidor de correo electrónico*, selecciona *Configurar*.
-. Selecciona *Borrar campos* para borrar la configuración actual.
-. Selecciona *Guardar* para guardar la configuración borrada, lo que elimina la configuración del servidor de correo electrónico de la implementación local de Console.
-
-
-
-
 [[configure-a-webhook]]
 == Configura un webhook
 

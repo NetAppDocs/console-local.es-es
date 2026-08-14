@@ -19,7 +19,7 @@ Supervisa e investiga las alertas en la implementación local de NetApp Console 
 Consulta las alertas activas en toda tu organización o en una flota concreta, priorízalas según su gravedad y el área de impacto, e investiga las causas fundamentales para que puedas resolver los problemas antes de que se agraven. Cuando una alerta incluye una acción recomendada o la opción Fix It, puedes pasar directamente de la investigación a la corrección.
 
 .Rol de acceso requerido
-Todos los roles excepto Federation admin y Federation viewer. Los usuarios con el rol Federation admin o Federation viewer no pueden ver las alertas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
+Todos los roles. Las alertas solo se muestran para los recursos que estás autorizado a ver. Si no ves un recurso en la lista de recursos disponibles, no tienes permiso para ver sus alertas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
 
 En el caso de las alertas de ONTAP, puedes acceder a herramientas como System Manager y Workload Analyzer directamente desde la página de Alertas para investigar y resolver problemas.
 
@@ -60,7 +60,8 @@ Puedes filtrar el panel de control para centrarte en las alertas críticas o en 
 +
 ** Gravedad (crítica, advertencia o informativa)
 ** Alertas críticas agrupadas por área de impacto
-** Área afectada (seguridad, protección, disponibilidad, rendimiento, capacidad o configuración)
+** Área afectada (disponibilidad, capacidad, configuración, rendimiento, protección o seguridad)
+** Alertas de desviación para ver únicamente las alertas provocadas por desviaciones en la configuración
 
 
 
@@ -111,7 +112,7 @@ Puedes consultar las alertas de un sistema concreto dentro de una flota o tu org
 [[investigate-an-alert]]
 == Investigar una alerta
 
-Puedes investigar una alerta para ver qué la activó y quién recibió la notificación.
+Puedes investigar una alerta para ver qué la activó.
 
 Al investigar una alerta de ONTAP, también puedes acceder directamente a la interfaz de System Manager del sistema que generó la alerta para ver detalles adicionales y tomar medidas.
 
