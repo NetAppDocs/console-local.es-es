@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: reference-ports-on-prem.html 
-keywords: networking, network requirements, ports, on-premises, TCP, UDP, firewall, connectivity requirements, Console agent, agent connectivity, netapp console local, inbound ports, OVA 
+keywords: networking, network requirements, ports, on-premises, TCP, UDP, firewall, connectivity requirements, Console local, Console local connectivity, netapp console local, inbound ports, OVA 
 summary: El archivo OVA de implementación local de la NetApp Console gestiona su propio cortafuegos interno. Si tu entorno aplica una política de cortafuegos externo a la VM, asegúrate de que se pueda acceder a los siguientes puertos de entrada desde tus hosts de gestión. 
 ---
 = Puertos de entrada para la implementación local de NetApp Console

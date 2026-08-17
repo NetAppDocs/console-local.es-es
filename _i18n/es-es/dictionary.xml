@@ -1082,7 +1082,6 @@
   <block id="dbe73508391080b9a6912d86cd12081b" category="paragraph">La implementación local de NetApp Console te permite alojar y ejecutar el plano de control autónomo de NetApp Console en tu propia infraestructura.</block>
   <block id="beedafd761122a9080cda6f61cac7b4b" category="paragraph">Disfrutarás de una gestión unificada del almacenamiento, la aplicación de políticas, la automatización a escala de parque informático y operaciones asistidas por IA. Ningún dato, metadato ni tráfico de gestión sale de tu entorno.</block>
   <block id="67e0c8d8a0aad1277b006016dd82f25c" category="section-title">Implementa y opera Console en tu propia infraestructura</block>
-  <block id="10aa80cd468ec0811813d44ef98bca90" category="paragraph">NetApp Console local deployment se ejecuta en tu propia infraestructura, así que tu equipo controla la implementación, la conectividad y las operaciones diarias. Tú implementas el agente de Console, mantienes la máquina virtual de Console y gestionas las rutas de red necesarias para el tráfico de supervisión y gestión. Esto les da a los administradores empresariales control total sobre los límites operativos, mientras mantienen los datos de gestión dentro del entorno.</block>
   <block id="00a758ee2cda4e4890c0ee5cfce54b04" category="inline-link-macro">Instala el despliegue local de NetApp Console mediante una OVA en vCenter</block>
   <block id="3e3c94e96f9dd9a6b52f7e3bd29e96cd" category="list-text"><block ref="d8fb061273f01bc1c630b76c017340f0" category="inline-link-macro-rx"></block>.</block>
   <block id="dd67cc32b95952e9b3fce404242dfee2" category="inline-link-macro">Realiza el mantenimiento de tu vCenter o host ESXi para la implementación local de NetApp Console</block>
@@ -1932,13 +1931,10 @@
   <block id="ad720d685bc721c408c448c0fe562369" category="summary">Referencia sobre las limitaciones conocidas en la implementación local de NetApp Console.</block>
   <block id="7ffe052f293422713268a6bb9df1fc9f" category="doc">Limitaciones conocidas en la implementación local de NetApp Console</block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="paragraph">Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o que no interoperan correctamente con él. Revisa estas limitaciones cuidadosamente.</block>
-  <block id="dceccbe9e562b7202ac801a976ca4d73" category="paragraph">Estas limitaciones son específicas de la configuración de la NetApp Console y la administración: el agente, la plataforma de software como servicio (SaaS) y más.</block>
   <block id="360330c9adc975e1008000d1df74a468" category="section-title">Limitaciones de la consola VM</block>
   <block id="682a2eb88d49c213f5029c53633e10c9" category="section-title">Posible conflicto con direcciones IP en los rangos 10.42.0.0/16 y 10.43.0.0/16</block>
   <block id="3b9690f89f4029f3b099f8b7c371b951" category="section-title">No se admiten servidores Linux compartidos</block>
-  <block id="55334f6c7481482659eaa1b0aef1601a" category="paragraph">El agente no es compatible con una máquina virtual compartida con otras aplicaciones. La máquina virtual debe estar dedicada al software del agente.</block>
   <block id="5ef1446cf0ab868961d473d928c394d6" category="section-title">Agentes y extensiones de terceros</block>
-  <block id="08ea771e22fb933fc1428178b36eb902" category="paragraph">La máquina virtual del agente no admite agentes de terceros ni extensiones de máquina virtual.</block>
   <block id="3d8cb3230f2a32ea6afadc9475030feb" category="summary">Referencia de las alertas de ONTAP supervisadas en la implementación local de NetApp Console, organizadas por categoría de impacto.</block>
   <block id="a9a22f62e500b57a916841885d3320a2" category="doc">Referencia de alertas de ONTAP en la implementación local de NetApp Console</block>
   <block id="a3831fb324d31cc99ef99e375686386a" category="paragraph">Esta referencia enumera las alertas de ONTAP que el despliegue local de NetApp Console puede monitorizar, organizadas por categoría de impacto.</block>
@@ -3094,7 +3090,6 @@
   <block id="5783f062ee67d1e08bcb603d908bec19" category="list-text">*Eliminar el acceso de un miembro en este ámbito*: para un miembro que tenga un rol definido directamente en esta carpeta o flota, elimina el rol para revocar su acceso en este ámbito. Esto no elimina al miembro de tu organización ni afecta los roles que tenga en otros ámbitos.</block>
   <block id="1f68cc23ffd79d8b92a25e3163e1bcff" category="paragraph"><block ref="2b3106c38646014daf77549827b80860" category="inline-link-macro-rx"></block>.</block>
   <block id="24347b3ddf5a25cc9c27e54ae285ade1" category="list-text">Selecciona *Aplicar*.</block>
-  <block id="54ead9f62e4ad67dbab07d7ac18a67c2" category="summary">Si eres usuario de VMware, puedes usar un OVA para instalar un agente de Console en tu vCenter. La descarga del OVA o la URL están disponibles a través del despliegue local de NetApp Console.</block>
   <block id="732484ec48b3de6a355c4a8d10a6491f" category="paragraph">Usas un archivo OVA para instalar una implementación local de NetApp Console en tu vCenter. La descarga del OVA o la URL están disponibles en el sitio de soporte de NetApp.</block>
   <block id="bfa61bc8df2f0d4cb1dd6df73376608c" category="section-title">Prepárate para instalar la implementación local de NetApp Console</block>
   <block id="4e00644af1cd7d7ae6f52544a8dc1472" category="paragraph">Antes de la instalación, asegúrate de que tu host de máquinas virtuales cumpla los requisitos y de que la implementación local de la NetApp Console pueda acceder a internet y a las redes de destino. Para usar los servicios de datos de NetApp como NetApp Backup and Recovery, crea credenciales de proveedor de nube para que la implementación local de la NetApp Console pueda realizar acciones en tu nombre.</block>
@@ -3750,4 +3745,7 @@
   <block id="924c6a9c613412a0e4058026aa89a86a" category="cell">API de Kubelet para metrics-server y kube-apiserver hacia kubelet</block>
   <block id="50a807a194603f6075b05395337e3064" category="summary">Puedes realizar cambios en tu VCenter o host ESXi actual después de implementar Console local deployment.</block>
   <block id="e137fee1052a69e09aea64b66a681285" category="paragraph">En una implementación local de NetApp Console, puedes realizar cambios en tu VCenter o host ESXi existentes después de implementar la Console local deployment.</block>
+  <block id="c3bdc6c19998b310e22df96fbe31d526" category="paragraph">NetApp Console local deployment se ejecuta en tu propia infraestructura, así que tu equipo controla la implementación, la conectividad y las operaciones diarias. Esto les da a los administradores empresariales control total sobre los límites operativos, mientras mantienen los datos de gestión dentro del entorno.</block>
+  <block id="8797fdac4224deac7f57143811175742" category="paragraph">La implementación local de NetApp Console no es compatible en una máquina virtual que se comparte con otras aplicaciones. La máquina virtual debe estar dedicada a la implementación local de NetApp Console.</block>
+  <block id="9d22f7f3fcf091469f2515885be2bfb9" category="paragraph">Los agentes de terceros o las extensiones de máquina virtual no son compatibles en la máquina virtual de implementación local de NetApp Console.</block>
 </blocks>

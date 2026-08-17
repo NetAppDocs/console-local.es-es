@@ -23,7 +23,7 @@ Disfrutarás de una gestión unificada del almacenamiento, la aplicación de pol
 [[deploy-and-operate-console-in-your-own-infrastructure]]
 == Implementa y opera Console en tu propia infraestructura
 
-NetApp Console local deployment se ejecuta en tu propia infraestructura, así que tu equipo controla la implementación, la conectividad y las operaciones diarias. Tú implementas el agente de Console, mantienes la máquina virtual de Console y gestionas las rutas de red necesarias para el tráfico de supervisión y gestión. Esto les da a los administradores empresariales control total sobre los límites operativos, mientras mantienen los datos de gestión dentro del entorno.
+NetApp Console local deployment se ejecuta en tu propia infraestructura, así que tu equipo controla la implementación, la conectividad y las operaciones diarias. Esto les da a los administradores empresariales control total sobre los límites operativos, mientras mantienen los datos de gestión dentro del entorno.
 
 * link:task-install-agent-on-prem-ova.html["Instala el despliegue local de NetApp Console mediante una OVA en vCenter"].
 * link:task-console-local-vm-config.html["Realiza el mantenimiento de tu vCenter o host ESXi para la implementación local de NetApp Console"].
