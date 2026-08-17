@@ -48,7 +48,6 @@ Asegúrate de que tu equipo host cumpla los requisitos de instalación antes de 
 
 
 [[set-up-network-access-for-the-netapp-console-local-deployment]]
-[[network-access-agent]]
 === Configura el acceso a la red para la implementación local de la NetApp Console
 
 NetApp Console local deployment utiliza un espacio de direcciones fijo para la comunicación entre servicios. El rango de direcciones IP 10.42.0.0/16 y 10.43.0.0/16 se usa para la red interna. Antes de implementar Console local deployment, asegúrate de que estos rangos de IP no estén asignados a otras instancias de VM, ámbitos DHCP, registros DNS o grupos VIP del balanceador de carga en las VLAN disponibles para Console local deployment.
