@@ -18,6 +18,8 @@ La implementación local de NetApp Console te permite alojar y ejecutar el plano
 
 Disfrutarás de una gestión unificada del almacenamiento, la aplicación de políticas, la automatización a escala de parque informático y operaciones asistidas por IA. Ningún dato, metadato ni tráfico de gestión sale de tu entorno.
 
+link:console-differences.html["Descubre las diferencias entre la implementación local de NetApp Console y NetApp Console SaaS y modo privado"].
+
 
 
 [[deploy-and-operate-console-in-your-own-infrastructure]]

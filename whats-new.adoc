@@ -22,3 +22,5 @@ Descubre las nuevas funciones y mejoras en la última versión de la implementac
 === Presentación de la implementación local de NetApp Console
 
 https://docs.netapp.com/us-en/console-local/concept-netapp-console-local.html["Aprende a implementar localmente la NetApp Console"].
+
+https://docs.netapp.com/us-en/console-local/console-differences.html["Descubre las diferencias entre la implementación local de NetApp Console y NetApp Console SaaS y modo privado"].
