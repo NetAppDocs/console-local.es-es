@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+
+NOTE: Las alertas se conservan en el despliegue local de NetApp Console durante 7 días desde el momento en que se generan.
+
+
+NOTE: Las notificaciones de la interfaz de usuario de NetApp Console se conservan durante 24 horas.

@@ -94,6 +94,9 @@ La consola envía las instrucciones por correo electrónico al usuario.
 
 
 
+NOTE: Los enlaces de invitación para usuarios locales son de un solo uso y caducan a los 7 días. Si un enlace caduca antes de que el usuario complete la configuración, elimina al usuario y añádelo de nuevo para enviar un nuevo enlace de invitación.
+
+
 
 [[add-a-service-account]]
 [[service-account]]

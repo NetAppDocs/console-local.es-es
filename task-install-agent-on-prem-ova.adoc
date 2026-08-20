@@ -108,11 +108,6 @@ Inicia sesión en tu entorno de vCenter para implementar la instalación local d
 
 ** *Configuración de la máquina virtual*
 +
-*** *Omitir comprobación de configuración*: Esta casilla de comprobación viene desmarcada por defecto, lo que significa que la implementación local de la NetApp Console ejecuta una comprobación de configuración para validar el acceso a la red.
-+
-**** NetApp recomienda dejar esta casilla de comprobación sin marcar para que la instalación incluya una comprobación de la configuración de la implementación local de la NetApp Console. La comprobación de configuración verifica que la implementación local de la NetApp Console tenga acceso de red a los endpoints requeridos. Si la implementación falla debido a problemas de conectividad, puedes acceder al informe de validación y a los registros desde el host de la implementación local de la NetApp Console. En algunos casos, si estás seguro de que la implementación local de la NetApp Console tiene acceso a la red, puedes optar por omitir la comprobación.
-
-
 *** *Contraseña de mantenimiento*: Establece la contraseña para el usuario  `maint` que permite acceder a la consola de mantenimiento de la implementación local de NetApp Console.
 *** *Servidores NTP*: Indica uno o varios servidores NTP para la sincronización horaria.
 *** *Nombre de host*: Establece el nombre de host de esta VM. No debe incluir el dominio de búsqueda. Por ejemplo, un FQDN como console10.searchdomain.company.com debe introducirse como console10.

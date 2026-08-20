@@ -36,6 +36,9 @@ Una regla de notificación coincide con alertas según las condiciones que defin
 
 
 
+NOTE: Las notificaciones de la interfaz de usuario de NetApp Console se conservan durante 24 horas.
+
+
 
 [[view-notification-rules]]
 == Ver reglas de notificación

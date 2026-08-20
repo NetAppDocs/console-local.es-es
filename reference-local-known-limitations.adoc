@@ -43,3 +43,19 @@ La implementación local de NetApp Console no es compatible en una máquina virt
 === Agentes y extensiones de terceros
 
 Los agentes de terceros o las extensiones de máquina virtual no son compatibles en la máquina virtual de implementación local de NetApp Console.
+
+
+
+[[identity-and-access-limitations]]
+== Limitaciones en materia de identidad y acceso
+
+[cols="1,3"]
+|===
+| Área | Limitación 
+
+
+| Incorporación de usuarios locales y recuperación de cuentas | Debes configurar un servidor de correo electrónico SMTP antes de poder invitar a usuarios locales o usar el restablecimiento de contraseña para usuarios locales. 
+
+
+| Integración con Active Directory | No se admiten direcciones de correo electrónico duplicadas entre usuarios locales y usuarios de Active Directory. Por ejemplo, si el administrador local inicial de la organización luego se añade como usuario de Active Directory, debe usar una dirección de correo electrónico diferente. 
+|===

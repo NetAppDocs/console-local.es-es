@@ -26,6 +26,9 @@ En el caso de las alertas de ONTAP, puedes acceder a herramientas como System Ma
 Para la elaboración de informes externos, puedes exportar la lista de alertas a un archivo CSV para analizarla sin conexión.
 
 
+NOTE: Las alertas se conservan en el despliegue local de NetApp Console durante 7 días desde el momento en que se generan.
+
+
 NOTE: También puedes configurar reglas de notificación para recibir alertas por correo electrónico o webhook. link:task-alert-rules-manage.html["Descubre cómo configurar las notificaciones de alerta"].
 
 
