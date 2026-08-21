@@ -60,6 +60,12 @@ Las siguientes tablas indican las acciones que puede realizar cada rol de la pla
 
 
 | Consulta la página de auditoría y las notificaciones | Sí | Sí 
+
+
+| Configura la integración de LLM y activa el asistente de NetApp Console | Sí | No 
+
+
+| Configura el envío de notificaciones y la configuración del servidor de correo electrónico | Sí | No 
 |===
 
 

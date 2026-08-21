@@ -101,17 +101,18 @@ Los pasos siguientes describen el proceso para utilizar las clases de almacenami
 
 Las clases de almacenamiento están asociadas a flotas. Cuando asocias una clase de almacenamiento a una flota, esa clase queda disponible para todo el aprovisionamiento dentro de la flota. Esto asegura que cada carga de trabajo aprovisionada en la flota siga los mismos estándares, haciendo que las flotas sean la forma principal de aplicar un comportamiento de almacenamiento coherente en los clústeres relacionados.
 
-Para obtener más información sobre cómo organizar flotas, consulta link:concept-manage-storage.html["Conoce la gestión de flotas en la implementación local de NetApp Console"].
+link:concept-manage-storage.html["Conoce la gestión de flotas en la implementación local de NetApp Console"].
 
 
 
 [[where-to-go-next]]
 == A dónde ir ahora
 
-* Para comprender la organización de una flota, consulta link:concept-manage-storage.html["Conoce la gestión de flotas en la implementación local de NetApp Console"].
-* Para crear políticas y clases de almacenamiento, consulta link:task-storage-class-manage.html["Gestiona clases y políticas de almacenamiento"].
+* link:concept-manage-storage.html["Conoce la gestión de flotas en la implementación local de NetApp Console"].
+* link:task-storage-class-manage.html["Gestiona clases y políticas de almacenamiento"].
 * link:task-provisioning-manual.html["Provisiona almacenamiento manualmente"]
 * link:task-provisioning-automated.html["Provisiona almacenamiento automáticamente"]
 * link:task-provisioning-agentic.html["Provisiona almacenamiento con asistencia de IA"]
-* Para analizar y corregir la deriva, consulta link:task-storage-class-drift-remediate.html["Corrige la desviación de la clase de almacenamiento"]
+* link:reference-console-assistant-operations.html["Consulta las operaciones compatibles con el asistente de la NetApp Console"]
+* link:task-storage-class-drift-remediate.html["Descubre cómo solucionar la desviación de la clase de almacenamiento"]
 

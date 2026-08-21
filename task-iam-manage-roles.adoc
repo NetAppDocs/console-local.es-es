@@ -63,7 +63,7 @@ Si tienes el rol de _Folder or fleet admin_, la página muestra a todos los miem
 
 Puedes ajustar el acceso de un miembro siempre que cambien sus responsabilidades. Por ejemplo, cuando un compañero de equipo asume tareas de backup para una segunda región, añade el rol de Backup and Recovery admin en la flota de esa región sin modificar sus roles de almacenamiento actuales.
 
-Si necesitas añadir un nuevo miembro y asignarle su primer rol, consulta link:task-iam-manage-members-permissions.html#add-members["Agregar miembros y asignar roles"].
+link:task-iam-manage-members-permissions.html#add-members["Aprende a añadir miembros y asignar funciones"].
 
 
 

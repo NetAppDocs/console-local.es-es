@@ -53,7 +53,7 @@ Salud:: Estado de salud, recuentos de objetos degradados o críticos, discos fal
 Alertas:: Número de alertas críticas, alertas por gravedad, alertas por área de impacto, alertas recientes y tendencias de alertas a lo largo del tiempo.
 
 
-Para consultar el catálogo completo de tarjetas y métricas predefinidas, consulta link:reference-dashboard-card-templates.html["Conoce las tarjetas personalizadas del panel y las métricas en la implementación local de NetApp Console"].
+link:reference-dashboard-card-templates.html["Consulta el catálogo de tarjetas y métricas personalizadas para paneles de control en la implementación local de NetApp Console"].
 
 
 

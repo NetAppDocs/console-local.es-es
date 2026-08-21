@@ -14,7 +14,7 @@ summary: Soluciona los problemas de integración de LLM en NetApp Console en una
 
 
 [role="lead"]
-Utiliza este flujo de clasificación rápida para diagnosticar y resolver problemas habituales de integración de LLM en NetApp Console en una implementación local.
+Diagnostica los fallos de integración de LLM en la implementación local de NetApp Console para restaurar el acceso al asistente de Console y obtener respuestas fiables para la orientación y las operaciones de almacenamiento.
 
 
 NOTE: Esta documentación sobre cómo conectar un modelo de lenguaje grande (LLM) al asistente de la Consola para habilitar funciones de IA se ofrece como una versión preliminar tecnológica. Con esta versión preliminar, NetApp se reserva el derecho a modificar los detalles de la oferta, los contenidos y el calendario antes de su disponibilidad general.
@@ -53,7 +53,7 @@ Realiza una solicitud sencilla de solo lectura y comprueba la accesibilidad del 
 | Guardar o probar falla en AI Tools | Incompatibilidad de configuración o conectividad | Tipo de proveedor, URL del punto final, formato de la clave de API, modelo seleccionado y acceso saliente | Corrige el valor que no supera la validación y vuelve a guardar 
 
 
-| Falta el botón *Console assistant* | Estado de integración inadecuado, incompatibilidad de la organización o incompatibilidad de RBAC | Guardado exitoso de herramientas de IA, estado de integración, organización actual y rol de acceso esperado | Actualiza la sesión y verifica con una cuenta de administrador que sepas que funciona correctamente 
+| Falta el botón *Console assistant* | Estado de integración no saludable | Guardado exitoso de herramientas de IA, estado de integración y rol de acceso esperado | Actualiza la sesión y verifica con una cuenta de administrador que sepas que funciona correctamente 
 
 
 | El asistente se abre pero la solicitud falla | Problema con el proveedor o con la ruta de ejecución | Accesibilidad del endpoint, disponibilidad del modelo en ese endpoint, límites del proveedor y estado temporal del proveedor | Vuelve a intentarlo tras solucionar la incompatibilidad entre el endpoint y el modelo o los problemas de límite por parte del proveedor. 

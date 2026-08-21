@@ -37,8 +37,6 @@ La gestión de flotas aborda tres retos fundamentales:
 
 La jerarquía de recursos de tu organización está formada por carpetas y flotas:
 
-Para obtener una descripción detallada de la jerarquía y el modelo de acceso, consulta link:concept-folders-fleets-overview.html["Conoce las carpetas y las flotas en la implementación local de NetApp Console"].
-
 * *Organización* - el nivel superior que representa a tu empresa.
 * *Carpetas* - te ayudan a organizar flotas relacionadas. Por ejemplo, puedes crear una carpeta para cada región o unidad de negocio, y luego crear flotas dentro de cada carpeta. Las carpetas pueden contener otras carpetas o flotas. Cuando asignas un rol a nivel de carpeta, los miembros heredan ese rol para todas las flotas dentro de la carpeta.
 * *Flotas* - agrupa los sistemas de almacenamiento que gestionas. Asocias los sistemas de almacenamiento a las flotas y asignas miembros a las flotas para darles acceso.
@@ -46,6 +44,8 @@ Para obtener una descripción detallada de la jerarquía y el modelo de acceso, 
 
 
 NOTE: Las carpetas son una herramienta de organización y no son visibles para los miembros que no tengan permisos de IAM, como los roles de Organization admin, Folder admin o Fleet admin. Los miembros acceden a las flotas, no a las carpetas.
+
+link:concept-folders-fleets-overview.html["Obtén más información sobre las carpetas y las flotas en el despliegue local de NetApp Console"].
 
 
 
@@ -108,9 +108,10 @@ La implementación local de NetApp Console admite tres métodos de aprovisionami
 [[where-to-go-next]]
 == A dónde ir ahora
 
-* Para conocer las normas de almacenamiento, consulta link:concept-storage-classes.html["Obtén información sobre las clases de almacenamiento y las políticas en el despliegue local de NetApp Console"].
-* Para crear y gestionar flotas, consulta link:task-iam-manage-folders-fleets.html["Gestiona carpetas y flotas"].
+* link:concept-storage-classes.html["Obtén información sobre las clases de almacenamiento y las políticas en el despliegue local de NetApp Console"].
+* link:task-iam-manage-folders-fleets.html["Aprende a crear y gestionar flotas"].
 * link:task-provisioning-manual.html["Provisiona almacenamiento manualmente"]
 * link:task-provisioning-automated.html["Provisiona almacenamiento automáticamente"]
 * link:task-provisioning-agentic.html["Provisiona almacenamiento con asistencia de IA"]
+* link:reference-console-assistant-operations.html["Consulta las operaciones compatibles con el asistente de la NetApp Console"]
 

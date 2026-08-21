@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: reference-console-assistant-operations.html 
+keywords: Console assistant, AI-assisted management, agentic operations, metrics, storage provisioning, ONTAP management, netapp console local 
+summary: Revisa las categorías de operaciones orientadas al cliente que admite el asistente de la consola en una implementación local de NetApp Console. 
+---
+= Operaciones admitidas del asistente de la consola en la implementación local de NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+El asistente de la consola admite preguntas en lenguaje natural y determinadas operaciones de almacenamiento. Las operaciones disponibles dependen de la versión, del punto de conexión LLM configurado y de los permisos que se te hayan asignado.
+
+
+NOTE: Esta documentación sobre cómo conectar un modelo de lenguaje grande (LLM) al asistente de la Consola para habilitar funciones de IA se ofrece como una versión preliminar tecnológica. Con esta versión preliminar, NetApp se reserva el derecho a modificar los detalles de la oferta, los contenidos y el calendario antes de su disponibilidad general.
+
+Utiliza el asistente de la Console en modo *Solo lectura* para realizar consultas y análisis sin modificar la infraestructura. Utiliza el modo *Lectura/escritura* para las operaciones compatibles que pueden cambiar el almacenamiento o los sistemas ONTAP. El asistente muestra el cambio propuesto y solicita confirmación antes de ejecutar una operación de escritura.
+
+
+
+[[conversational-guidance-and-search]]
+== Orientación conversacional y búsqueda
+
+Haz preguntas sobre la implementación local de NetApp Console, tu entorno de almacenamiento o los flujos de trabajo de administración de ONTAP compatibles. El asistente utiliza el endpoint de LLM configurado junto con la documentación disponible y el contexto de la flota para darte una respuesta o pedirte más contexto.
+
+
+
+[[metrics-and-analytics]]
+== Métricas y análisis
+
+Plantea preguntas de solo lectura sobre la capacidad de almacenamiento admitida, el rendimiento y otras métricas de los recursos dentro del ámbito que te está permitido. Incluye el recurso, la métrica y el periodo de tiempo cuando esos detalles sean relevantes para tu pregunta.
+
+El asistente devuelve un análisis y no modifica el almacenamiento en modo *Solo lectura*.
+
+
+
+[[storage-provisioning]]
+== Aprovisionamiento de almacenamiento
+
+Describe la carga de trabajo y sus requisitos de almacenamiento en lenguaje natural. El asistente puede recomendar una clase de almacenamiento y una ubicación, identificar los datos que faltan y presentar un plan de aprovisionamiento de almacenamiento para su revisión.
+
+Una vez que apruebes el plan, el asistente aprovisiona la operación de volumen o LUN compatible dentro de los permisos de tu rol y las políticas de clase de almacenamiento. link:task-provisioning-agentic.html["Descubre cómo realizar el aprovisionamiento de almacenamiento con flujos de trabajo asistidos por IA"].
+
+
+
+[[alert-investigation-and-remediation]]
+== Investigación y resolución de alertas
+
+Pídele al asistente que investigue una alerta activa compatible. Analiza la alerta y puede sugerir una acción de remediación. Cuando una acción de remediación compatible cambia el almacenamiento, el asistente presenta la acción para revisión y requiere confirmación antes de ejecutarla.
+
+
+
+[[ontap-management]]
+== Gestión de ONTAP
+
+Solicita una operación de gestión compatible para un sistema ONTAP registrado utilizando lenguaje natural. Identifica el clúster, el SVM o el recurso de destino cuando lo conozcas para que el asistente pueda usar el contexto correcto.
+
+El asistente distingue entre las solicitudes de solo lectura y las operaciones de escritura. Revisa el destino y los cambios propuestos antes de confirmar una operación de escritura. El conjunto de operaciones disponibles depende de la versión de la implementación local de NetApp Console y de los permisos asignados a tu cuenta.
+
+
+
+[[permissions-and-scope]]
+== Permisos y alcance
+
+El asistente utiliza los permisos y el ámbito de recursos del usuario que ha iniciado sesión:
+
+* Tu rol determina qué recursos y operaciones puedes ver o modificar.
+* El alcance de la organización, la carpeta y la flota limita los sistemas y las cargas de trabajo disponibles para el asistente.
+* Las políticas de clase de almacenamiento limitan el aprovisionamiento de almacenamiento asistido por IA.
+* El asistente no elude los controles de acceso de la implementación local de Console.
+
+
+link:reference-iam-predefined-roles.html["Conoce los roles de acceso para la implementación local de NetApp Console"].
+
+
+
+[[asynchronous-operations]]
+== Operaciones asíncronas
+
+Algunas operaciones de escritura compatibles no se completan de forma inmediata. Para estas operaciones, el asistente crea una tarea. Pídele al asistente el estado de la solicitud para supervisar la finalización.
+
+
+
+[[related-information]]
+== Información relacionada
+
+* link:concept-llm-integration.html["Infórmate sobre la integración de LLM en la implementación local de NetApp Console"]
+* link:task-console-asst-use.html["Usa el asistente de NetApp Console"]
+* link:reference-llm-supported-models.html["Proveedores y modelos de LLM compatibles"]
+

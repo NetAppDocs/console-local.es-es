@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-provisioning-agentic.html 
 keywords: agentic provisioning, AI-assisted provisioning, natural language, conversational provisioning, plan-and-approve, storage class, Console assistant, LLM, RBAC, netapp console local 
-summary: Utiliza el aprovisionamiento basado en agentes impulsado por IA para satisfacer de forma autónoma las solicitudes de almacenamiento en la implementación local de NetApp Console. 
+summary: Utiliza el aprovisionamiento asistido por IA para solicitar almacenamiento, revisar un plan propuesto y aprobar el cambio en la implementación local de NetApp Console. 
 ---
 = Aprovisiona almacenamiento con flujos de trabajo asistidos por IA (agentes) en la implementación local de NetApp Console
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: Utiliza el aprovisionamiento basado en agentes impulsado por IA para sa
 
 
 [role="lead"]
-En una implementación local de NetApp Console, utiliza el aprovisionamiento asistido por IA (agentic) cuando quieras solicitar almacenamiento de forma conversacional, revisar un plan propuesto y aprobar el cambio. Este enfoque es útil cuando quieres solicitudes más rápidas con menos navegación por la interfaz de usuario, pero manteniendo el aprovisionamiento alineado con las clases de almacenamiento y RBAC.
+En una implementación local de NetApp Console, solicita almacenamiento de forma conversacional mientras mantienes la intención de clase de almacenamiento aprobada y los controles basados en roles en todas las flotas gestionadas.
 
 
 NOTE: Esta documentación sobre cómo conectar un modelo de lenguaje grande (LLM) al asistente de la Consola para habilitar funciones de IA se ofrece como una versión preliminar tecnológica. Con esta versión preliminar, NetApp se reserva el derecho a modificar los detalles de la oferta, los contenidos y el calendario antes de su disponibilidad general.
@@ -29,15 +29,17 @@ El aprovisionamiento mediante Agentic requiere que la integración con un LLM es
 [[before-you-begin]]
 == Antes de empezar
 
+Prepara las flotas, los sistemas, las clases de almacenamiento y el acceso a los LLM para que el asistente pueda generar planes dentro de los límites de aprovisionamiento aprobados.
+
 * Asegúrate de que la integración de LLM esté configurada y habilitada para tu implementación local de NetApp Console.
 * Asegúrate de que la flota de destino incluya los sistemas de almacenamiento detectados.
 * Asegúrate de que las clases de almacenamiento estén configuradas y asociadas a la flota para que el asistente pueda proponer planes alineados con cada clase.
 
 
-.Pasos (por revisar)
+.Pasos
 . Abre el asistente de la NetApp Console.
 . Describe lo que necesitas en un lenguaje sencillo (por ejemplo, protocolo, tamaño, entorno, intención de rendimiento y flota de destino si aplica).
-. Revisa el plan propuesto, incluyendo: la flota seleccionada y la ubicación prevista del sistema (si aplica) la clase de almacenamiento seleccionada o recomendada parámetros clave que se aplicarán (comportamiento de la capacidad, programa de protección, requisitos de seguridad y cualquier intención relacionada con QoS, si se muestra)
+. Revisa el plan propuesto, incluyendo: la flota seleccionada y la ubicación prevista del sistema, si aplica. La clase de almacenamiento seleccionada o recomendada. Los ajustes clave que se aplicarán, como el comportamiento de la capacidad, la programación de protección, los requisitos de seguridad y la intención relacionada con QoS, si se muestra.
 . Confirma o modifica el plan. Si el plan selecciona una clase o una asignación inesperadas, especifica la clase, la flota o las restricciones deseadas y vuelve a generar el plan.
 . Aprueba la ejecución para aprovisionar la carga de trabajo.
 . Comprueba el recurso creado en el inventario de almacenamiento y confirma que está asociado a la clase de almacenamiento prevista para la supervisión continua de las desviaciones.
