@@ -46,7 +46,7 @@ La página *Alertas > Resumen* se abre con los filtros aplicados.
 +
 Para los resultados sobre desviaciones en la configuración, compara los ajustes previstos y los reales para determinar qué cambió.
 
-. Selecciona la acción correctiva recomendada, como *Fix it*.
+. Selecciona la acción correctiva recomendada, como *Fix It*.
 . Revisa los cambios propuestos y aplica la remediación.
 . Vuelve a *Almacenamiento > Clases de almacenamiento* y comprueba que la carga de trabajo ya no aparece como desviada.
 +

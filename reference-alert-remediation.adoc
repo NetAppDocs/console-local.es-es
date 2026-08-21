@@ -14,7 +14,7 @@ summary: Referencia de las acciones de remediación disponibles en la implementa
 
 
 [role="lead"]
-Utiliza esta referencia para entender las acciones de corrección disponibles en *Fix it* en la implementación local de NetApp Console. Para cada acción, la tabla describe lo que hace la acción y la alerta relacionada. Revisa los detalles de la acción en el cuadro de diálogo de confirmación antes de ejecutarla.
+Utiliza esta referencia para entender las acciones de corrección disponibles en *Fix It* en la implementación local de NetApp Console. Para cada acción, la tabla describe qué hace la acción y la alerta relacionada. Revisa los detalles de la acción en el cuadro de diálogo de confirmación antes de ejecutarla. Esta referencia describe las acciones en el flujo de trabajo de alertas; no identifica qué acciones puede sugerir el asistente de la Console.
 
 
 

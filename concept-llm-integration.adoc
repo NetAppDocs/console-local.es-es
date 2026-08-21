@@ -88,6 +88,8 @@ Protege la integración con estos controles:
 * Revisa el uso y las alertas del lado del proveedor para detectar actividad inesperada.
 
 
+Controla los costes de Control Console assistant eligiendo un proveedor y un modelo de LLM adecuados, estableciendo límites de uso y alertas con tu proveedor, y supervisando el uso de tokens. Solo las actividades que envían solicitudes al LLM consumen tokens del proveedor; las operaciones de backend no lo hacen.
+
 
 
 [[connect-your-llm]]

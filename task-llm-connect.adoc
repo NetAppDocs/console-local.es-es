@@ -32,8 +32,8 @@ Para conectar tu LLM, selecciona una ruta de proveedor, introduce los datos del 
 
 
 
-[[gather-what-you-need-before-you-connect-an-llm]]
-== Reúne todo lo que necesites antes de conectar un LLM
+[[before-you-begin]]
+== Antes de empezar
 
 Prepara las credenciales del proveedor y el acceso a los puntos finales para que el asistente de la Console pueda funcionar dentro de los límites de gobernanza configurados por tu organización.
 

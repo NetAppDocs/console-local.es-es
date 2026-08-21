@@ -28,7 +28,7 @@ Los roles de la plataforma otorgan permisos de administración de la implementac
 | Función de la plataforma | Responsabilidades 
 
 
-| link:reference-iam-platform-roles.html#organization-admin-roles["Administrador de la organización"] | Permite a un usuario acceder sin restricciones a todas las flotas y carpetas dentro de una organización, añadir miembros a cualquier flota o carpeta, así como realizar cualquier tarea y usar cualquier servicio de datos que no tenga un rol explícito asociado. Los usuarios con este rol gestionan tu organización creando carpetas y flotas, asignando roles, añadiendo usuarios y gestionando sistemas si tienen las credenciales adecuadas. 
+| link:reference-iam-platform-roles.html#organization-admin-roles["Administrador de la organización"] | Permite a un usuario acceder sin restricciones a todas las flotas y carpetas de una organización, añadir miembros a cualquier flota o carpeta, así como realizar cualquier tarea y utilizar cualquier servicio de datos que no tenga un rol explícito asociado. Los usuarios con el rol de Org admin también pueden configurar integraciones de LLM, la configuración del servidor de correo electrónico y añadir webhooks. Los usuarios con este rol gestionan tu organización creando carpetas y flotas, asignando roles, añadiendo usuarios y gestionando sistemas si tienen las credenciales adecuadas. 
 
 
 | link:reference-iam-platform-roles.html#organization-admin-roles["Administrador de carpetas o de flotas"] | Permite a un usuario acceso sin restricciones a las flotas y carpetas asignadas. Puede añadir miembros a las carpetas o flotas que gestiona, además de realizar cualquier tarea y usar cualquier servicio de datos o aplicación en los recursos dentro de la carpeta o flota que tenga asignada. 
@@ -68,6 +68,13 @@ A continuación se muestra una lista de roles de la categoría de aplicaciones. 
 
 | link:reference-iam-storage-roles.html["Especialista en estado del sistema"] | Administra las funciones de almacenamiento, estado y gobernanza, y tiene todos los permisos del administrador de almacenamiento, excepto que no puede modificar ni eliminar sistemas existentes. 
 |===
+
+
+[[console-assistant-access]]
+== Acceso al asistente de la consola
+
+Un administrador o superadministrador de la organización debe configurar una integración con un modelo de lenguaje grande (LLM) para que los miembros puedan utilizar el asistente de la consola. Cada miembro solo puede ver o modificar los recursos que le permiten sus roles asignados y el ámbito de la organización, la carpeta o la flota. link:reference-console-assistant-operations.html["Conoce las operaciones compatibles con el asistente de la consola."]
+
 
 
 [[data-service-roles]]

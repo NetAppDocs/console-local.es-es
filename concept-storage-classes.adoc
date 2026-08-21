@@ -68,7 +68,7 @@ Los problemas se dividen en dos categorías:
 * *Incumplimiento de los requisitos de rendimiento*: El comportamiento en tiempo de ejecución de la carga de trabajo ya no cumple con la intención de rendimiento de la clase de almacenamiento (por ejemplo, una presión sostenida cerca de un límite de QoS o una latencia de cola elevada).
 
 
-Una vista de análisis explica qué ha cambiado y por qué. Es posible que haya disponibles acciones de corrección guiadas (por ejemplo, *Fix it*) para ayudar a restablecer el cumplimiento. Algunas correcciones se pueden aplicar directamente, mientras que otras pueden requerir alinear la carga de trabajo a una clase de almacenamiento diferente para restablecer el comportamiento previsto.
+Una vista de análisis explica qué cambió y por qué. Puede que haya acciones de corrección guiadas (por ejemplo, *Fix It*) disponibles para ayudarte a restablecer el cumplimiento. Algunas correcciones se pueden aplicar directamente, mientras que otras pueden requerir alinear la carga de trabajo a una clase de almacenamiento diferente para restablecer el comportamiento previsto.
 
 .Dónde investigar
 Normalmente, puedes investigar las desviaciones y los incumplimientos desde una de estas ubicaciones (la disponibilidad depende de tu implementación y permisos):

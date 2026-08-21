@@ -77,10 +77,26 @@ Por ejemplo: `Create a 10GiB volume for home directories named home, and share i
 
 
 
+[[use-a-prompt-from-the-prompt-library]]
+== Utiliza un prompt de la biblioteca de prompts
+
+Explora la biblioteca de sugerencias para encontrar un punto de partida adecuado para preguntas sobre la gestión del almacenamiento y el estado de la flota.
+
+.Pasos
+. Abre el asistente de la consola.
+. Abre la biblioteca de indicaciones desde el botón en el encabezado del asistente.
+. Selecciona una indicación de la biblioteca, revísala y envía la solicitud.
+. Sigue la respuesta del asistente. Dependiendo de la solicitud, el asistente puede proporcionar información, pedir más detalles o solicitar confirmación antes de realizar una acción.
+
+
+
+
 [[use-the-assistant-for-metrics-and-analytics]]
 == Utiliza el asistente para métricas y análisis
 
-Formula una pregunta de solo lectura en la que identifiques el recurso, el ámbito, la métrica y el periodo de tiempo que quieres entender. El asistente devuelve un análisis de las métricas compatibles y no cambia tu almacenamiento.
+Investiga las condiciones de capacidad y rendimiento dentro del ámbito de tu permiso sin cambiar tu entorno de almacenamiento. Haz una pregunta de solo lectura que identifique el recurso, el ámbito, la métrica y el periodo de tiempo que quieres entender. El asistente devuelve un análisis de las métricas compatibles y no cambia tu almacenamiento.
+
+Utiliza el asistente de la consola para formular preguntas en lenguaje natural y realizar análisis a grandes rasgos de los recursos dentro de tu ámbito de acceso autorizado. Utiliza Workload Analyzer cuando necesites un análisis detallado y temporal de un volumen, incluyendo la latencia, el rendimiento, la utilización de recursos, la capacidad, los eventos y las previsiones.
 
 
 
