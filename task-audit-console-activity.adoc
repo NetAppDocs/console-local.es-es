@@ -14,21 +14,21 @@ summary: 'Puedes auditar la actividad de los usuarios (tanto desde la interfaz d
 
 
 [role="lead"]
-Puedes auditar la actividad de los usuarios iniciada tanto desde la interfaz de usuario como desde la API en la página de Auditoría, y puedes supervisar el estado de las operaciones en la implementación local de NetApp Console y el usuario que las inició.
+Documenta la actividad administrativa durante las revisiones de cumplimiento para verificar los cambios de acceso y conservar un registro de las acciones en la implementación local de NetApp Console.
 
 .Roles requeridos
 Superadministrador, administrador de la organización, administrador de carpetas y flotas, analista de soporte de operaciones, supervisor, visor de la organización o visor de carpetas y flotas. link:reference-iam-predefined-roles.html["Conoce los roles de acceso"].
 
-Puedes consultar la actividad de auditoría en la implementación local de la Console, descargar un archivo CSV con los registros de auditoría o configurar el envío de dichos registros a tu propio servidor syslog mediante un webhook.
+Puedes consultar la actividad de auditoría en la implementación local de la NetApp Console y descargar un archivo CSV con los registros de auditoría.
 
 
 
 [[audit-user-activity-from-the-audit-page]]
 == Audita la actividad de los usuarios desde la página Auditoría
 
-Utiliza la página de Auditoría para identificar quién realizó una acción o su estado.
+Supervisa la actividad administrativa para realizar un seguimiento de los cambios en tu implementación local de NetApp Console cuando resuelvas incidencias o verifiques la responsabilidad operativa.
 
-La página «Auditoría» muestra las acciones que los usuarios han realizado dentro de tu organización. Por ejemplo, puedes comprobar quién añadió un miembro a una organización o que una flota se eliminó correctamente, así como ver otras acciones de gestión de almacenamiento que los usuarios realizaron en tu organización.
+La página «Auditoría» muestra las acciones que los usuarios han realizado dentro de tu organización. Por ejemplo, puedes comprobar quién añadió a un miembro a una organización, confirmar que un usuario eliminó una flota o consultar otras acciones de gestión del almacenamiento que los usuarios realizan en tu organización.
 
 Los registros de auditoría muestran la actividad de los siguientes servicios:
 
@@ -39,18 +39,19 @@ Los registros de auditoría muestran la actividad de los siguientes servicios:
 
 .Pasos
 . Selecciona *Administración > Auditoría*.
-. Utiliza los filtros situados encima de la tabla para cambiar qué acciones se muestran en la tabla.
-+
-Por ejemplo, puedes utilizar el filtro *Servicio* para mostrar las acciones relacionadas con un servicio concreto, o puedes utilizar el filtro *Usuario* para mostrar las acciones relacionadas con una cuenta de usuario concreta.
+. Utiliza los filtros situados encima de la tabla para filtrar la actividad de auditoría por intervalo de tiempo, servicio, acción, recurso, usuario o estado.
 
 
+Las entradas de auditoría muestran el usuario que realizó la acción cuando es posible identificar a dicho usuario. Si no es posible identificar al usuario, la entrada muestra el  `auth0Id` del usuario en lugar de su nombre.
+
++ Por ejemplo, puedes utilizar el filtro *Servicio* para mostrar las acciones relacionadas con un servicio concreto, o el filtro *Usuario* para mostrar las acciones relacionadas con una cuenta de usuario concreta.
 
 
 
 [[filter-audit-logs-for-identity-and-access-management-actions]]
 === Filtra los registros de auditoría para las acciones de gestión de identidades y acceso
 
-Para ver únicamente las acciones relacionadas con la gestión de tu organización, como añadir miembros, crear flotas o eliminar recursos, filtra el registro de auditoría por el servicio Tenancy.
+Revisa los cambios en la gestión de accesos para confirmar quién modificó los recursos de la organización y apoyar investigaciones de seguridad precisas.
 
 .Pasos
 . Selecciona *Administración > Auditoría*.
@@ -66,7 +67,7 @@ Por ejemplo, utiliza el filtro *Usuario* para mostrar las acciones de IAM realiz
 [[download-audit-logs-from-the-audit-page]]
 === Descarga los registros de auditoría desde la página de Auditoría
 
-Puedes descargar los registros de auditoría desde la página de Auditoría a un archivo CSV. Esto te permite mantener un registro de las acciones que realizan los usuarios en tu organización. El archivo CSV descargado incluye todas las columnas del registro de auditoría, independientemente de los filtros o de las columnas que se muestren en la página de Auditoría.
+Mantén un registro independiente de las acciones de la organización para respaldar las revisiones de cumplimiento y futuras investigaciones de incidentes. El archivo CSV descargado incluye todas las columnas del registro de auditoría, incluso si aplicas filtros o cambias las columnas que se muestran.
 
 .Pasos
 . En la página *Audit*, selecciona el icono de descarga situado en la esquina superior derecha de la tabla.
