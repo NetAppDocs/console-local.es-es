@@ -128,3 +128,6 @@ La barra de tareas de vSphere muestra el progreso a medida que se implementa la 
 
 . Enciende la máquina virtual.
 
+
+
+NOTE: Para proteger la comunicación con tu propio certificado TLS, sigue las instrucciones de este link:https://kb.netapp.com/Cloud/ncds/ncld/ncld_kbs/How_to_Install_a_Commercial_TLS_Certificate_in_NetApp_Console_local_deployment["NetApp artículo de base de conocimientos del sitio de soporte"^].
