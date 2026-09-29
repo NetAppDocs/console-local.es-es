@@ -98,14 +98,8 @@ Inicia sesión en tu entorno de vCenter para implementar la instalación local d
 . Elige el tipo de configuración de proxy que deseas utilizar: proxy explícito, proxy transparente o sin proxy.
 . Selecciona el almacén de datos donde quieres implementar la máquina virtual y luego selecciona *Siguiente*. Asegúrate de que cumple los requisitos del host.
 . Selecciona la red a la que quieres conectar la VM y luego selecciona *Siguiente*. Asegúrate de que la red sea IPv4 y tenga acceso a internet de salida a los endpoints requeridos.
-. En la ventana *Personalizar plantilla*, rellena los siguientes campos:
+. En la ventana *Personalizar plantilla*, completa los siguientes campos:
 +
-** *Información del proxy*
-+
-*** Si seleccionaste proxy explícito, introduce el nombre de host o la dirección IP del servidor proxy y el número de puerto, así como el nombre de usuario y la contraseña.
-*** Si seleccionaste el proxy transparente, sube el certificado correspondiente.
-
-
 ** *Configuración de la máquina virtual*
 +
 *** *Contraseña de mantenimiento*: Establece la contraseña para el usuario  `maint` que permite acceder a la consola de mantenimiento de la implementación local de NetApp Console.
