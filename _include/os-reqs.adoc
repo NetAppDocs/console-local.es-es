@@ -169,7 +169,7 @@ Par de claves:: Cuando crees el agente de Console, tendrás que seleccionar un p
 Límite de saltos de la respuesta PUT al usar IMDSv2:: Si IMDSv2 está habilitado en la instancia de EC2 (esta es la configuración predeterminada para las nuevas instancias de EC2), debes cambiar el límite de saltos de la respuesta PUT en la instancia a 3. Si no cambias el límite en la instancia de EC2, recibirás un error de inicialización de la interfaz de usuario cuando intentes configurar el agente.
 +
 --
-* link:task-require-imdsv2.html["Exigir el uso de IMDSv2 en las instancias de Amazon EC2"]
+* https://docs.netapp.com/us-en/console-setup-admin/task-require-imdsv2.html["Exigir el uso de IMDSv2 en las instancias de Amazon EC2"^]
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-existing-instances.html#modify-PUT-response-hop-limit["Documentación de AWS: cambiar el límite de saltos de la respuesta PUT"^]
 
 
