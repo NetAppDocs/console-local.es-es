@@ -29,7 +29,7 @@ Elige un modelo que se ajuste a tus requisitos de rendimiento, coste y gobernanz
 El tipo de proveedor que elijas determina qué modelos aparecen en la lista de modelos de implementación local de la Console:
 
 * *OpenAI* — ofrece modelos para la integración directa con OpenAI.
-* *Compatible con OpenAI* — proporciona los modelos que expone el endpoint compatible de tu organización.
+* *proxy compatible con OpenAI* — para usar una pasarela empresarial o un servicio de proxy para conectarte a los modelos compatibles.
 * *Anthropic* — ofrece modelos para la integración directa con Anthropic.
 
 
